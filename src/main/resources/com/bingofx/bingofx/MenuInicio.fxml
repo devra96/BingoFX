@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="pane" alignment="CENTER" prefHeight="561.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.HelloController">
+<VBox id="pane" alignment="CENTER" prefHeight="561.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.MenuInicioController">
    <children>
       <AnchorPane prefHeight="561.0" prefWidth="472.0">
          <children>
