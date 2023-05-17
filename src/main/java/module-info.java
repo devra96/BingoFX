@@ -4,6 +4,7 @@ module com.bingofx.bingofx {
 
     requires org.controlsfx.controls;
     requires java.sql;
+    requires java.desktop;
 
     opens com.bingofx.bingofx to javafx.fxml;
     exports com.bingofx.bingofx;

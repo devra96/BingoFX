@@ -5,6 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -17,7 +28,21 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        reproducirMusica();
         launch();
+    }
+
+    public static void reproducirMusica(){
+        try{
+            String url = "src/main/resources/com/bingofx/bingofx/casinoluigi.wav";
+            AudioInputStream a = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
+            Clip c = AudioSystem.getClip();
+            c.open(a);
+            c.start();
+        }
+        catch(UnsupportedAudioFileException | IOException | LineUnavailableException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
