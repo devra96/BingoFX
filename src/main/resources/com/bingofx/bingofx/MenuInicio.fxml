@@ -20,9 +20,10 @@
                   <Image url="@img/logo22.png" />
                </image>
             </ImageView>
-            <Button fx:id="buttonJugar" layoutX="173.0" layoutY="324.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="106.0" stylesheets="@css/estilos.css" text="Jugar" />
-            <Button fx:id="buttonVerRecords" layoutX="164.0" layoutY="392.0" mnemonicParsing="false" onAction="#VerRecords" prefHeight="42.0" prefWidth="124.0" text="Ver records" />
-            <Button fx:id="buttonSalir" layoutX="170.0" layoutY="461.0" mnemonicParsing="false" onAction="#Salir" prefHeight="42.0" prefWidth="112.0" text="Salir" />
+            <Button fx:id="btnunjugador" layoutX="173.0" layoutY="239.0" mnemonicParsing="false" onAction="#JugarUnJugador" prefHeight="50.0" prefWidth="100.0" stylesheets="@css/estilos.css" text="1 jugador" />
+            <Button fx:id="btnVerRecords" layoutX="173.0" layoutY="381.0" mnemonicParsing="false" onAction="#VerRecords" prefHeight="50.0" prefWidth="100.0" text="Ver records" />
+            <Button fx:id="btnSalir" layoutX="173.0" layoutY="454.0" mnemonicParsing="false" onAction="#Salir" prefHeight="50.0" prefWidth="100.0" text="Salir" />
+            <Button fx:id="btndosjugadores" layoutX="173.0" layoutY="314.0" mnemonicParsing="false" onAction="#JugarDosJugadores" prefHeight="50.0" prefWidth="100.0" text="2 jugadores" />
          </children>
       </AnchorPane>
    </children>
