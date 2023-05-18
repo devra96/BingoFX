@@ -4,7 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -12,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.Optional;
 
@@ -31,12 +34,44 @@ public class MenuInicioController {
 
     @FXML
     void JugarUnJugador(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUnJugador.fxml"));
 
+        try {
+            Parent root = fxmlLoader.load();
+            MenuUnJugadorController controlador = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("UN JUGADOR");
+            stage.setScene(scene);
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.show();
+
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void JugarDosJugadores(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuDosJugadores.fxml"));
 
+        try {
+            Parent root = fxmlLoader.load();
+            MenuDosJugadoresController controlador = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("DOS JUGADORES");
+            stage.setScene(scene);
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.show();
+
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
