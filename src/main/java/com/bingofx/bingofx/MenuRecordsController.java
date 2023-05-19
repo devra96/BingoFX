@@ -49,17 +49,152 @@ public class MenuRecordsController implements Initializable {
 
     @FXML
     void FiltroBingo(ActionEvent event) {
+        tabla.getItems().clear();
+        try{
+            // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/devra1?serverTimezone=UTC","devra96","n6CKKs8GUz");
+            // PRUEBAS EN CLASE
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bingofx?serverTimezone=UTC","root","root");
+            System.out.println("Conexion al servidor establecida correctamente.");
+            Statement st = con.createStatement();
+            String sql = "SELECT * FROM bingofx ORDER BY tiradasbingo";
+            ResultSet rs = st.executeQuery(sql);
 
+            while (rs.next()){
+                int numpartida = rs.getInt("numpartida");
+                String nombrejugador = rs.getString("nombrejugador");
+                String tiradaslinea = rs.getString("tiradaslinea");
+                String tiradasbingo = rs.getString("tiradasbingo");
+                Registro r = new Registro(numpartida,nombrejugador,tiradaslinea,tiradasbingo);
+                registros.add(r);
+                tabla.setItems(registros);
+            }
+            con.close();
+        }
+        catch(SQLException e){
+//            System.out.println("Error en la consulta: " + e.getErrorCode() + " - " + e.getMessage());
+
+            Label error = new Label("HA OCURRIDO UN ERROR CON LA BASE DE DATOS\n\nCausa del error: " + e.getErrorCode() + " - " + e.getMessage());
+            Insets pad = new Insets(20);
+            error.setPadding(pad);
+//            error.setLayoutX(37);
+//            error.setLayoutY(108);
+
+            Pane p = new Pane();
+            p.getChildren().addAll(error);
+            p.prefHeight(232.0);
+            p.prefWidth(348.0);
+            Stage stage = new Stage();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.setTitle("ERROR");
+            stage.show();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void FiltroHistorial(ActionEvent event) {
-        
+        tabla.getItems().clear();
+        try{
+            // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/devra1?serverTimezone=UTC","devra96","n6CKKs8GUz");
+            // PRUEBAS EN CLASE
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bingofx?serverTimezone=UTC","root","root");
+            System.out.println("Conexion al servidor establecida correctamente.");
+            Statement st = con.createStatement();
+            String sql = "SELECT * FROM bingofx";
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()){
+                int numpartida = rs.getInt("numpartida");
+                String nombrejugador = rs.getString("nombrejugador");
+                String tiradaslinea = rs.getString("tiradaslinea");
+                String tiradasbingo = rs.getString("tiradasbingo");
+                Registro r = new Registro(numpartida,nombrejugador,tiradaslinea,tiradasbingo);
+                registros.add(r);
+                tabla.setItems(registros);
+            }
+            con.close();
+        }
+        catch(SQLException e){
+//            System.out.println("Error en la consulta: " + e.getErrorCode() + " - " + e.getMessage());
+
+            Label error = new Label("HA OCURRIDO UN ERROR CON LA BASE DE DATOS\n\nCausa del error: " + e.getErrorCode() + " - " + e.getMessage());
+            Insets pad = new Insets(20);
+            error.setPadding(pad);
+//            error.setLayoutX(37);
+//            error.setLayoutY(108);
+
+            Pane p = new Pane();
+            p.getChildren().addAll(error);
+            p.prefHeight(232.0);
+            p.prefWidth(348.0);
+            Stage stage = new Stage();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.setTitle("ERROR");
+            stage.show();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void FiltroLinea(ActionEvent event) {
+        tabla.getItems().clear();
+        try{
+            // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/devra1?serverTimezone=UTC","devra96","n6CKKs8GUz");
+            // PRUEBAS EN CLASE
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bingofx?serverTimezone=UTC","root","root");
+            System.out.println("Conexion al servidor establecida correctamente.");
+            Statement st = con.createStatement();
+            String sql = "SELECT * FROM bingofx ORDER BY tiradaslinea";
+            ResultSet rs = st.executeQuery(sql);
 
+            while (rs.next()){
+                int numpartida = rs.getInt("numpartida");
+                String nombrejugador = rs.getString("nombrejugador");
+                String tiradaslinea = rs.getString("tiradaslinea");
+                String tiradasbingo = rs.getString("tiradasbingo");
+                Registro r = new Registro(numpartida,nombrejugador,tiradaslinea,tiradasbingo);
+                registros.add(r);
+                tabla.setItems(registros);
+            }
+            con.close();
+        }
+        catch(SQLException e){
+//            System.out.println("Error en la consulta: " + e.getErrorCode() + " - " + e.getMessage());
+
+            Label error = new Label("HA OCURRIDO UN ERROR CON LA BASE DE DATOS\n\nCausa del error: " + e.getErrorCode() + " - " + e.getMessage());
+            Insets pad = new Insets(20);
+            error.setPadding(pad);
+//            error.setLayoutX(37);
+//            error.setLayoutY(108);
+
+            Pane p = new Pane();
+            p.getChildren().addAll(error);
+            p.prefHeight(232.0);
+            p.prefWidth(348.0);
+            Stage stage = new Stage();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.setTitle("ERROR");
+            stage.show();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -74,9 +209,9 @@ public class MenuRecordsController implements Initializable {
         try{
             // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
             Class.forName("com.mysql.cj.jdbc.Driver");
-//            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/devra1?serverTimezone=UTC","devra96","n6CKKs8GUz");
+            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/devra1?serverTimezone=UTC","devra96","n6CKKs8GUz");
             // PRUEBAS EN CLASE
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bingofx?serverTimezone=UTC","root","root");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bingofx?serverTimezone=UTC","root","root");
             System.out.println("Conexion al servidor establecida correctamente.");
             Statement st = con.createStatement();
             String sql = "SELECT * FROM bingofx";
@@ -85,8 +220,8 @@ public class MenuRecordsController implements Initializable {
             while (rs.next()){
                 int numpartida = rs.getInt("numpartida");
                 String nombrejugador = rs.getString("nombrejugador");
-                int tiradaslinea = rs.getInt("tiradaslinea");
-                int tiradasbingo = rs.getInt("tiradasbingo");
+                String tiradaslinea = rs.getString("tiradaslinea");
+                String tiradasbingo = rs.getString("tiradasbingo");
                 Registro r = new Registro(numpartida,nombrejugador,tiradaslinea,tiradasbingo);
                 registros.add(r);
                 tabla.setItems(registros);

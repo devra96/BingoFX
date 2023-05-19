@@ -1,0 +1,12 @@
+.casilla{
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+#pulsado{
+    -fx-background-color: red;
+}
+
+#hueco{
+    -fx-background-color: black;
+}

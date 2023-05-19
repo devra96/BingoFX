@@ -161,8 +161,8 @@ public class MenuInicioController {
             while (rs.next()){
                 int numpartida = rs.getInt("numpartida");
                 String nombrejugador = rs.getString("nombrejugador");
-                int tiradaslinea = rs.getInt("tiradaslinea");
-                int tiradasbingo = rs.getInt("tiradasbingo");
+                String tiradaslinea = rs.getString("tiradaslinea");
+                String tiradasbingo = rs.getString("tiradasbingo");
                 Registro r = new Registro(numpartida,nombrejugador,tiradaslinea,tiradasbingo);
                 registros.add(r);
             }

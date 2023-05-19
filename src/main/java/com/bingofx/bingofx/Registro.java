@@ -3,8 +3,8 @@ package com.bingofx.bingofx;
 public class Registro {
     private int numpartida;
     private String nombrejugador;
-    private int tiradaslinea;
-    private int tiradasbingo;
+    private String tiradaslinea;
+    private String tiradasbingo;
 
     /**
      * CONSTRUCTOR CON TODOS LOS PARAMETROS
@@ -13,7 +13,7 @@ public class Registro {
      * @param tiradaslinea
      * @param tiradasbingo
      */
-    public Registro(int numpartida, String nombrejugador, int tiradaslinea, int tiradasbingo) {
+    public Registro(int numpartida, String nombrejugador, String tiradaslinea, String tiradasbingo) {
         this.numpartida = numpartida;
         this.nombrejugador = nombrejugador;
         this.tiradaslinea = tiradaslinea;
@@ -26,7 +26,7 @@ public class Registro {
      * @param tiradaslinea
      * @param tiradasbingo
      */
-    public Registro(String nombrejugador, int tiradaslinea, int tiradasbingo) {
+    public Registro(String nombrejugador, String tiradaslinea, String tiradasbingo) {
         this.nombrejugador = nombrejugador;
         this.tiradaslinea = tiradaslinea;
         this.tiradasbingo = tiradasbingo;
@@ -48,19 +48,19 @@ public class Registro {
         this.nombrejugador = nombrejugador;
     }
 
-    public int getTiradaslinea() {
+    public String getTiradaslinea() {
         return tiradaslinea;
     }
 
-    public void setTiradaslinea(int tiradaslinea) {
+    public void setTiradaslinea(String tiradaslinea) {
         this.tiradaslinea = tiradaslinea;
     }
 
-    public int getTiradasbingo() {
+    public String getTiradasbingo() {
         return tiradasbingo;
     }
 
-    public void setTiradasbingo(int tiradasbingo) {
+    public void setTiradasbingo(String tiradasbingo) {
         this.tiradasbingo = tiradasbingo;
     }
 }

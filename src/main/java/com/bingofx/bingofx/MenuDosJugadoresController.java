@@ -3,6 +3,7 @@ package com.bingofx.bingofx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -23,7 +24,16 @@ public class MenuDosJugadoresController {
 
     @FXML
     void JugarPartida(ActionEvent event) {
-
+        if(txtNombreUno.getText().equals("") || txtNombreDos.getText().equals("")){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("ERROR");
+            a.setHeaderText("Ha ocurrido un error.");
+            a.setContentText("Ambos jugadores debeis escribir vuestro nombre para continuar.");
+            a.showAndWait();
+        }
+        else{
+            //PARTIDA
+        }
     }
 
     @FXML
