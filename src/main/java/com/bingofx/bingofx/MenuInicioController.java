@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -34,6 +35,7 @@ public class MenuInicioController {
 
     @FXML
     void JugarUnJugador(ActionEvent event) {
+        cerrarVentana(event);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUnJugador.fxml"));
 
         try {
@@ -55,6 +57,7 @@ public class MenuInicioController {
 
     @FXML
     void JugarDosJugadores(ActionEvent event) {
+        cerrarVentana(event);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuDosJugadores.fxml"));
 
         try {
@@ -105,6 +108,16 @@ public class MenuInicioController {
             System.exit(0);
 //            Platform.exit();
         }
+    }
+
+    /**
+     * Metodo para cerrar la ventana donde este el boton que se ha pulsado
+     * @param event
+     */
+    public static void cerrarVentana(ActionEvent event){
+        Node source = (Node) event.getSource();     //Me devuelve el elemento al que hice click
+        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
+        stage.close();                          //Me cierra la ventana
     }
 
     /**

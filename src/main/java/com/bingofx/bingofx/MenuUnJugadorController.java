@@ -58,6 +58,21 @@ public class MenuUnJugadorController {
     @FXML
     void Cancelar(ActionEvent event) {
         cerrarVentana(event);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuInicio.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            MenuInicioController controlador = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.show();
+
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void cerrarVentana(ActionEvent event){
