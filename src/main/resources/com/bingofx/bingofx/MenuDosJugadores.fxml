@@ -11,7 +11,7 @@
       <Button fx:id="btnJugar" layoutX="95.0" layoutY="200.0" mnemonicParsing="false" onAction="#JugarPartida" text="¡JUGAR!" />
       <TextField fx:id="txtNombreUno" layoutX="55.0" layoutY="68.0" promptText="Nombre del jugador" />
       <Label layoutX="18.0" layoutY="36.0" text="Introduzca el nombre del primer jugador..." />
-      <TextField fx:id="txtNombreDos" layoutX="50.0" layoutY="148.0" promptText="Nombre del jugador" />
+      <TextField fx:id="txtNombreDos" layoutX="55.0" layoutY="151.0" promptText="Nombre del jugador" />
       <Label layoutX="13.0" layoutY="115.0" text="Introduzca el nombre del segundo jugador..." />
    </children>
 </AnchorPane>

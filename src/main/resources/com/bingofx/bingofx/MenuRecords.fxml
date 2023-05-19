@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="328.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.MenuRecordsController">
+   <children>
+      <TableView fx:id="tabla" prefHeight="267.0" prefWidth="452.0">
+         <columns>
+            <TableColumn fx:id="colnumpartida" prefWidth="100.0" text="PARTIDA" />
+            <TableColumn fx:id="colnombrejugador" prefWidth="150.0" text="NOMBRE JUGADOR" />
+            <TableColumn fx:id="coltiradaslinea" prefWidth="100.0" text="TIRADAS LINEA" />
+            <TableColumn fx:id="coltiradasbingo" prefWidth="100.0" text="TIRADAS BINGO" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnFiltroLinea" layoutX="120.0" layoutY="281.0" mnemonicParsing="false" onAction="#FiltroLinea" text="Mejores jugadores (Linea)" />
+      <Button fx:id="btnVerHistorial" layoutX="14.0" layoutY="281.0" mnemonicParsing="false" onAction="#FiltroHistorial" text="VER HISTORIAL" />
+      <Button fx:id="btnFiltroBingo" layoutX="282.0" layoutY="281.0" mnemonicParsing="false" onAction="#FiltroBingo" text="Mejores jugadores (Bingo)" />
+   </children>
+</AnchorPane>

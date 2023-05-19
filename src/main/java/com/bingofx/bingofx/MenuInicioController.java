@@ -76,10 +76,47 @@ public class MenuInicioController {
 
     @FXML
     void VerRecords(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuRecords.fxml"));
+
+        try {
+            Parent root = fxmlLoader.load();
+            MenuRecordsController controlador = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("VER RECORDS");
+            stage.setScene(scene);
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.show();
+
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void Salir(ActionEvent event) {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Salir del juego");
+        a.setContentText("¿Quieres salir?");
+        Optional<ButtonType> r = a.showAndWait();
+        if(r.get() == ButtonType.OK){
+            System.exit(0);
+//            Platform.exit();
+        }
+    }
+
+    /**
+     * Ver la lista de records sin usar FXML ni con botones de filtrado
+     */
+    public static void VerRecordsSinFxml(){
         try{
             // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/devra1?serverTimezone=UTC","devra96","n6CKKs8GUz");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/devra1?serverTimezone=UTC","devra96","n6CKKs8GUz");
+            // PRUEBAS EN CLASE
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bingofx?serverTimezone=UTC","root","root");
             System.out.println("Conexion al servidor establecida correctamente.");
             Statement st = con.createStatement();
             String sql = "SELECT * FROM bingofx";
@@ -153,18 +190,6 @@ public class MenuInicioController {
         }
         catch(Exception e){
             e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void Salir(ActionEvent event) {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setTitle("Salir del juego");
-        a.setContentText("¿Quieres salir?");
-        Optional<ButtonType> r = a.showAndWait();
-        if(r.get() == ButtonType.OK){
-            System.exit(0);
-//            Platform.exit();
         }
     }
 }
