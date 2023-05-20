@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class JuegoUnJugadorController implements Initializable {
@@ -17,143 +18,75 @@ public class JuegoUnJugadorController implements Initializable {
     @FXML
     private Button btngenerar;
 
+    //CELDAS CARTON JUGADOR
     @FXML
-    private Label c1x1;
+    private Label
+            c1x1,c1x2,c1x3,c1x4,c1x5,c1x6,c1x7,c1x8,c1x9,
+            c2x1,c2x2,c2x3,c2x4,c2x5,c2x6,c2x7,c2x8,c2x9,
+            c3x1,c3x2,c3x3,c3x4,c3x5,c3x6,c3x7,c3x8,c3x9;
+
+    //CELDAS CARTON MAQUINA
+    @FXML
+    private Label
+            c1x11,c1x21,c1x31,c1x41,c1x51,c1x61,c1x71,c1x81,c1x91,
+            c2x11,c2x21,c2x31,c2x41,c2x51,c2x61,c2x71,c2x81,c2x91,
+            c3x11,c3x21,c3x31,c3x41,c3x51,c3x61,c3x71,c3x81,c3x91;
 
     @FXML
-    private Label c1x2;
+    private Pane cartonJugador,cartonJugador2;
 
-    @FXML
-    private Label c1x3;
+    private Label[][] carton1;
+    private Label[][] carton2;
 
-    @FXML
-    private Label c1x4;
+    boolean cartongenerado;
 
-    @FXML
-    private Label c1x5;
+    int[] numerospronunciados;
 
-    @FXML
-    private Label c1x6;
+    int indicenumerospronunciados;
 
-    @FXML
-    private Label c1x7;
-
-    @FXML
-    private Label c1x8;
-
-    @FXML
-    private Label c1x9;
-
-    @FXML
-    private Label c2x1;
-
-    @FXML
-    private Label c2x2;
-
-    @FXML
-    private Label c2x3;
-
-    @FXML
-    private Label c2x4;
-
-    @FXML
-    private Label c2x5;
-
-    @FXML
-    private Label c2x6;
-
-    @FXML
-    private Label c2x7;
-
-    @FXML
-    private Label c2x8;
-
-    @FXML
-    private Label c2x9;
-
-    @FXML
-    private Label c3x1;
-
-    @FXML
-    private Label c3x2;
-
-    @FXML
-    private Label c3x3;
-
-    @FXML
-    private Label c3x4;
-
-    @FXML
-    private Label c3x5;
-
-    @FXML
-    private Label c3x6;
-
-    @FXML
-    private Label c3x7;
-
-    @FXML
-    private Label c3x8;
-
-    @FXML
-    private Label c3x9;
-
-    @FXML
-    private Pane cartonJugador;
-
-    private String[][] carton;
+    int contadorlinea;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        c1x1.setId("hueco");
-//        c1x2.setId("");
-//        c1x3.setId("");
-//        c1x4.setId("");
-//        c1x5.setId("");
-//        c1x6.setId("");
-//        c1x7.setId("");
-//        c1x8.setId("");
-//        c1x9.setId("");
-//
-//        c2x1.setId("");
-//        c2x2.setId("");
-//        c2x3.setId("");
-//        c2x4.setId("");
-//        c2x5.setId("");
-//        c2x6.setId("");
-//        c2x7.setId("");
-//        c2x8.setId("");
-//        c2x9.setId("");
-//
-//        c3x1.setId("");
-//        c3x2.setId("");
-//        c3x3.setId("");
-//        c3x4.setId("");
-//        c3x5.setId("");
-//        c3x6.setId("");
-//        c3x7.setId("");
-//        c3x8.setId("");
-//        c3x9.setId("");
-        boolean cartongenerado = false;
+        // QUITAMOS HUECOS A TODAS LAS CASILLAS
+        quitarIdsCasillas();
 
+        // CARTON JUGADOR CON HUECOS
+        cartongenerado = false;
         do{
-            carton = new String[3][9];
-            generarHuecosCarton(carton);
-            cartongenerado = comprobarHuecosCarton(carton);
+            carton1 = new Label[][]{
+                    {c1x1, c1x2, c1x3, c1x4, c1x5, c1x6, c1x7, c1x8, c1x9},
+                    {c2x1, c2x2, c2x3, c2x4, c2x5, c2x6, c2x7, c2x8, c2x9},
+                    {c3x1, c3x2, c3x3, c3x4, c3x5, c3x6, c3x7, c3x8, c3x9}
+            };
+            generarHuecosCarton(carton1);
+            cartongenerado = comprobarHuecosCarton(carton1);
         }while(!cartongenerado);
-    }
+        // -------------------------------------------------------------------------------------------------------------
 
-    @FXML
-    void MarcarNumero(MouseEvent event) {
-        Node source = (Node) event.getSource();
-        if(!source.getId().equals("hueco")){
-            if(!source.getId().equals("pulsado")){
-                source.setId("pulsado");
-            }
-            else{
-                source.setId("");
-            }
-        }
+        // CARTON MAQUINA CON HUECOS
+        cartongenerado = false;
+        do{
+            carton2 = new Label[][]{
+                    {c1x11, c1x21, c1x31, c1x41, c1x51, c1x61, c1x71, c1x81, c1x91},
+                    {c2x11, c2x21, c2x31, c2x41, c2x51, c2x61, c2x71, c2x81, c2x91},
+                    {c3x11, c3x21, c3x31, c3x41, c3x51, c3x61, c3x71, c3x81, c3x91}
+            };
+            generarHuecosCarton(carton2);
+            cartongenerado = comprobarHuecosCarton(carton2);
+        }while(!cartongenerado);
+        // -------------------------------------------------------------------------------------------------------------
+
+        // GENERAMOS NUMEROS PARA AMBOS CARTONES
+        generarNumerosCarton(carton1);
+        generarNumerosCarton(carton2);
+
+        numerospronunciados = new int[90];
+        indicenumerospronunciados = 0;
+        contadorlinea = 0;
+
+        // HACER HILO EN BUCLE
+
     }
 
     @FXML
@@ -170,16 +103,44 @@ public class JuegoUnJugadorController implements Initializable {
 //
 //        System.out.println(c1x1.getId());
 //        generarHuecosCarton(carton);
-        int x = 0;
-        for(int i=0;i<4;i++){
-            x = (int)(Math.random() * 9);
-            if(x==9){
-                System.out.println(x);
+//        int x = 0;
+//        for(int i=0;i<4;i++){
+//            x = (int)(Math.random() * 9);
+//            if(x==9){
+//                System.out.println(x);
+//            }
+//        }
+
+        cartongenerado = false;
+
+        do{
+            quitarIdsCasillas();
+            carton1 = new Label[][]{
+                    {c1x1, c1x2, c1x3, c1x4, c1x5, c1x6, c1x7, c1x8, c1x9},
+                    {c2x1, c2x2, c2x3, c2x4, c2x5, c2x6, c2x7, c2x8, c2x9},
+                    {c3x1, c3x2, c3x3, c3x4, c3x5, c3x6, c3x7, c3x8, c3x9}
+            };
+            generarHuecosCarton(carton1);
+            cartongenerado = comprobarHuecosCarton(carton1);
+        }while(!cartongenerado);
+        generarNumerosCarton(carton1);
+
+    }
+
+    @FXML
+    void MarcarNumero(MouseEvent event) {
+        Node source = (Node) event.getSource();
+        if(!source.getId().equals("hueco")){
+            if(!source.getId().equals("pulsado")){
+                source.setId("pulsado");
+            }
+            else{
+                source.setId("");
             }
         }
     }
 
-    public void generarHuecosCarton(String[][] carton){
+    public void generarHuecosCarton(Label[][] carton){
         int[] huecos = new int[4];
         int hueco;
         boolean repe;
@@ -188,7 +149,7 @@ public class JuegoUnJugadorController implements Initializable {
 
         for(int i=0;i<carton.length;i++){
             for(int j=0;j<carton[i].length;j++){
-                carton[i][j] = "0";
+                carton[i][j].setText("0");
             }
         }
 
@@ -210,96 +171,13 @@ public class JuegoUnJugadorController implements Initializable {
             // INTRODUCIR ASTERISCOS EN HUECOS
 
             for(int j=0;j<4;j++){
-                carton[i][huecos[j]] = "*";
-
-                if(c1x1.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c1x1.setId("hueco");
-                }
-                if(c1x2.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c1x2.setId("hueco");
-                }
-                if(c1x3.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c1x3.setId("hueco");
-                }
-                if(c1x4.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c1x4.setId("hueco");
-                }
-                if(c1x5.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c1x5.setId("hueco");
-                }
-                if(c1x6.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c1x6.setId("hueco");
-                }
-                if(c1x7.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c1x7.setId("hueco");
-                }
-                if(c1x8.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c1x8.setId("hueco");
-                }
-                if(c1x9.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c1x9.setId("hueco");
-                }
-
-                if(c2x1.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c2x1.setId("hueco");
-                }
-                if(c2x2.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c2x2.setId("hueco");
-                }
-                if(c2x3.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c2x3.setId("hueco");
-                }
-                if(c2x4.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c2x4.setId("hueco");
-                }
-                if(c2x5.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c2x5.setId("hueco");
-                }
-                if(c2x6.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c2x6.setId("hueco");
-                }
-                if(c2x7.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c2x7.setId("hueco");
-                }
-                if(c2x8.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c2x8.setId("hueco");
-                }
-                if(c2x9.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c2x9.setId("hueco");
-                }
-
-                if(c3x1.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c3x1.setId("hueco");
-                }
-                if(c3x2.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c3x2.setId("hueco");
-                }
-                if(c3x3.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c3x3.setId("hueco");
-                }
-                if(c3x4.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c3x4.setId("hueco");
-                }
-                if(c3x5.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c3x5.setId("hueco");
-                }
-                if(c3x6.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c3x6.setId("hueco");
-                }
-                if(c3x7.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c3x7.setId("hueco");
-                }
-                if(c3x8.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c3x8.setId("hueco");
-                }
-                if(c3x9.getId().equals("c" + (i+1) + "x" + huecos[j])){
-                    c3x9.setId("hueco");
-                }
+                carton[i][huecos[j]].setId("hueco");
+                carton[i][huecos[j]].setText("");
             }
         }
     }
 
-    public boolean comprobarHuecosCarton(String[][] carton){
+    public boolean comprobarHuecosCarton(Label[][] carton){
         int cn;     // CONTADOR NUMEROS
         int ch;     // CONTADOR HUECOS
 
@@ -307,11 +185,11 @@ public class JuegoUnJugadorController implements Initializable {
             cn = 0;
             ch = 0;
             for(int j=0;j<carton.length;j++){
-                if(carton[j][i].equals("0")){
+                if(carton[j][i].getText().equals("")){
                     cn++;
                 }
 
-                if(carton[j][i].equals("*")){
+                if(carton[j][i].getId().equals("hueco")){
                     ch++;
                 }
             }
@@ -323,9 +201,159 @@ public class JuegoUnJugadorController implements Initializable {
         return true;
     }
 
+    public static void generarNumerosCarton(Label[][] carton){
+        int ini = 1;
+        int fin = 10;
+        int indicenumeros = 0;
+        int numeroaleatorio;
+        String strnumero;
+        boolean repe;
+        int[] numeros = new int[15];
+        String[] strnumeros = new String[15];
+
+        /**
+         * Generar numeros aleatorios del 1 al 10, del 11 al 20 y asi
+         * sucesivamente, comprobar que no se repiten e introducirlos en
+         * un array de numeros
+         */
+        for(int i=0;i<carton[0].length;i++){
+            for(int j=0;j<carton.length;j++){
+                if(carton[j][i].getText().equals("0")){
+                    do{
+                        repe = false;
+                        numeroaleatorio = (int) (Math.random() * (fin - ini + 1) + ini);
+                        for(int k=0;k<numeros.length;k++){
+                            if(numeros[k] == numeroaleatorio){
+                                repe = true;
+                            }
+                        }
+                    }while(repe);
+                    numeros[indicenumeros] = numeroaleatorio;
+                    indicenumeros++;
+                }
+            }
+            ini+=10;
+            fin+=10;
+        }
+
+        /**
+         * Ordenamos los numeros de menor a mayor, los convertimos a String
+         * y los metemos en un array de Strings
+         */
+        Arrays.sort(numeros);
+        for(int i=0;i<numeros.length;i++){
+            strnumero = Integer.toString(numeros[i]);
+            strnumeros[i] = strnumero;
+        }
+
+
+        /**
+         * Introducimos los numeros en el carton
+         */
+        indicenumeros = 0;
+        for(int i=0;i<carton[0].length;i++){
+            for(int j=0;j<carton.length;j++){
+                if(carton[j][i].getText().equals("0")){
+                    carton[j][i].setText(strnumeros[indicenumeros]);
+                    indicenumeros++;
+                }
+            }
+        }
+    }
+
     public void quitarIdsCasillas(){
+        //CARTON JUGADOR
+        c1x1.setId("");c1x2.setId("");c1x3.setId("");c1x4.setId("");c1x5.setId("");c1x6.setId("");c1x7.setId("");c1x8.setId("");c1x9.setId("");
+        c2x1.setId("");c2x2.setId("");c2x3.setId("");c2x4.setId("");c2x5.setId("");c2x6.setId("");c2x7.setId("");c2x8.setId("");c2x9.setId("");
+        c3x1.setId("");c3x2.setId("");c3x3.setId("");c3x4.setId("");c3x5.setId("");c3x6.setId("");c3x7.setId("");c3x8.setId("");c3x9.setId("");
 
-
+        //CARTON MAQUINA
+        c1x11.setId("");c1x21.setId("");c1x31.setId("");c1x41.setId("");c1x51.setId("");c1x61.setId("");c1x71.setId("");c1x81.setId("");c1x91.setId("");
+        c2x11.setId("");c2x21.setId("");c2x31.setId("");c2x41.setId("");c2x51.setId("");c2x61.setId("");c2x71.setId("");c2x81.setId("");c2x91.setId("");
+        c3x11.setId("");c3x21.setId("");c3x31.setId("");c3x41.setId("");c3x51.setId("");c3x61.setId("");c3x71.setId("");c3x81.setId("");c3x91.setId("");
     }
 }
 
+//        if(c1x1.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x1.setId("hueco");
+//        }
+//        if(c1x2.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x2.setId("hueco");
+//        }
+//        if(c1x3.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x3.setId("hueco");
+//        }
+//        if(c1x4.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x4.setId("hueco");
+//        }
+//        if(c1x5.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x5.setId("hueco");
+//        }
+//        if(c1x6.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x6.setId("hueco");
+//        }
+//        if(c1x7.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x7.setId("hueco");
+//        }
+//        if(c1x8.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x8.setId("hueco");
+//        }
+//        if(c1x9.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x9.setId("hueco");
+//        }
+//
+//        if(c2x1.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x1.setId("hueco");
+//        }
+//        if(c2x2.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x2.setId("hueco");
+//        }
+//        if(c2x3.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x3.setId("hueco");
+//        }
+//        if(c2x4.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x4.setId("hueco");
+//        }
+//        if(c2x5.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x5.setId("hueco");
+//        }
+//        if(c2x6.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x6.setId("hueco");
+//        }
+//        if(c2x7.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x7.setId("hueco");
+//        }
+//        if(c2x8.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x8.setId("hueco");
+//        }
+//        if(c2x9.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x9.setId("hueco");
+//        }
+//
+//        if(c3x1.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x1.setId("hueco");
+//        }
+//        if(c3x2.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x2.setId("hueco");
+//        }
+//        if(c3x3.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x3.setId("hueco");
+//        }
+//        if(c3x4.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x4.setId("hueco");
+//        }
+//        if(c3x5.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x5.setId("hueco");
+//        }
+//        if(c3x6.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x6.setId("hueco");
+//        }
+//        if(c3x7.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x7.setId("hueco");
+//        }
+//        if(c3x8.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x8.setId("hueco");
+//        }
+//        if(c3x9.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x9.setId("hueco");
+//        }
