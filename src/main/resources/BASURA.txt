@@ -1,0 +1,83 @@
+//        if(c1x1.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x1.setId("hueco");
+//        }
+//        if(c1x2.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x2.setId("hueco");
+//        }
+//        if(c1x3.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x3.setId("hueco");
+//        }
+//        if(c1x4.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x4.setId("hueco");
+//        }
+//        if(c1x5.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x5.setId("hueco");
+//        }
+//        if(c1x6.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x6.setId("hueco");
+//        }
+//        if(c1x7.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x7.setId("hueco");
+//        }
+//        if(c1x8.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x8.setId("hueco");
+//        }
+//        if(c1x9.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c1x9.setId("hueco");
+//        }
+//
+//        if(c2x1.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x1.setId("hueco");
+//        }
+//        if(c2x2.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x2.setId("hueco");
+//        }
+//        if(c2x3.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x3.setId("hueco");
+//        }
+//        if(c2x4.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x4.setId("hueco");
+//        }
+//        if(c2x5.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x5.setId("hueco");
+//        }
+//        if(c2x6.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x6.setId("hueco");
+//        }
+//        if(c2x7.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x7.setId("hueco");
+//        }
+//        if(c2x8.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x8.setId("hueco");
+//        }
+//        if(c2x9.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c2x9.setId("hueco");
+//        }
+//
+//        if(c3x1.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x1.setId("hueco");
+//        }
+//        if(c3x2.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x2.setId("hueco");
+//        }
+//        if(c3x3.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x3.setId("hueco");
+//        }
+//        if(c3x4.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x4.setId("hueco");
+//        }
+//        if(c3x5.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x5.setId("hueco");
+//        }
+//        if(c3x6.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x6.setId("hueco");
+//        }
+//        if(c3x7.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x7.setId("hueco");
+//        }
+//        if(c3x8.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x8.setId("hueco");
+//        }
+//        if(c3x9.getId().equals("c" + (i+1) + "x" + huecos[j])){
+//        c3x9.setId("hueco");
+//        }
