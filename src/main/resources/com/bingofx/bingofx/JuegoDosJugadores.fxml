@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: darksalmon;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.JuegoUnJugadorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.JuegoDosJugadoresController">
    <children>
       <Pane fx:id="cartonJugador" layoutX="116.0" layoutY="362.0" prefHeight="158.0" prefWidth="434.0">
          <children>
@@ -149,137 +149,137 @@
       </Pane>
       <Pane fx:id="cartonJugador2" layoutX="793.0" layoutY="362.0" prefHeight="158.0" prefWidth="434.0">
          <children>
-            <Label fx:id="c1x11" alignment="CENTER" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
+            <Label fx:id="c1x11" alignment="CENTER" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c2x11" alignment="CENTER" layoutY="52.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="2">
+            <Label fx:id="c2x11" alignment="CENTER" layoutY="52.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="2">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c3x11" alignment="CENTER" layoutY="104.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="3">
+            <Label fx:id="c3x11" alignment="CENTER" layoutY="104.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="3">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c1x21" alignment="CENTER" layoutX="48.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="4">
+            <Label fx:id="c1x21" alignment="CENTER" layoutX="48.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="4">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c1x31" alignment="CENTER" layoutX="96.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="7">
+            <Label fx:id="c1x31" alignment="CENTER" layoutX="96.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="7">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c1x71" alignment="CENTER" layoutX="288.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="19">
+            <Label fx:id="c1x71" alignment="CENTER" layoutX="288.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="19">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c1x41" alignment="CENTER" layoutX="144.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="10">
+            <Label fx:id="c1x41" alignment="CENTER" layoutX="144.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="10">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c1x51" alignment="CENTER" layoutX="192.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="13">
+            <Label fx:id="c1x51" alignment="CENTER" layoutX="192.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="13">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c1x61" alignment="CENTER" layoutX="240.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="16">
+            <Label fx:id="c1x61" alignment="CENTER" layoutX="240.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="16">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c1x81" alignment="CENTER" layoutX="336.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="22">
+            <Label fx:id="c1x81" alignment="CENTER" layoutX="336.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="22">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c1x91" alignment="CENTER" layoutX="384.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="25">
+            <Label fx:id="c1x91" alignment="CENTER" layoutX="384.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="25">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c2x21" alignment="CENTER" layoutX="48.0" layoutY="52.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="5">
+            <Label fx:id="c2x21" alignment="CENTER" layoutX="48.0" layoutY="52.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="5">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c2x31" alignment="CENTER" layoutX="96.0" layoutY="52.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="8">
+            <Label fx:id="c2x31" alignment="CENTER" layoutX="96.0" layoutY="52.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="8">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c2x41" alignment="CENTER" layoutX="144.0" layoutY="52.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="11">
+            <Label fx:id="c2x41" alignment="CENTER" layoutX="144.0" layoutY="52.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="11">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c2x51" alignment="CENTER" layoutX="192.0" layoutY="52.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="14">
+            <Label fx:id="c2x51" alignment="CENTER" layoutX="192.0" layoutY="52.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="14">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c2x61" alignment="CENTER" layoutX="240.0" layoutY="52.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="17">
+            <Label fx:id="c2x61" alignment="CENTER" layoutX="240.0" layoutY="52.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="17">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c2x81" alignment="CENTER" layoutX="336.0" layoutY="52.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="23">
+            <Label fx:id="c2x81" alignment="CENTER" layoutX="336.0" layoutY="52.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="23">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c2x71" alignment="CENTER" layoutX="288.0" layoutY="52.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="20">
+            <Label fx:id="c2x71" alignment="CENTER" layoutX="288.0" layoutY="52.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="20">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c2x91" alignment="CENTER" layoutX="384.0" layoutY="52.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="26">
+            <Label fx:id="c2x91" alignment="CENTER" layoutX="384.0" layoutY="52.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="26">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c3x21" alignment="CENTER" layoutX="48.0" layoutY="104.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="6">
+            <Label fx:id="c3x21" alignment="CENTER" layoutX="48.0" layoutY="104.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="6">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c3x31" alignment="CENTER" layoutX="96.0" layoutY="104.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="9">
+            <Label fx:id="c3x31" alignment="CENTER" layoutX="96.0" layoutY="104.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="9">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c3x41" alignment="CENTER" layoutX="144.0" layoutY="104.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="12">
+            <Label fx:id="c3x41" alignment="CENTER" layoutX="144.0" layoutY="104.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="12">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c3x51" alignment="CENTER" layoutX="192.0" layoutY="104.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="15">
+            <Label fx:id="c3x51" alignment="CENTER" layoutX="192.0" layoutY="104.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="15">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c3x61" alignment="CENTER" layoutX="240.0" layoutY="104.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="18">
+            <Label fx:id="c3x61" alignment="CENTER" layoutX="240.0" layoutY="104.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="18">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c3x71" alignment="CENTER" layoutX="288.0" layoutY="104.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="21">
+            <Label fx:id="c3x71" alignment="CENTER" layoutX="288.0" layoutY="104.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="21">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c3x81" alignment="CENTER" layoutX="336.0" layoutY="104.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="24">
+            <Label fx:id="c3x81" alignment="CENTER" layoutX="336.0" layoutY="104.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="24">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="c3x91" alignment="CENTER" layoutX="384.0" layoutY="104.0" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="27">
+            <Label fx:id="c3x91" alignment="CENTER" layoutX="384.0" layoutY="104.0" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="27">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>
@@ -741,16 +741,12 @@
          </children>
       </Pane>
       <Button fx:id="pausar" disable="true" layoutX="379.0" layoutY="40.0" mnemonicParsing="false" onAction="#pausar" text="PAUSAR" />
-      <Button fx:id="reanudar" layoutX="611.0" layoutY="53.0" mnemonicParsing="false" onAction="#reanudar" text="REANUDAR" />
-      <Button fx:id="btngenerar" layoutX="571.0" layoutY="270.0" mnemonicParsing="false" onAction="#generar" text="Generar" />
-      <Label fx:id="marcador" alignment="CENTER" layoutX="550.0" layoutY="135.0" prefHeight="100.0" prefWidth="100.0" styleClass="casilla" stylesheets="@css/estilos.css" text="0">
+      <Button fx:id="reanudar" layoutX="416.0" layoutY="568.0" mnemonicParsing="false" onAction="#reanudar" text="REANUDAR" />
+      <Button fx:id="btngenerar" layoutX="194.0" layoutY="568.0" mnemonicParsing="false" onAction="#generar" text="Generar" />
+      <Label fx:id="marcador" alignment="CENTER" layoutX="550.0" layoutY="135.0" prefHeight="100.0" prefWidth="100.0" styleClass="casilla" stylesheets="@css/estilos.css" text="52">
          <font>
             <Font size="66.0" />
          </font>
       </Label>
-      <Button fx:id="btnLinea" layoutX="178.0" layoutY="618.0" mnemonicParsing="false" onAction="#CantarLinea" text="¡CANTAR LINEA!" />
-      <Button fx:id="btnBingo" layoutX="343.0" layoutY="618.0" mnemonicParsing="false" onAction="#CantarBingo" text="¡CANTAR BINGO!" />
-      <Label fx:id="fraseLineaBingo" layoutX="263.0" layoutY="551.0" />
-      <Label fx:id="fraseLineaBingoMaquina" layoutX="996.0" layoutY="551.0" />
    </children>
 </AnchorPane>

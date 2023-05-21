@@ -11,3 +11,7 @@
 #hueco{
     -fx-background-color: gray;
 }
+
+#acertadoMaquina{
+    -fx-background-color: green;
+}
