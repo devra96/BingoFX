@@ -1,5 +1,6 @@
 .casilla{
     -fx-border-color: black;
+    -fx-background-color: white;
     -fx-border-width: 2px;
 }
 

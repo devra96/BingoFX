@@ -5,13 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.MenuDosJugadoresController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="275.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.MenuDosJugadoresController">
    <children>
-      <Button fx:id="btnCancelar" layoutX="93.0" layoutY="245.0" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" />
-      <Button fx:id="btnJugar" layoutX="95.0" layoutY="200.0" mnemonicParsing="false" onAction="#JugarPartida" text="¡JUGAR!" />
-      <TextField fx:id="txtNombreUno" layoutX="55.0" layoutY="68.0" promptText="Nombre del jugador" />
-      <Label layoutX="18.0" layoutY="36.0" text="Introduzca el nombre del primer jugador..." />
-      <TextField fx:id="txtNombreDos" layoutX="55.0" layoutY="151.0" promptText="Nombre del jugador" />
-      <Label layoutX="13.0" layoutY="115.0" text="Introduzca el nombre del segundo jugador..." />
+      <Button fx:id="btnCancelar" layoutX="107.0" layoutY="245.0" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" />
+      <Button fx:id="btnJugar" layoutX="108.0" layoutY="200.0" mnemonicParsing="false" onAction="#JugarPartida" text="¡JUGAR!" />
+      <TextField fx:id="txtNombreUno" layoutX="63.0" layoutY="68.0" promptText="Nombre del jugador" />
+      <Label layoutX="10.0" layoutY="37.0" text="Nombre del primer jugador (Max. 20 caracteres)" />
+      <TextField fx:id="txtNombreDos" layoutX="63.0" layoutY="151.0" promptText="Nombre del jugador" />
+      <Label layoutX="5.0" layoutY="115.0" text="Nombre del segundo jugador (Max. 20 caracteres)" />
    </children>
 </AnchorPane>

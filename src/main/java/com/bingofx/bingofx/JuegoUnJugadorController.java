@@ -16,6 +16,12 @@ import java.util.ResourceBundle;
 public class JuegoUnJugadorController implements Initializable {
 
     @FXML
+    private Button pausar;
+
+    @FXML
+    private Button reanudar;
+
+    @FXML
     private Button btngenerar;
 
     //CELDAS CARTON JUGADOR
@@ -32,19 +38,37 @@ public class JuegoUnJugadorController implements Initializable {
             c2x11,c2x21,c2x31,c2x41,c2x51,c2x61,c2x71,c2x81,c2x91,
             c3x11,c3x21,c3x31,c3x41,c3x51,c3x61,c3x71,c3x81,c3x91;
 
+    //CELDAS NUMEROS PRONUNCIADOS
     @FXML
-    private Pane cartonJugador,cartonJugador2;
+    private Label
+            p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,
+            p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,
+            p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,
+            p31,p32,p33,p34,p35,p36,p37,p38,p39,p40,
+            p41,p42,p43,p44,p45,p46,p47,p48,p49,p50,
+            p51,p52,p53,p54,p55,p56,p57,p58,p59,p60,
+            p61,p62,p63,p64,p65,p66,p67,p68,p69,p70,
+            p71,p72,p73,p74,p75,p76,p77,p78,p79,p80,
+            p81,p82,p83,p84,p85,p86,p87,p88,p89,p90;
+
+    @FXML
+    private Pane cartonJugador,cartonJugador2,NumerosPronunciados;
 
     private Label[][] carton1;
     private Label[][] carton2;
 
-    boolean cartongenerado;
+    private Label[] pronunciados;
 
-    int[] numerospronunciados;
+    private boolean cartongenerado;
 
-    int indicenumerospronunciados;
+    private int[] numerospronunciados;
 
-    int contadorlinea;
+    private int indicenumerospronunciados;
+
+    private int contadorlinea;
+
+    private Hilo miHiloP;
+    private Hilo miHiloR;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,6 +85,7 @@ public class JuegoUnJugadorController implements Initializable {
             };
             generarHuecosCarton(carton1);
             cartongenerado = comprobarHuecosCarton(carton1);
+            System.out.println("BUCLE INFINITO JUGADOR???");
         }while(!cartongenerado);
         // -------------------------------------------------------------------------------------------------------------
 
@@ -74,6 +99,7 @@ public class JuegoUnJugadorController implements Initializable {
             };
             generarHuecosCarton(carton2);
             cartongenerado = comprobarHuecosCarton(carton2);
+            System.out.println("BUCLE INFINITO MAQUINA???");
         }while(!cartongenerado);
         // -------------------------------------------------------------------------------------------------------------
 
@@ -83,10 +109,23 @@ public class JuegoUnJugadorController implements Initializable {
 
         numerospronunciados = new int[90];
         indicenumerospronunciados = 0;
+        pronunciados = new Label[]{
+                p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,
+                p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,
+                p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,
+                p31,p32,p33,p34,p35,p36,p37,p38,p39,p40,
+                p41,p42,p43,p44,p45,p46,p47,p48,p49,p50,
+                p51,p52,p53,p54,p55,p56,p57,p58,p59,p60,
+                p61,p62,p63,p64,p65,p66,p67,p68,p69,p70,
+                p71,p72,p73,p74,p75,p76,p77,p78,p79,p80,
+                p81,p82,p83,p84,p85,p86,p87,p88,p89,p90
+        };
         contadorlinea = 0;
 
         // HACER HILO EN BUCLE
-
+        miHiloP = new Hilo();
+        miHiloP.start();
+        miHiloR = new Hilo();
     }
 
     @FXML
@@ -125,6 +164,18 @@ public class JuegoUnJugadorController implements Initializable {
         }while(!cartongenerado);
         generarNumerosCarton(carton1);
 
+        btngenerar.setDisable(true);
+
+    }
+
+    @FXML
+    void pausar(ActionEvent event) {
+        miHiloP.pausar();
+    }
+
+    @FXML
+    void reanudar(ActionEvent event) {
+        miHiloR.reanudar();
     }
 
     @FXML

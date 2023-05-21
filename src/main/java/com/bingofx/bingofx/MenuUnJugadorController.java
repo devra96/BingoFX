@@ -28,7 +28,22 @@ public class MenuUnJugadorController {
 
     @FXML
     void JugarPartida(ActionEvent event) {
-        if(!txtNombre.getText().equals("")){
+        if(txtNombre.getText().equals("")){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("ERROR");
+            a.setHeaderText("Ha ocurrido un error.");
+            a.setContentText("Debes escribir tu nombre para continuar.");
+            a.showAndWait();
+        }
+        else if(txtNombre.getLength() > 20){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("ERROR");
+            a.setHeaderText("Ha ocurrido un error.");
+            a.setContentText("El nombre no debe superar los 20 caracteres.");
+            a.showAndWait();
+        }
+        else{
+            // COMO PASO EL NOMBRE A LA CLASE "JuegoUnJugadorController??"
             cerrarVentana(event);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("JuegoUnJugador.fxml"));
             try {
@@ -45,13 +60,6 @@ public class MenuUnJugadorController {
             catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
-        else{
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("ERROR");
-            a.setHeaderText("Ha ocurrido un error.");
-            a.setContentText("Debes escribir tu nombre para continuar.");
-            a.showAndWait();
         }
     }
 

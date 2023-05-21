@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.JuegoUnJugadorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.JuegoUnJugadorController">
    <children>
-      <Pane fx:id="cartonJugador" layoutX="27.0" layoutY="292.0" prefHeight="158.0" prefWidth="434.0">
+      <Pane fx:id="cartonJugador" layoutX="156.0" layoutY="322.0" prefHeight="158.0" prefWidth="434.0">
          <children>
             <Label fx:id="c1x1" alignment="CENTER" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
                <font>
@@ -147,8 +147,7 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="btngenerar" layoutX="521.0" layoutY="561.0" mnemonicParsing="false" onAction="#generar" text="Generar" />
-      <Pane fx:id="cartonJugador2" layoutX="550.0" layoutY="292.0" prefHeight="158.0" prefWidth="434.0">
+      <Pane fx:id="cartonJugador2" layoutX="650.0" layoutY="322.0" prefHeight="158.0" prefWidth="434.0">
          <children>
             <Label fx:id="c1x11" alignment="CENTER" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
                <font>
@@ -287,5 +286,462 @@
             </Label>
          </children>
       </Pane>
+      <Pane fx:id="NumerosPronunciados" layoutX="244.0" layoutY="532.0" prefHeight="71.0" prefWidth="692.0">
+         <children>
+            <Label fx:id="p1" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p31" alignment="CENTER" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="31">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p61" alignment="CENTER" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="61">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p2" alignment="CENTER" layoutX="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="2">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p62" alignment="CENTER" layoutX="23.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="62">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p32" alignment="CENTER" layoutX="23.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="32">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p33" alignment="CENTER" layoutX="46.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="33">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p63" alignment="CENTER" layoutX="46.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="63">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p3" alignment="CENTER" layoutX="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p4" alignment="CENTER" layoutX="69.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p34" alignment="CENTER" layoutX="69.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="34">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p64" alignment="CENTER" layoutX="69.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="64">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p5" alignment="CENTER" layoutX="92.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="5">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p35" alignment="CENTER" layoutX="92.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="35">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p65" alignment="CENTER" layoutX="92.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="65">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p6" alignment="CENTER" layoutX="115.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="6">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p66" alignment="CENTER" layoutX="115.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="66">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p36" alignment="CENTER" layoutX="115.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="36">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p7" alignment="CENTER" layoutX="138.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="7">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p37" alignment="CENTER" layoutX="138.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="37">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p67" alignment="CENTER" layoutX="138.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="67">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p8" alignment="CENTER" layoutX="161.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p38" alignment="CENTER" layoutX="161.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="38">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p68" alignment="CENTER" layoutX="161.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="68">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p9" alignment="CENTER" layoutX="184.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="9">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p39" alignment="CENTER" layoutX="184.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="39">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p69" alignment="CENTER" layoutX="184.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="69">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p10" alignment="CENTER" layoutX="207.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="10">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p70" alignment="CENTER" layoutX="207.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="70">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p40" alignment="CENTER" layoutX="207.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="40">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p11" alignment="CENTER" layoutX="230.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="11">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p41" alignment="CENTER" layoutX="230.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="41">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p71" alignment="CENTER" layoutX="230.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="71">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p12" alignment="CENTER" layoutX="253.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="12">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p42" alignment="CENTER" layoutX="253.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="42">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p72" alignment="CENTER" layoutX="253.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="72">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p43" alignment="CENTER" layoutX="276.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="43">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p73" alignment="CENTER" layoutX="276.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="73">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p13" alignment="CENTER" layoutX="276.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="13">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p14" alignment="CENTER" layoutX="299.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="14">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p44" alignment="CENTER" layoutX="299.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="44">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p74" alignment="CENTER" layoutX="299.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="74">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p15" alignment="CENTER" layoutX="322.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="15">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p45" alignment="CENTER" layoutX="322.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="45">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p75" alignment="CENTER" layoutX="322.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="75">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p16" alignment="CENTER" layoutX="345.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="16">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p46" alignment="CENTER" layoutX="345.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="46">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p76" alignment="CENTER" layoutX="345.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="76">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p17" alignment="CENTER" layoutX="368.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="17">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p47" alignment="CENTER" layoutX="368.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="47">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p77" alignment="CENTER" layoutX="368.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="77">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p18" alignment="CENTER" layoutX="391.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="18">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p78" alignment="CENTER" layoutX="391.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="78">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p48" alignment="CENTER" layoutX="391.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="48">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p19" alignment="CENTER" layoutX="414.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="19">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p49" alignment="CENTER" layoutX="414.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="49">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p79" alignment="CENTER" layoutX="414.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="79">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p20" alignment="CENTER" layoutX="437.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="20">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p50" alignment="CENTER" layoutX="437.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="50">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p80" alignment="CENTER" layoutX="437.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="80">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p21" alignment="CENTER" layoutX="460.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="21">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p51" alignment="CENTER" layoutX="460.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="51">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p81" alignment="CENTER" layoutX="460.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="81">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p22" alignment="CENTER" layoutX="483.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="22">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p52" alignment="CENTER" layoutX="483.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="52">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p82" alignment="CENTER" layoutX="483.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="82">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p23" alignment="CENTER" layoutX="506.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="23">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p53" alignment="CENTER" layoutX="506.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="53">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p83" alignment="CENTER" layoutX="506.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="83">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p24" alignment="CENTER" layoutX="529.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="24">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p54" alignment="CENTER" layoutX="529.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="54">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p84" alignment="CENTER" layoutX="529.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="84">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p25" alignment="CENTER" layoutX="552.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="25">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p55" alignment="CENTER" layoutX="552.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="55">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p85" alignment="CENTER" layoutX="552.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="85">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p56" alignment="CENTER" layoutX="575.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="56">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p86" alignment="CENTER" layoutX="575.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="86">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p26" alignment="CENTER" layoutX="575.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="26">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p57" alignment="CENTER" layoutX="598.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="57">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p87" alignment="CENTER" layoutX="598.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="87">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p27" alignment="CENTER" layoutX="598.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="27">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p58" alignment="CENTER" layoutX="621.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="58">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p28" alignment="CENTER" layoutX="621.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="28">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p88" alignment="CENTER" layoutX="621.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="88">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p29" alignment="CENTER" layoutX="644.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="29">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p59" alignment="CENTER" layoutX="644.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="59">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p89" alignment="CENTER" layoutX="644.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="89">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p30" alignment="CENTER" layoutX="667.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="30">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p90" alignment="CENTER" layoutX="667.0" layoutY="46.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="90">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="p60" alignment="CENTER" layoutX="667.0" layoutY="23.0" prefHeight="25.0" prefWidth="25.0" styleClass="casilla" stylesheets="@css/estilos.css" text="60">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="pausar" disable="true" layoutX="214.0" layoutY="181.0" mnemonicParsing="false" onAction="#pausar" text="PAUSAR" />
+      <Button fx:id="reanudar" layoutX="370.0" layoutY="103.0" mnemonicParsing="false" onAction="#reanudar" text="REANUDAR" />
+      <Button fx:id="btngenerar" layoutX="560.0" layoutY="91.0" mnemonicParsing="false" onAction="#generar" text="Generar" />
    </children>
 </AnchorPane>

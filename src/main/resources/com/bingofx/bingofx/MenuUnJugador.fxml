@@ -10,6 +10,6 @@
       <Button fx:id="btnCancelar" layoutX="89.0" layoutY="161.0" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" />
       <Button fx:id="btnJugar" layoutX="91.0" layoutY="116.0" mnemonicParsing="false" onAction="#JugarPartida" text="¡JUGAR!" />
       <TextField fx:id="txtNombre" layoutX="46.0" layoutY="69.0" promptText="Nombre del jugador" />
-      <Label layoutX="58.0" layoutY="36.0" text="Introduzca su nombre..." />
+      <Label layoutX="8.0" layoutY="36.0" text="Introduzca su nombre (Max. 20 caracteres)" />
    </children>
 </AnchorPane>

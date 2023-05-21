@@ -36,6 +36,13 @@ public class MenuDosJugadoresController {
             a.setContentText("Ambos jugadores debeis escribir vuestro nombre para continuar.");
             a.showAndWait();
         }
+        else if(txtNombreUno.getLength() > 20 || txtNombreDos.getLength() > 20){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("ERROR");
+            a.setHeaderText("Ha ocurrido un error.");
+            a.setContentText("Ambos nombres no deben superar los 20 caracteres.");
+            a.showAndWait();
+        }
         else{
             //PARTIDA
         }
