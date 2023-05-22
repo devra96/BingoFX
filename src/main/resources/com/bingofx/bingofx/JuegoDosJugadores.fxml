@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.JuegoDosJugadoresController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: darksalmon;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.JuegoDosJugadoresController">
    <children>
       <Pane fx:id="cartonJugador" layoutX="116.0" layoutY="362.0" prefHeight="158.0" prefWidth="434.0">
          <children>
@@ -741,12 +741,18 @@
          </children>
       </Pane>
       <Button fx:id="pausar" disable="true" layoutX="379.0" layoutY="40.0" mnemonicParsing="false" onAction="#pausar" text="PAUSAR" />
-      <Button fx:id="reanudar" layoutX="416.0" layoutY="568.0" mnemonicParsing="false" onAction="#reanudar" text="REANUDAR" />
-      <Button fx:id="btngenerar" layoutX="194.0" layoutY="568.0" mnemonicParsing="false" onAction="#generar" text="Generar" />
-      <Label fx:id="marcador" alignment="CENTER" layoutX="550.0" layoutY="135.0" prefHeight="100.0" prefWidth="100.0" styleClass="casilla" stylesheets="@css/estilos.css" text="52">
+      <Button fx:id="reanudar" layoutX="611.0" layoutY="53.0" mnemonicParsing="false" onAction="#reanudar" text="REANUDAR" />
+      <Button fx:id="btngenerar" layoutX="571.0" layoutY="270.0" mnemonicParsing="false" onAction="#generar" text="Generar" />
+      <Label fx:id="marcador" alignment="CENTER" layoutX="550.0" layoutY="135.0" prefHeight="100.0" prefWidth="100.0" styleClass="casilla" stylesheets="@css/estilos.css" text="0">
          <font>
             <Font size="66.0" />
          </font>
       </Label>
+      <Button fx:id="btnLinea1" layoutX="178.0" layoutY="618.0" mnemonicParsing="false" onAction="#CantarLinea1" text="¡CANTAR LINEA!" />
+      <Button fx:id="btnBingo1" layoutX="343.0" layoutY="618.0" mnemonicParsing="false" onAction="#CantarBingo1" text="¡CANTAR BINGO!" />
+      <Label fx:id="fraseLineaBingo1" layoutX="263.0" layoutY="551.0" />
+      <Label fx:id="fraseLineaBingo2" layoutX="996.0" layoutY="551.0" />
+      <Button fx:id="btnLinea2" layoutX="881.0" layoutY="631.0" mnemonicParsing="false" onAction="#CantarLinea2" text="¡CANTAR LINEA!" />
+      <Button fx:id="btnBingo2" layoutX="1063.0" layoutY="631.0" mnemonicParsing="false" onAction="#CantarBingo2" text="¡CANTAR BINGO!" />
    </children>
 </AnchorPane>

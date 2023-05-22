@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -179,6 +180,13 @@ public class JuegoUnJugadorController implements Initializable {
         if(comprobarBingoMaquina(carton2)){
             Platform.exit();
         }
+
+//        try {
+//            Runtime.getRuntime().exec("C:\\Program Files\\Adobe\\Acrobat DC\\Acrobat\\Acrobat.exe "+"C:\\a.pdf");
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
     }
 
     @FXML

@@ -44,7 +44,22 @@ public class MenuDosJugadoresController {
             a.showAndWait();
         }
         else{
-            //PARTIDA
+            cerrarVentana(event);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("JuegoDosJugadores.fxml"));
+            try {
+                Parent root = fxmlLoader.load();
+                JuegoDosJugadoresController controlador = fxmlLoader.getController();
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+                stage.show();
+
+            }
+            catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
