@@ -1,6 +1,7 @@
 package com.bingofx.bingofx;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -54,6 +56,15 @@ public class MenuUnJugadorController {
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+
+                // CODIGO QUE HACE QUE CUANDO CIERRE LA VENTANA JuegoUnJugadorController SE DETENGA EL HILO
+                stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    @Override
+                    public void handle(WindowEvent windowEvent) {
+                        System.exit(0);
+                    }
+                });
+
                 stage.show();
 
             }

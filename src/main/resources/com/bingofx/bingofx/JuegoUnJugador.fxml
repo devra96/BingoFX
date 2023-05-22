@@ -740,7 +740,7 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="pausar" disable="true" layoutX="379.0" layoutY="40.0" mnemonicParsing="false" onAction="#pausar" text="PAUSAR" />
+      <Button fx:id="pausar" layoutX="379.0" layoutY="40.0" mnemonicParsing="false" onAction="#pausar" text="PAUSAR" />
       <Button fx:id="reanudar" layoutX="611.0" layoutY="53.0" mnemonicParsing="false" onAction="#reanudar" text="REANUDAR" />
       <Button fx:id="btngenerar" layoutX="571.0" layoutY="270.0" mnemonicParsing="false" onAction="#generar" text="Generar" />
       <Label fx:id="marcador" alignment="CENTER" layoutX="550.0" layoutY="135.0" prefHeight="100.0" prefWidth="100.0" styleClass="casilla" stylesheets="@css/estilos.css" text="0">
@@ -752,5 +752,6 @@
       <Button fx:id="btnBingo" layoutX="343.0" layoutY="618.0" mnemonicParsing="false" onAction="#CantarBingo" text="¡CANTAR BINGO!" />
       <Label fx:id="fraseLineaBingo" layoutX="263.0" layoutY="551.0" />
       <Label fx:id="fraseLineaBingoMaquina" layoutX="996.0" layoutY="551.0" />
+      <Button fx:id="btnVolverMenuInicio" layoutX="57.0" layoutY="66.0" mnemonicParsing="false" onAction="#VolverMenuInicio" text="VOLVER AL MENU PRINCIPAL" />
    </children>
 </AnchorPane>
