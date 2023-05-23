@@ -103,11 +103,18 @@ public class JuegoDosJugadoresController implements Initializable {
 
     private int indicenumerospronunciados;
 
-    private int contadorlinea;
+    static String nombreganador;
+    static int contadorlinea;
+    static int contadorbingo;
+    static String hizolineajugador1;
+    static String hizolineajugador2;
+    static String hizobingo;
 
     private volatile boolean pausado = false;
 
     private ScheduledExecutorService executor;
+
+    private Pantalla pantalla = new Pantalla();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -163,6 +170,7 @@ public class JuegoDosJugadoresController implements Initializable {
         contadorlinea = 0;
 
         btngenerar.setDisable(true);
+        reanudar.setDisable(true);
 
         executor = Executors.newScheduledThreadPool(1);
         Runnable tarea = () -> {
@@ -176,12 +184,20 @@ public class JuegoDosJugadoresController implements Initializable {
     private void pausarHilo() {
         pausado = true;
         btngenerar.setDisable(false);
+
+        pausar.setDisable(true);
+        reanudar.setDisable(false);
+
         System.out.println("Hilo pausado");
     }
 
     private void reanudarHilo() {
         pausado = false;
         btngenerar.setDisable(true);
+
+        pausar.setDisable(false);
+        reanudar.setDisable(true);
+
         System.out.println("Hilo reanudado");
     }
 
@@ -643,53 +659,28 @@ public class JuegoDosJugadoresController implements Initializable {
 
     public void bingo(){
         System.out.println("BINGO");
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Bingo.fxml"));
-        try {
-            Parent root = fxmlLoader.load();
-            BingoController controlador = fxmlLoader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("¡¡¡BINGO!!!");
-            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-            stage.show();
-
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Bingo.fxml"));
+//        try {
+//            Parent root = fxmlLoader.load();
+//            BingoController controlador = fxmlLoader.getController();
+//
+//            Scene scene = new Scene(root);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.setTitle("¡¡¡BINGO!!!");
+//            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+//            stage.show();
+//
+//        }
+//        catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        pantalla.IrBingo();
         // PARAR HILO
         executor.shutdown();
 
         // CERRAR VENTANA ACTUAL
-        Stage ventanaActual = (Stage) getWindow();
-        ventanaActual.close();
-    }
-
-    public void noBingo(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoBingo.fxml"));
-        try {
-            Parent root = fxmlLoader.load();
-            NoBingoController controlador = fxmlLoader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("NO HAY BINGO");
-            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-            stage.show();
-
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        // PARAR HILO
-        executor.shutdown();
-
-        // CERRAR VENTANA ACTUAL
-        Stage ventanaActual = (Stage) getWindow();
-        ventanaActual.close();
+        pantalla.CerrarVentanaActual();
     }
 
     @FXML
@@ -700,34 +691,44 @@ public class JuegoDosJugadoresController implements Initializable {
         a.setContentText("¿Estas seguro de querer volver al menu principal?");
         Optional<ButtonType> r = a.showAndWait();
         if(r.get() == ButtonType.OK){
-            cerrarVentana(event);
+            pantalla.CerrarVentanaActual();
             executor.shutdown();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuInicio.fxml"));
-            try {
-                Parent root = fxmlLoader.load();
-                MenuInicioController controlador = fxmlLoader.getController();
-
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("BINGOFX (Por Raúl Sastre)");
-                stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-                stage.show();
-
-            }
-            catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuInicio.fxml"));
+//            try {
+//                Parent root = fxmlLoader.load();
+//                MenuInicioController controlador = fxmlLoader.getController();
+//
+//                Scene scene = new Scene(root);
+//                Stage stage = new Stage();
+//                stage.setScene(scene);
+//                stage.setTitle("BINGOFX (Por Raúl Sastre)");
+//                stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+//                stage.show();
+//
+//            }
+//            catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+            pantalla.IrMenuInicio();
         }
     }
 
-    private Window getWindow() {
-        return Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
-    }
+    //    public void noBingo(){
+//        pantalla.IrNoBingo();
+//        // PARAR HILO
+//        executor.shutdown();
+//
+//        // CERRAR VENTANA ACTUAL
+//        pantalla.CerrarVentanaActual();
+//    }
 
-    public static void cerrarVentana(ActionEvent event){
-        Node source = (Node) event.getSource();     //Me devuelve el elemento al que hice click
-        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
-        stage.close();                          //Me cierra la ventana
-    }
+//    private Window getWindow() {
+//        return Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+//    }
+
+//    public static void cerrarVentana(ActionEvent event){
+//        Node source = (Node) event.getSource();     //Me devuelve el elemento al que hice click
+//        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
+//        stage.close();                          //Me cierra la ventana
+//    }
 }

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="250.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.BingoController">
+<AnchorPane prefHeight="300.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.BingoController">
    <children>
       <Label layoutX="49.0" layoutY="39.0" text="¡¡¡BINGO!!!">
          <font>
@@ -13,7 +13,8 @@
          </font>
       </Label>
       <Label layoutX="69.0" layoutY="108.0" text="¿Que quieres hacer?" />
-      <Button fx:id="btnJugar" layoutX="23.0" layoutY="195.0" mnemonicParsing="false" onAction="#Jugar" text="Jugar otra vez" />
-      <Button fx:id="btnVolver" layoutX="129.0" layoutY="195.0" mnemonicParsing="false" onAction="#VolverInicio" text="Volver al inicio" />
+      <Button fx:id="btnJugar1" layoutX="26.0" layoutY="154.0" mnemonicParsing="false" onAction="#JugarUnJugador" text="Jugar de nuevo (Modo 1 jugador)" />
+      <Button fx:id="btnVolver" layoutX="78.0" layoutY="243.0" mnemonicParsing="false" onAction="#VolverInicio" text="Volver al inicio" />
+      <Button fx:id="btnJugar2" layoutX="23.0" layoutY="198.0" mnemonicParsing="false" onAction="#JugarDosJugadores" text="Jugar de nuevo (Modo 2 jugadores)" />
    </children>
 </AnchorPane>

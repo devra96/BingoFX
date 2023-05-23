@@ -28,6 +28,10 @@ public class MenuUnJugadorController {
     @FXML
     private TextField txtNombre;
 
+    static String nombrejugador;
+
+    private Pantalla pantalla = new Pantalla();
+
     @FXML
     void JugarPartida(ActionEvent event) {
         if(txtNombre.getText().equals("")){
@@ -46,60 +50,65 @@ public class MenuUnJugadorController {
         }
         else{
             // COMO PASO EL NOMBRE A LA CLASE "JuegoUnJugadorController??"
-            cerrarVentana(event);
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("JuegoUnJugador.fxml"));
-            try {
-                Parent root = fxmlLoader.load();
-                JuegoUnJugadorController controlador = fxmlLoader.getController();
-
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-
-                // CODIGO QUE HACE QUE CUANDO CIERRE LA VENTANA JuegoUnJugadorController SE DETENGA EL HILO
-                stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                    @Override
-                    public void handle(WindowEvent windowEvent) {
-                        System.exit(0);
-                    }
-                });
-
-                stage.show();
-
-            }
-            catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+//            cerrarVentana(event);
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("JuegoUnJugador.fxml"));
+//            try {
+//                Parent root = fxmlLoader.load();
+//                JuegoUnJugadorController controlador = fxmlLoader.getController();
+//
+//                Scene scene = new Scene(root);
+//                Stage stage = new Stage();
+//                stage.setScene(scene);
+//                stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+//
+//                // CODIGO QUE HACE QUE CUANDO CIERRE LA VENTANA JuegoUnJugadorController SE DETENGA EL HILO
+//                stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//                    @Override
+//                    public void handle(WindowEvent windowEvent) {
+//                        System.exit(0);
+//                    }
+//                });
+//
+//                stage.show();
+//
+//            }
+//            catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+            nombrejugador = txtNombre.getText();
+            pantalla.CerrarVentanaActual();
+            pantalla.IrJuegoUnJugador();
         }
     }
 
     @FXML
     void Cancelar(ActionEvent event) {
-        cerrarVentana(event);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuInicio.fxml"));
-        try {
-            Parent root = fxmlLoader.load();
-            MenuInicioController controlador = fxmlLoader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("BINGOFX (Por Raúl Sastre)");
-            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-            stage.show();
-
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        cerrarVentana(event);
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuInicio.fxml"));
+//        try {
+//            Parent root = fxmlLoader.load();
+//            MenuInicioController controlador = fxmlLoader.getController();
+//
+//            Scene scene = new Scene(root);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.setTitle("BINGOFX (Por Raúl Sastre)");
+//            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+//            stage.show();
+//
+//        }
+//        catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        pantalla.CerrarVentanaActual();
+        pantalla.IrMenuInicio();
     }
 
-    public static void cerrarVentana(ActionEvent event){
-        Node source = (Node) event.getSource();     //Me devuelve el elemento al que hice click
-        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
-        stage.close();                          //Me cierra la ventana
-    }
+//    public static void cerrarVentana(ActionEvent event){
+//        Node source = (Node) event.getSource();     //Me devuelve el elemento al que hice click
+//        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
+//        stage.close();                          //Me cierra la ventana
+//    }
 
 }
 

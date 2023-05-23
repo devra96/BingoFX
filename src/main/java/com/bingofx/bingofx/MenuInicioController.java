@@ -33,69 +33,77 @@ public class MenuInicioController {
     @FXML
     private Button btnunjugador;
 
+    private Pantalla pantalla = new Pantalla();
+
     @FXML
     void JugarUnJugador(ActionEvent event) {
-        cerrarVentana(event);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUnJugador.fxml"));
+//        cerrarVentana(event);
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUnJugador.fxml"));
+//
+//        try {
+//            Parent root = fxmlLoader.load();
+//            MenuUnJugadorController controlador = fxmlLoader.getController();
+//
+//            Scene scene = new Scene(root);
+//            Stage stage = new Stage();
+//            stage.setTitle("UN JUGADOR");
+//            stage.setScene(scene);
+//            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+//            stage.show();
+//
+//        }
+//        catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
-        try {
-            Parent root = fxmlLoader.load();
-            MenuUnJugadorController controlador = fxmlLoader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("UN JUGADOR");
-            stage.setScene(scene);
-            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-            stage.show();
-
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        pantalla.CerrarVentanaActual();
+        pantalla.IrMenuUnJugador();
     }
 
     @FXML
     void JugarDosJugadores(ActionEvent event) {
-        cerrarVentana(event);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuDosJugadores.fxml"));
-
-        try {
-            Parent root = fxmlLoader.load();
-            MenuDosJugadoresController controlador = fxmlLoader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("DOS JUGADORES");
-            stage.setScene(scene);
-            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-            stage.show();
-
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        cerrarVentana(event);
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuDosJugadores.fxml"));
+//
+//        try {
+//            Parent root = fxmlLoader.load();
+//            MenuDosJugadoresController controlador = fxmlLoader.getController();
+//
+//            Scene scene = new Scene(root);
+//            Stage stage = new Stage();
+//            stage.setTitle("DOS JUGADORES");
+//            stage.setScene(scene);
+//            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+//            stage.show();
+//
+//        }
+//        catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        pantalla.CerrarVentanaActual();
+        pantalla.IrMenuDosJugadores();
     }
 
     @FXML
     void VerRecords(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuRecords.fxml"));
-
-        try {
-            Parent root = fxmlLoader.load();
-            MenuRecordsController controlador = fxmlLoader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("RECORDS");
-            stage.setScene(scene);
-            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-            stage.show();
-
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuRecords.fxml"));
+//
+//        try {
+//            Parent root = fxmlLoader.load();
+//            MenuRecordsController controlador = fxmlLoader.getController();
+//
+//            Scene scene = new Scene(root);
+//            Stage stage = new Stage();
+//            stage.setTitle("RECORDS");
+//            stage.setScene(scene);
+//            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+//            stage.show();
+//
+//        }
+//        catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        pantalla.IrMenuRecords();
     }
 
     @FXML
@@ -110,15 +118,12 @@ public class MenuInicioController {
         }
     }
 
-    /**
-     * Metodo para cerrar la ventana donde este el boton que se ha pulsado
-     * @param event
-     */
-    public static void cerrarVentana(ActionEvent event){
-        Node source = (Node) event.getSource();     //Me devuelve el elemento al que hice click
-        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
-        stage.close();                          //Me cierra la ventana
-    }
+
+//    public static void cerrarVentana(ActionEvent event){
+//        Node source = (Node) event.getSource();     //Me devuelve el elemento al que hice click
+//        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
+//        stage.close();                          //Me cierra la ventana
+//    }
 
     /**
      * Ver la lista de records sin usar FXML ni con botones de filtrado
