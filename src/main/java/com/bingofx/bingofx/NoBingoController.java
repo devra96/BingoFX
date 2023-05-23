@@ -1,7 +1,6 @@
 package com.bingofx.bingofx;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,11 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
-public class BingoController {
+public class NoBingoController {
 
     @FXML
     private Button btnJugar;
@@ -22,9 +20,9 @@ public class BingoController {
     private Button btnVolver;
 
     @FXML
-    void Jugar(ActionEvent event) {
+    void Jugar(ActionEvent event)   {
         cerrarVentana(event);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUnJugador.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuDosJugadores.fxml"));
         try {
             Parent root = fxmlLoader.load();
             MenuUnJugadorController controlador = fxmlLoader.getController();
@@ -32,14 +30,8 @@ public class BingoController {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("UN JUGADOR");
+            stage.setTitle("DOS JUGADORES");
             stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-//            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-//                @Override
-//                public void handle(WindowEvent windowEvent) {
-//                    System.exit(0);
-//                }
-//            });
             stage.show();
 
         }

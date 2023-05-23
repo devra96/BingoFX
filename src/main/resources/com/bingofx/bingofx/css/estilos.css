@@ -15,3 +15,7 @@
 #acertadoMaquina{
     -fx-background-color: green;
 }
+
+#pronunciado{
+    -fx-background-color: cyan;
+}

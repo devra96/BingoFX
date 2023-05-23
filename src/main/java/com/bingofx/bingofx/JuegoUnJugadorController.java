@@ -108,7 +108,6 @@ public class JuegoUnJugadorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         // CARTON JUGADOR CON HUECOS
         do{
             carton1 = new Label[][]{
@@ -161,6 +160,8 @@ public class JuegoUnJugadorController implements Initializable {
         contadorlinea = 0;
         maquinatienelinea = false;
 
+        btngenerar.setDisable(true);
+
         // -------------------------------------------------------------------------------------------------------------
 
         executor = Executors.newScheduledThreadPool(1);
@@ -190,11 +191,13 @@ public class JuegoUnJugadorController implements Initializable {
 
     private void pausarHilo() {
         pausado = true;
+        btngenerar.setDisable(false);
         System.out.println("Hilo pausado");
     }
 
     private void reanudarHilo() {
         pausado = false;
+        btngenerar.setDisable(true);
         System.out.println("Hilo reanudado");
     }
 
@@ -245,7 +248,7 @@ public class JuegoUnJugadorController implements Initializable {
     }
 
     public void jugar(){
-        sacarNumero(carton1,carton2,pronunciados,numerospronunciados,indicenumerospronunciados);
+        sacarNumero(carton2,pronunciados,numerospronunciados,indicenumerospronunciados);
         indicenumerospronunciados++;
 
         Platform.runLater(new Runnable(){
@@ -415,7 +418,7 @@ public class JuegoUnJugadorController implements Initializable {
         }
     }
 
-    public void sacarNumero(Label[][] carton1, Label[][] carton2, Label[] pronunciados, int[] numerospronunciados, int indicenumerospronunciados){
+    public void sacarNumero(Label[][] carton2, Label[] pronunciados, int[] numerospronunciados, int indicenumerospronunciados){
         int numeroaleatorio;
         boolean repe;
 
@@ -446,7 +449,7 @@ public class JuegoUnJugadorController implements Initializable {
 
         for(int i=0;i<pronunciados.length;i++){
             if(pronunciados[i].getText().equals(Integer.toString(numeroaleatorio))){
-                pronunciados[i].setId("acertadoMaquina");
+                pronunciados[i].setId("pronunciado");
             }
         }
 
@@ -726,6 +729,7 @@ public class JuegoUnJugadorController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setTitle("¡¡¡BINGO!!!");
             stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
             stage.show();
 
@@ -763,6 +767,7 @@ public class JuegoUnJugadorController implements Initializable {
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
+                stage.setTitle("BINGOFX (Por Raúl Sastre)");
                 stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
                 stage.show();
 

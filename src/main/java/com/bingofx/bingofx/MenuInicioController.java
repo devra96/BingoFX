@@ -87,7 +87,7 @@ public class MenuInicioController {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("VER RECORDS");
+            stage.setTitle("RECORDS");
             stage.setScene(scene);
             stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
             stage.show();

@@ -85,6 +85,7 @@ public class MenuUnJugadorController {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setTitle("BINGOFX (Por Raúl Sastre)");
             stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
             stage.show();
 

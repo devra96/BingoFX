@@ -3,19 +3,34 @@ package com.bingofx.bingofx;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class JuegoDosJugadoresController implements Initializable {
+
+    @FXML
+    private Button btnVolverMenuInicio;
 
     @FXML
     private Button pausar;
@@ -90,19 +105,23 @@ public class JuegoDosJugadoresController implements Initializable {
 
     private int contadorlinea;
 
+    private volatile boolean pausado = false;
+
+    private ScheduledExecutorService executor;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // QUITAMOS HUECOS A TODAS LAS CASILLAS
-        quitarIdsCasillas();
 
         // CARTON JUGADOR CON HUECOS
-        cartongenerado = false;
+//        cartongenerado = false;
         do{
             carton1 = new Label[][]{
                     {c1x1, c1x2, c1x3, c1x4, c1x5, c1x6, c1x7, c1x8, c1x9},
                     {c2x1, c2x2, c2x3, c2x4, c2x5, c2x6, c2x7, c2x8, c2x9},
                     {c3x1, c3x2, c3x3, c3x4, c3x5, c3x6, c3x7, c3x8, c3x9}
             };
+            quitarIdsCasillas(carton1);
             generarHuecosCarton(carton1);
             cartongenerado = comprobarHuecosCarton(carton1);
             System.out.println("BUCLE INFINITO JUGADOR???");
@@ -110,13 +129,14 @@ public class JuegoDosJugadoresController implements Initializable {
         // -------------------------------------------------------------------------------------------------------------
 
         // CARTON MAQUINA CON HUECOS
-        cartongenerado = false;
+//        cartongenerado = false;
         do{
             carton2 = new Label[][]{
                     {c1x11, c1x21, c1x31, c1x41, c1x51, c1x61, c1x71, c1x81, c1x91},
                     {c2x11, c2x21, c2x31, c2x41, c2x51, c2x61, c2x71, c2x81, c2x91},
                     {c3x11, c3x21, c3x31, c3x41, c3x51, c3x61, c3x71, c3x81, c3x91}
             };
+            quitarIdsCasillas(carton2);
             generarHuecosCarton(carton2);
             cartongenerado = comprobarHuecosCarton(carton2);
             System.out.println("BUCLE INFINITO MAQUINA???");
@@ -141,15 +161,89 @@ public class JuegoDosJugadoresController implements Initializable {
                 p81,p82,p83,p84,p85,p86,p87,p88,p89,p90
         };
         contadorlinea = 0;
+
+        btngenerar.setDisable(true);
+
+        executor = Executors.newScheduledThreadPool(1);
+        Runnable tarea = () -> {
+            if (!pausado) {
+                jugar();
+            }
+        };
+        executor.scheduleAtFixedRate(tarea, 0, 3, TimeUnit.SECONDS);
+    }
+
+    private void pausarHilo() {
+        pausado = true;
+        btngenerar.setDisable(false);
+        System.out.println("Hilo pausado");
+    }
+
+    private void reanudarHilo() {
+        pausado = false;
+        btngenerar.setDisable(true);
+        System.out.println("Hilo reanudado");
     }
 
     @FXML
     void generar(ActionEvent event) {
+//        sacarNumero(pronunciados,numerospronunciados,indicenumerospronunciados);
+//        indicenumerospronunciados++;
+//
+//        fraseLineaBingo1.setText("");
+//        fraseLineaBingo2.setText("");
+        jugar();
+    }
+
+    @FXML
+    void pausar(ActionEvent event) {
+        pausarHilo();
+    }
+
+    @FXML
+    void reanudar(ActionEvent event) {
+        reanudarHilo();
+    }
+
+    public void jugar(){
+        if(indicenumerospronunciados == 89){
+
+            // HACER HILO QUE OCURRA UNA VEZ, 5 SEGUNDOS, CON UN SONIDO??
+//            Platform.runLater(new Runnable(){
+//                @Override
+//                public void run() {
+//                    noBingo();
+//                }
+//            });
+
+            // USANDO ESTO, LA CLASE NoBingo SE QUEDA INUTIL
+            System.out.println("ALGUIEN TIENE QUE CANTAR BINGO!!!");
+            btngenerar.setDisable(true);
+            pausar.setDisable(true);
+            reanudar.setDisable(true);
+            executor.shutdown();
+        }
+
         sacarNumero(pronunciados,numerospronunciados,indicenumerospronunciados);
         indicenumerospronunciados++;
 
-        fraseLineaBingo1.setText("");
-        fraseLineaBingo2.setText("");
+        Platform.runLater(new Runnable(){
+            @Override
+            public void run() {
+                fraseLineaBingo1.setText("");
+                fraseLineaBingo2.setText("");
+            }
+        });
+
+        // SI NADIE HACE BINGO
+//        if(SE HAN PRONUNCIADO TODOS LOS NUMEROS){
+//            Platform.runLater(new Runnable(){
+//                @Override
+//                public void run() {
+//                    noBingo();
+//                }
+//            });
+//        }
     }
 
     @FXML
@@ -326,12 +420,19 @@ public class JuegoDosJugadoresController implements Initializable {
         while(repe);
         numerospronunciados[indicenumerospronunciados] = numeroaleatorio;
 
-        marcador.setText(Integer.toString(numeroaleatorio));
+
+        int finalNumeroaleatorio = numeroaleatorio;
+        Platform.runLater(new Runnable(){
+            @Override
+            public void run() {
+                marcador.setText(Integer.toString(finalNumeroaleatorio));
+            }
+        });
 
         // MARCA LOS NUMEROS DEL PANEL DE NUMEROS PRONUNCIADOS
         for(int i=0;i<pronunciados.length;i++){
             if(pronunciados[i].getText().equals(Integer.toString(numeroaleatorio))){
-                pronunciados[i].setId("acertadoMaquina");
+                pronunciados[i].setId("pronunciado");
             }
         }
 
@@ -340,16 +441,12 @@ public class JuegoDosJugadoresController implements Initializable {
         System.out.println();
     }
 
-    public void quitarIdsCasillas(){
-        //CARTON JUGADOR
-        c1x1.setId("");c1x2.setId("");c1x3.setId("");c1x4.setId("");c1x5.setId("");c1x6.setId("");c1x7.setId("");c1x8.setId("");c1x9.setId("");
-        c2x1.setId("");c2x2.setId("");c2x3.setId("");c2x4.setId("");c2x5.setId("");c2x6.setId("");c2x7.setId("");c2x8.setId("");c2x9.setId("");
-        c3x1.setId("");c3x2.setId("");c3x3.setId("");c3x4.setId("");c3x5.setId("");c3x6.setId("");c3x7.setId("");c3x8.setId("");c3x9.setId("");
-
-        //CARTON MAQUINA
-        c1x11.setId("");c1x21.setId("");c1x31.setId("");c1x41.setId("");c1x51.setId("");c1x61.setId("");c1x71.setId("");c1x81.setId("");c1x91.setId("");
-        c2x11.setId("");c2x21.setId("");c2x31.setId("");c2x41.setId("");c2x51.setId("");c2x61.setId("");c2x71.setId("");c2x81.setId("");c2x91.setId("");
-        c3x11.setId("");c3x21.setId("");c3x31.setId("");c3x41.setId("");c3x51.setId("");c3x61.setId("");c3x71.setId("");c3x81.setId("");c3x91.setId("");
+    public void quitarIdsCasillas(Label[][] carton){
+        for(int i=0;i<carton.length;i++){
+            for(int j=0;j<carton[i].length;j++){
+                carton[i][j].setId("");
+            }
+        }
     }
 
     public void cantarLineaJugador1(Label[][] carton1){
@@ -393,6 +490,7 @@ public class JuegoDosJugadoresController implements Initializable {
             if(c==5){
                 fraseLineaBingo1.setTextFill(Color.BLUE);
                 fraseLineaBingo1.setText("¡HAS HECHO LINEA!");
+                btnLinea1.setDisable(true);
                 btnLinea2.setDisable(true);
             }
             else{
@@ -448,6 +546,7 @@ public class JuegoDosJugadoresController implements Initializable {
                 fraseLineaBingo2.setTextFill(Color.BLUE);
                 fraseLineaBingo2.setText("¡HAS HECHO LINEA!");
                 btnLinea1.setDisable(true);
+                btnLinea2.setDisable(true);
             }
             else{
 //                fraseLineaBingo.setTextFill(Color.RED);
@@ -490,8 +589,7 @@ public class JuegoDosJugadoresController implements Initializable {
             }
 
             if(c==15){
-                //PAUSAR HILO
-                Platform.exit();
+                bingo();
             }
             else{
                 fraseLineaBingo1.setText("¡El bingo es incorrecto!");
@@ -532,8 +630,7 @@ public class JuegoDosJugadoresController implements Initializable {
             }
 
             if(c==15){
-                //PAUSAR HILO
-                Platform.exit();
+                bingo();
             }
             else{
                 fraseLineaBingo2.setText("¡El bingo es incorrecto!");
@@ -542,5 +639,95 @@ public class JuegoDosJugadoresController implements Initializable {
         else{
             fraseLineaBingo2.setText("¡No tienes todos los numeros marcados!");
         }
+    }
+
+    public void bingo(){
+        System.out.println("BINGO");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Bingo.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            BingoController controlador = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("¡¡¡BINGO!!!");
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.show();
+
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        // PARAR HILO
+        executor.shutdown();
+
+        // CERRAR VENTANA ACTUAL
+        Stage ventanaActual = (Stage) getWindow();
+        ventanaActual.close();
+    }
+
+    public void noBingo(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoBingo.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            NoBingoController controlador = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("NO HAY BINGO");
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.show();
+
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        // PARAR HILO
+        executor.shutdown();
+
+        // CERRAR VENTANA ACTUAL
+        Stage ventanaActual = (Stage) getWindow();
+        ventanaActual.close();
+    }
+
+    @FXML
+    void VolverMenuInicio(ActionEvent event) {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("VOLVER AL MENU PRINCIPAL");
+        a.setHeaderText("¡AUN HAY UNA PARTIDA EN CURSO!");
+        a.setContentText("¿Estas seguro de querer volver al menu principal?");
+        Optional<ButtonType> r = a.showAndWait();
+        if(r.get() == ButtonType.OK){
+            cerrarVentana(event);
+            executor.shutdown();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuInicio.fxml"));
+            try {
+                Parent root = fxmlLoader.load();
+                MenuInicioController controlador = fxmlLoader.getController();
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("BINGOFX (Por Raúl Sastre)");
+                stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+                stage.show();
+
+            }
+            catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    private Window getWindow() {
+        return Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+    }
+
+    public static void cerrarVentana(ActionEvent event){
+        Node source = (Node) event.getSource();     //Me devuelve el elemento al que hice click
+        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
+        stage.close();                          //Me cierra la ventana
     }
 }
