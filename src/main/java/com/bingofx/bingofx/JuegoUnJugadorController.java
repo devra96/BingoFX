@@ -302,11 +302,29 @@ public class JuegoUnJugadorController implements Initializable {
 
     @FXML
     void CantarLinea(ActionEvent event) {
-        CantarLineaJugador(carton1);
+        switch(CantarLineaJugador(carton1)){
+            //NO HAY NINGUNA LINEA MARCADA
+            case 0:
+                fraseLineaBingo.setText("¡No tienes ninguna linea entera marcada!");
+            break;
+            //TODAS LAS LINEAS SON ERRONEAS
+            case 1:
+                fraseLineaBingo.setText("¡Linea(s) incorrecta(s)!");
+            break;
+            //ENCUENTRA UNA LINEA CORRECTA
+            case 2:
+                fraseLineaBingo.setTextFill(Color.BLUE);
+                fraseLineaBingo.setText("¡HAS HECHO LINEA!");
+                btnLinea.setDisable(true);
+                fraseLineaBingoMaquina.setOpacity(0);
+                contadorlinea = indicenumerospronunciados;
+                hizolinea = "Si";
+            break;
+        }
     }
 
     public void GenerarHuecosCarton(Label[][] carton){
-        int[] huecos = new int[4];
+        int[] huecos;
         int hueco;
         boolean repe;
 
@@ -321,6 +339,7 @@ public class JuegoUnJugadorController implements Initializable {
         // INTRODUCIR HUECOS EN INDICES GENERADOS ALEATORIAMENTE
 
         for(int i=0;i<carton.length;i++){
+            huecos = new int[]{11,11,11,11};
             for(int k=0;k<4;k++){
                 do{
                     repe = false;
@@ -496,9 +515,9 @@ public class JuegoUnJugadorController implements Initializable {
         }
     }
 
-    public void CantarLineaJugador(Label[][] carton1){
-        int c = 0;
-        String[] numerosmarcados = new String[5];
+    public int CantarLineaJugador(Label[][] carton1){
+        int c;
+        String[] numerosmarcados;
         boolean linea = false;
 
         /**
@@ -507,61 +526,45 @@ public class JuegoUnJugadorController implements Initializable {
          * Si cuenta cinco numeros = true
          * En caso contrario = false
          */
-        for(int i=0;i<carton1.length;i++){
-            c=0;
-            numerosmarcados = new String[5];
 
+        //BUCLE QUE RECORRE LAS 3 FILAS DEL CARTON
+        for(int i=0;i<carton1.length;i++){
+            c = 0;
+            numerosmarcados = new String[5];
+            //BUCLE QUE RECORRE LA FILA QUE TOQUE EN BUSCA DE UNA LINEA
             for(int j=0;j<carton1[i].length;j++){
                 if(carton1[i][j].getId().equals("pulsado")){
                     numerosmarcados[c] = carton1[i][j].getText();
                     c++;
                 }
             }
-
+            //SI HAY LINEA EN UNA FILA
             if(c==5){
-                linea = true;
-                break;
+                c = 0;
+                //COMPROBAMOS SI TODOS LOS NUMEROS QUE HAY EN LA LINEA SE HAN PRONUNCIADO
+                for(int k=0;k<5;k++){
+                    for(int j=0;j<numerospronunciados.length;j++){
+                        if(numerosmarcados[k].equals(Integer.toString(numerospronunciados[j]))){
+                            c++;
+                        }
+                    }
+                }
+                //SI LA LINEA ES CORRECTA
+                if(c==5){
+                    return 2;
+                }
+                //SI LA LINEA ES INCORRECTA
+                else{
+                    linea = true;
+                }
             }
         }
 
         if(linea){
-            c = 0;
-            for(int i=0;i<5;i++){
-                for(int j=0;j<numerospronunciados.length;j++){
-                    if(numerosmarcados[i].equals(Integer.toString(numerospronunciados[j]))){
-                        c++;
-                    }
-                }
-            }
-
-            if(c==5){
-                fraseLineaBingo.setTextFill(Color.BLUE);
-                fraseLineaBingo.setText("¡HAS HECHO LINEA!");
-                btnLinea.setDisable(true);
-                fraseLineaBingoMaquina.setOpacity(0);
-                contadorlinea = indicenumerospronunciados;
-                hizolinea = "Si";
-//                return true;
-            }
-            else{
-//                fraseLineaBingo.setTextFill(Color.RED);
-                fraseLineaBingo.setText("¡La linea es incorrecta!");
-//                return false;
-
-//                for(int i=0;i<numerosmarcados.length;i++){
-//                    System.out.println(numerosmarcados[i]);
-//                }
-//                for(int j=0;j<numerospronunciados.length;j++){
-//                    System.out.print(numerospronunciados[j] + ",");
-//                }
-//                System.out.println();
-//                System.out.println(c);
-            }
+            return 1;
         }
         else{
-//            fraseLineaBingo.setTextFill(Color.RED);
-            fraseLineaBingo.setText("¡No tienes ninguna linea entera marcada!");
-//            return false;
+            return 0;
         }
     }
 
@@ -674,9 +677,7 @@ public class JuegoUnJugadorController implements Initializable {
     }
 
     public boolean comprobarLineaMaquina(Label[][] carton2){
-        int c = 0;
-//        String[] numerosmarcados = new String[5];
-//        boolean linea = false;
+        int c;
 
         /**
          * Recorremos las filas del array y si se encuentra un numero marcado,
@@ -684,17 +685,16 @@ public class JuegoUnJugadorController implements Initializable {
          * Si cuenta cinco numeros = true
          * En caso contrario = false
          */
+        //RECORRE LAS FILAS DEL CARTON DE LA MAQUINA
         for(int i=0;i<carton2.length;i++){
             c=0;
-//            numerosmarcados = new String[5];
-
+            //RECORRE LA FILA QUE TOQUE EN BUSCA DE NUMEROS ACERTADOS
             for(int j=0;j<carton2[i].length;j++){
                 if(carton2[i][j].getId().equals("acertadoMaquina")){
-//                    numerosmarcados[c] = carton2[i][j].getText();
                     c++;
                 }
             }
-
+            //SI HAY LINEA CORRECTA
             if(c==5){
                 fraseLineaBingoMaquina.setTextFill(Color.BLUE);
                 fraseLineaBingoMaquina.setText("¡LA MAQUINA HA HECHO LINEA!");
@@ -706,20 +706,17 @@ public class JuegoUnJugadorController implements Initializable {
         return false;
     }
 
+    /**
+     * Recorremos todo el carton y si se encuentra un numero marcado, suma un contador
+     * Si cuenta quince numeros = true
+     * En caso contrario = false
+     */
     public boolean comprobarBingoMaquina(Label[][] carton2){
         int c=0;
-//        String[] numerosmarcados = new String[15];
 
-        /**
-         * Recorremos todo el carton y si se encuentra un numero marcado,
-         * suma un contador
-         * Si cuenta quince numeros = true
-         * En caso contrario = false
-         */
         for(int i=0;i<carton2.length;i++){
             for(int j=0;j<carton2[i].length;j++){
                 if(carton2[i][j].getId().equals("acertadoMaquina")){
-//                    numerosmarcados[c] = carton1[i][j].getText();
                     c++;
                 }
             }

@@ -253,3 +253,157 @@ public class Hilo extends Thread{
     }
 }
 */
+
+//METODO ANTIGUO PARA COMPROBAR LINEA JUGADOR
+//        for(int i=0;i<carton1.length;i++){
+//            c=0;
+//            numerosmarcados = new String[5];
+//
+//            for(int j=0;j<carton1[i].length;j++){
+//                if(carton1[i][j].getId().equals("pulsado")){
+//                    numerosmarcados[c] = carton1[i][j].getText();
+//                    c++;
+//                }
+//            }
+//
+//            if(c==5){
+//                linea = true;
+//                break;
+//            }
+//        }
+//
+//        if(linea){
+//            c = 0;
+//            for(int i=0;i<5;i++){
+//                for(int j=0;j<numerospronunciados.length;j++){
+//                    if(numerosmarcados[i].equals(Integer.toString(numerospronunciados[j]))){
+//                        c++;
+//                    }
+//                }
+//            }
+//
+//            if(c==5){
+//                fraseLineaBingo.setTextFill(Color.BLUE);
+//                fraseLineaBingo.setText("¡HAS HECHO LINEA!");
+//                btnLinea.setDisable(true);
+//                fraseLineaBingoMaquina.setOpacity(0);
+//                contadorlinea = indicenumerospronunciados;
+//                hizolinea = "Si";
+////                return true;
+//            }
+//            else{
+////                fraseLineaBingo.setTextFill(Color.RED);
+//                fraseLineaBingo.setText("¡La linea es incorrecta!");
+////                return false;
+//
+////                for(int i=0;i<numerosmarcados.length;i++){
+////                    System.out.println(numerosmarcados[i]);
+////                }
+////                for(int j=0;j<numerospronunciados.length;j++){
+////                    System.out.print(numerospronunciados[j] + ",");
+////                }
+////                System.out.println();
+////                System.out.println(c);
+//            }
+//        }
+//        else{
+////            fraseLineaBingo.setTextFill(Color.RED);
+//            fraseLineaBingo.setText("¡No tienes ninguna linea entera marcada!");
+////            return false;
+//        }
+
+//    public void cantarLineaJugador2(Label[][] carton2){
+//        int c = 0;
+//        String[] numerosmarcados = new String[5];
+//        boolean linea = false;
+//
+//        /**
+//         * Recorremos las filas del array y si se encuentra un numero marcado,
+//         * suma un contador.
+//         * Si cuenta cinco numeros = true
+//         * En caso contrario = false
+//         */
+//        for(int i=0;i<carton2.length;i++){
+//            c=0;
+//            numerosmarcados = new String[5];
+//
+//            for(int j=0;j<carton2[i].length;j++){
+//                if(carton2[i][j].getId().equals("pulsado")){
+//                    numerosmarcados[c] = carton2[i][j].getText();
+//                    c++;
+//                }
+//            }
+//
+//            if(c==5){
+//                linea = true;
+//                break;
+//            }
+//        }
+//
+//        if(linea){
+//            c = 0;
+//            for(int i=0;i<5;i++){
+//                for(int j=0;j<numerospronunciados.length;j++){
+//                    if(numerosmarcados[i].equals(Integer.toString(numerospronunciados[j]))){
+//                        c++;
+//                    }
+//                }
+//            }
+//
+//            if(c==5){
+//                fraseLineaBingo2.setTextFill(Color.BLUE);
+//                fraseLineaBingo2.setText("¡HAS HECHO LINEA!");
+//                btnLinea1.setDisable(true);
+//                btnLinea2.setDisable(true);
+//            }
+//            else{
+////                fraseLineaBingo.setTextFill(Color.RED);
+//                fraseLineaBingo2.setText("¡La linea es incorrecta!");
+//            }
+//        }
+//        else{
+////            fraseLineaBingo.setTextFill(Color.RED);
+//            fraseLineaBingo2.setText("¡No tienes ninguna linea entera marcada!");
+//        }
+//    }
+
+//    public void cantarBingoJugador2(Label[][] carton2){
+//        int c=0;
+//        String[] numerosmarcados = new String[15];
+//
+//        /**
+//         * Recorremos todo el carton y si se encuentra un numero marcado,
+//         * suma un contador
+//         * Si cuenta quince numeros = true
+//         * En caso contrario = false
+//         */
+//        for(int i=0;i<carton2.length;i++){
+//            for(int j=0;j<carton2[i].length;j++){
+//                if(carton2[i][j].getId().equals("pulsado")){
+//                    numerosmarcados[c] = carton2[i][j].getText();
+//                    c++;
+//                }
+//            }
+//        }
+//
+//        if(c==15){
+//            c = 0;
+//            for(int i=0;i<15;i++){
+//                for(int j=0;j<numerospronunciados.length;j++){
+//                    if(numerosmarcados[i].equals(Integer.toString(numerospronunciados[j]))){
+//                        c++;
+//                    }
+//                }
+//            }
+//
+//            if(c==15){
+//                BingoCorrecto();
+//            }
+//            else{
+//
+//            }
+//        }
+//        else{
+//
+//        }
+//    }

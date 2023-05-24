@@ -31,7 +31,7 @@ public class DBManager {
         }
     }
 
-    public static void conectar(){
+    public static boolean conectar(){
         try{
             // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,6 +39,7 @@ public class DBManager {
             // PRUEBAS EN CLASE
 //            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bingofx?serverTimezone=UTC","root","root");
             System.out.println("Conexion al servidor establecida correctamente.");
+            return true;
         }
         catch(SQLException e){
             Label error = new Label("HA OCURRIDO UN ERROR CON LA BASE DE DATOS\n\nCausa del error: " + e.getErrorCode() + " - " + e.getMessage());
@@ -55,9 +56,11 @@ public class DBManager {
             stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
             stage.setTitle("ERROR");
             stage.show();
+            return false;
         }
         catch(Exception e){
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -71,4 +74,5 @@ public class DBManager {
             e.printStackTrace();
         }
     }
+
 }

@@ -3,11 +3,8 @@ package com.bingofx.bingofx;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -15,10 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Optional;
@@ -104,11 +98,14 @@ public class JuegoDosJugadoresController implements Initializable {
     private int indicenumerospronunciados;
 
     static String nombreganador;
-    static int contadorlinea;
-    static int contadorbingo;
+    static int contadorlineajugador1;
+    static int contadorlineajugador2;
+    static int contadorbingojugador1;
+    static int contadorbingojugador2;
     static String hizolineajugador1;
     static String hizolineajugador2;
-    static String hizobingo;
+    static String hizobingojugador1;
+    static String hizobingojugador2;
 
     private volatile boolean pausado = false;
 
@@ -167,7 +164,14 @@ public class JuegoDosJugadoresController implements Initializable {
                 p71,p72,p73,p74,p75,p76,p77,p78,p79,p80,
                 p81,p82,p83,p84,p85,p86,p87,p88,p89,p90
         };
-        contadorlinea = 0;
+        contadorlineajugador1 = 0;
+        contadorlineajugador2 = 0;
+        contadorbingojugador1 = 0;
+        contadorbingojugador2 = 0;
+        hizolineajugador1 = "No";
+        hizolineajugador2 = "No";
+        hizobingojugador1 = "No";
+        hizobingojugador2 = "No";
 
         btngenerar.setDisable(true);
         reanudar.setDisable(true);
@@ -175,7 +179,7 @@ public class JuegoDosJugadoresController implements Initializable {
         executor = Executors.newScheduledThreadPool(1);
         Runnable tarea = () -> {
             if (!pausado) {
-                jugar();
+                SacarBola();
             }
         };
         executor.scheduleAtFixedRate(tarea, 0, 3, TimeUnit.SECONDS);
@@ -208,7 +212,7 @@ public class JuegoDosJugadoresController implements Initializable {
 //
 //        fraseLineaBingo1.setText("");
 //        fraseLineaBingo2.setText("");
-        jugar();
+        SacarBola();
     }
 
     @FXML
@@ -221,7 +225,7 @@ public class JuegoDosJugadoresController implements Initializable {
         reanudarHilo();
     }
 
-    public void jugar(){
+    public void SacarBola(){
         if(indicenumerospronunciados == 89){
 
             // HACER HILO QUE OCURRA UNA VEZ, 5 SEGUNDOS, CON UN SONIDO??
@@ -233,7 +237,7 @@ public class JuegoDosJugadoresController implements Initializable {
 //            });
 
             // USANDO ESTO, LA CLASE NoBingo SE QUEDA INUTIL
-            System.out.println("ALGUIEN TIENE QUE CANTAR BINGO!!!");
+            System.out.println("ALGUIEN TIENE QUE CANTAR BINGO!!!");    //LABEL
             btngenerar.setDisable(true);
             pausar.setDisable(true);
             reanudar.setDisable(true);
@@ -276,27 +280,95 @@ public class JuegoDosJugadoresController implements Initializable {
     }
 
     @FXML
-    void CantarBingo1(ActionEvent event) {
-        cantarBingoJugador1(carton1);
-    }
-
-    @FXML
     void CantarLinea1(ActionEvent event) {
-        cantarLineaJugador1(carton1);
-    }
-
-    @FXML
-    void CantarBingo2(ActionEvent event) {
-        cantarBingoJugador2(carton2);
+        switch(cantarLineaJugador(carton1)){
+            //NO HAY NINGUNA LINEA MARCADA
+            case 0:
+                fraseLineaBingo1.setText("¡No tienes ninguna linea entera marcada!");
+            break;
+            //TODAS LAS LINEAS SON ERRONEAS
+            case 1:
+                fraseLineaBingo1.setText("¡Linea(s) incorrecta(s)!");
+            break;
+            //ENCUENTRA UNA LINEA CORRECTA
+            case 2:
+                hizolineajugador1 = "Si";
+                contadorlineajugador1 = indicenumerospronunciados;
+                fraseLineaBingo1.setTextFill(Color.BLUE);
+                fraseLineaBingo1.setText("¡HAS HECHO LINEA!");
+                btnLinea1.setDisable(true);
+                btnLinea2.setDisable(true);
+            break;
+        }
     }
 
     @FXML
     void CantarLinea2(ActionEvent event) {
-        cantarLineaJugador2(carton2);
+        switch(cantarLineaJugador(carton2)){
+            //NO HAY NINGUNA LINEA MARCADA
+            case 0:
+                fraseLineaBingo2.setText("¡No tienes ninguna linea entera marcada!");
+            break;
+            //TODAS LAS LINEAS SON ERRONEAS
+            case 1:
+                fraseLineaBingo2.setText("¡Linea(s) incorrecta(s)!");
+            break;
+            //ENCUENTRA UNA LINEA CORRECTA
+            case 2:
+                hizolineajugador2 = "Si";
+                contadorlineajugador2 = indicenumerospronunciados;
+                fraseLineaBingo2.setTextFill(Color.BLUE);
+                fraseLineaBingo2.setText("¡HAS HECHO LINEA!");
+                btnLinea1.setDisable(true);
+                btnLinea2.setDisable(true);
+            break;
+        }
+    }
+
+    @FXML
+    void CantarBingo1(ActionEvent event) {
+        switch(cantarBingoJugador(carton1)){
+            //NO ESTAN TODOS LOS NUMEROS DEL CARTON MARCADOS
+            case 0:
+                fraseLineaBingo1.setText("¡No tienes todos los numeros marcados!");
+            break;
+            //EL BINGO ES INCORRECTO
+            case 1:
+                fraseLineaBingo1.setText("¡El bingo es incorrecto!");
+            break;
+            //EL BINGO ES CORRECTO
+            case 2:
+                nombreganador = MenuDosJugadoresController.nombrejugador1;
+                hizobingojugador1 = "Si";
+                contadorbingojugador1 = indicenumerospronunciados;
+                BingoCorrecto();
+            break;
+        }
+    }
+
+    @FXML
+    void CantarBingo2(ActionEvent event) {
+        switch(cantarBingoJugador(carton2)){
+            //NO ESTAN TODOS LOS NUMEROS DEL CARTON MARCADOS
+            case 0:
+                fraseLineaBingo2.setText("¡No tienes todos los numeros marcados!");
+            break;
+            //EL BINGO ES INCORRECTO
+            case 1:
+                fraseLineaBingo2.setText("¡El bingo es incorrecto!");
+            break;
+            //EL BINGO ES CORRECTO
+            case 2:
+                nombreganador = MenuDosJugadoresController.nombrejugador2;
+                hizobingojugador2 = "Si";
+                contadorbingojugador2 = indicenumerospronunciados;
+                BingoCorrecto();
+            break;
+        }
     }
 
     public void generarHuecosCarton(Label[][] carton){
-        int[] huecos = new int[4];
+        int[] huecos;
         int hueco;
         boolean repe;
 
@@ -311,6 +383,7 @@ public class JuegoDosJugadoresController implements Initializable {
         // INTRODUCIR HUECOS EN INDICES GENERADOS ALEATORIAMENTE
 
         for(int i=0;i<carton.length;i++){
+            huecos = new int[]{11,11,11,11};
             for(int k=0;k<4;k++){
                 do{
                     repe = false;
@@ -340,7 +413,7 @@ public class JuegoDosJugadoresController implements Initializable {
             cn = 0;
             ch = 0;
             for(int j=0;j<carton.length;j++){
-                if(carton[j][i].getText().equals("")){
+                if(carton[j][i].getText().equals("0")){
                     cn++;
                 }
 
@@ -465,9 +538,9 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
-    public void cantarLineaJugador1(Label[][] carton1){
-        int c = 0;
-        String[] numerosmarcados = new String[5];
+    public int cantarLineaJugador(Label[][] carton){
+        int c;
+        String[] numerosmarcados;
         boolean linea = false;
 
         /**
@@ -476,106 +549,48 @@ public class JuegoDosJugadoresController implements Initializable {
          * Si cuenta cinco numeros = true
          * En caso contrario = false
          */
-        for(int i=0;i<carton1.length;i++){
+        //BUCLE QUE RECORRE LAS 3 FILAS DEL CARTON
+        for(int i=0;i<carton.length;i++){
             c=0;
             numerosmarcados = new String[5];
-
-            for(int j=0;j<carton1[i].length;j++){
-                if(carton1[i][j].getId().equals("pulsado")){
-                    numerosmarcados[c] = carton1[i][j].getText();
+            //BUCLE QUE RECORRE LA FILA QUE TOQUE EN BUSCA DE UNA LINEA
+            for(int j=0;j<carton[i].length;j++){
+                if(carton[i][j].getId().equals("pulsado")){
+                    numerosmarcados[c] = carton[i][j].getText();
                     c++;
                 }
             }
-
+            //SI HAY LINEA EN UNA FILA
             if(c==5){
-                linea = true;
-                break;
+                c = 0;
+                //COMPROBAMOS SI TODOS LOS NUMEROS QUE HAY EN LA LINEA SE HAN PRONUNCIADO
+                for(int k=0;k<5;k++){
+                    for(int j=0;j<numerospronunciados.length;j++){
+                        if(numerosmarcados[k].equals(Integer.toString(numerospronunciados[j]))){
+                            c++;
+                        }
+                    }
+                }
+                //SI LA LINEA ES CORRECTA
+                if(c==5){
+                    return 2;
+                }
+                //SI LA LINEA ES INCORRECTA
+                else{
+                    linea = true;
+                }
             }
         }
 
         if(linea){
-            c = 0;
-            for(int i=0;i<5;i++){
-                for(int j=0;j<numerospronunciados.length;j++){
-                    if(numerosmarcados[i].equals(Integer.toString(numerospronunciados[j]))){
-                        c++;
-                    }
-                }
-            }
-
-            if(c==5){
-                fraseLineaBingo1.setTextFill(Color.BLUE);
-                fraseLineaBingo1.setText("¡HAS HECHO LINEA!");
-                btnLinea1.setDisable(true);
-                btnLinea2.setDisable(true);
-            }
-            else{
-//                fraseLineaBingo.setTextFill(Color.RED);
-                fraseLineaBingo1.setText("¡La linea es incorrecta!");
-            }
+            return 1;
         }
         else{
-//            fraseLineaBingo.setTextFill(Color.RED);
-            fraseLineaBingo1.setText("¡No tienes ninguna linea entera marcada!");
+            return 0;
         }
     }
 
-    public void cantarLineaJugador2(Label[][] carton2){
-        int c = 0;
-        String[] numerosmarcados = new String[5];
-        boolean linea = false;
-
-        /**
-         * Recorremos las filas del array y si se encuentra un numero marcado,
-         * suma un contador.
-         * Si cuenta cinco numeros = true
-         * En caso contrario = false
-         */
-        for(int i=0;i<carton2.length;i++){
-            c=0;
-            numerosmarcados = new String[5];
-
-            for(int j=0;j<carton2[i].length;j++){
-                if(carton2[i][j].getId().equals("pulsado")){
-                    numerosmarcados[c] = carton2[i][j].getText();
-                    c++;
-                }
-            }
-
-            if(c==5){
-                linea = true;
-                break;
-            }
-        }
-
-        if(linea){
-            c = 0;
-            for(int i=0;i<5;i++){
-                for(int j=0;j<numerospronunciados.length;j++){
-                    if(numerosmarcados[i].equals(Integer.toString(numerospronunciados[j]))){
-                        c++;
-                    }
-                }
-            }
-
-            if(c==5){
-                fraseLineaBingo2.setTextFill(Color.BLUE);
-                fraseLineaBingo2.setText("¡HAS HECHO LINEA!");
-                btnLinea1.setDisable(true);
-                btnLinea2.setDisable(true);
-            }
-            else{
-//                fraseLineaBingo.setTextFill(Color.RED);
-                fraseLineaBingo2.setText("¡La linea es incorrecta!");
-            }
-        }
-        else{
-//            fraseLineaBingo.setTextFill(Color.RED);
-            fraseLineaBingo2.setText("¡No tienes ninguna linea entera marcada!");
-        }
-    }
-
-    public void cantarBingoJugador1(Label[][] carton1){
+    public int cantarBingoJugador(Label[][] carton){
         int c=0;
         String[] numerosmarcados = new String[15];
 
@@ -585,10 +600,10 @@ public class JuegoDosJugadoresController implements Initializable {
          * Si cuenta quince numeros = true
          * En caso contrario = false
          */
-        for(int i=0;i<carton1.length;i++){
-            for(int j=0;j<carton1[i].length;j++){
-                if(carton1[i][j].getId().equals("pulsado")){
-                    numerosmarcados[c] = carton1[i][j].getText();
+        for(int i=0;i<carton.length;i++){
+            for(int j=0;j<carton[i].length;j++){
+                if(carton[i][j].getId().equals("pulsado")){
+                    numerosmarcados[c] = carton[i][j].getText();
                     c++;
                 }
             }
@@ -605,59 +620,18 @@ public class JuegoDosJugadoresController implements Initializable {
             }
 
             if(c==15){
-                bingo();
+                return 2;
             }
             else{
-                fraseLineaBingo1.setText("¡El bingo es incorrecto!");
+                return 1;
             }
         }
         else{
-            fraseLineaBingo1.setText("¡No tienes todos los numeros marcados!");
+            return 0;
         }
     }
 
-    public void cantarBingoJugador2(Label[][] carton2){
-        int c=0;
-        String[] numerosmarcados = new String[15];
-
-        /**
-         * Recorremos todo el carton y si se encuentra un numero marcado,
-         * suma un contador
-         * Si cuenta quince numeros = true
-         * En caso contrario = false
-         */
-        for(int i=0;i<carton2.length;i++){
-            for(int j=0;j<carton2[i].length;j++){
-                if(carton2[i][j].getId().equals("pulsado")){
-                    numerosmarcados[c] = carton2[i][j].getText();
-                    c++;
-                }
-            }
-        }
-
-        if(c==15){
-            c = 0;
-            for(int i=0;i<15;i++){
-                for(int j=0;j<numerospronunciados.length;j++){
-                    if(numerosmarcados[i].equals(Integer.toString(numerospronunciados[j]))){
-                        c++;
-                    }
-                }
-            }
-
-            if(c==15){
-                bingo();
-            }
-            else{
-                fraseLineaBingo2.setText("¡El bingo es incorrecto!");
-            }
-        }
-        else{
-            fraseLineaBingo2.setText("¡No tienes todos los numeros marcados!");
-        }
-    }
-
-    public void bingo(){
+    public void BingoCorrecto(){
         System.out.println("BINGO");
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Bingo.fxml"));
 //        try {
