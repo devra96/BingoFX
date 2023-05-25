@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: darksalmon;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.JuegoUnJugadorController">
    <children>
-      <Pane fx:id="cartonJugador" layoutX="116.0" layoutY="362.0" prefHeight="158.0" prefWidth="434.0">
+      <Pane fx:id="cartonJugador" layoutX="112.0" layoutY="410.0" prefHeight="158.0" prefWidth="434.0">
          <children>
             <Label fx:id="c1x1" alignment="CENTER" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
                <font>
@@ -147,7 +147,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="cartonJugador2" layoutX="793.0" layoutY="362.0" prefHeight="158.0" prefWidth="434.0">
+      <Pane fx:id="cartonJugador2" layoutX="757.0" layoutY="410.0" prefHeight="158.0" prefWidth="434.0">
          <children>
             <Label fx:id="c1x11" alignment="CENTER" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
                <font>
@@ -753,5 +753,10 @@
       <Label fx:id="fraseLineaBingo" layoutX="263.0" layoutY="551.0" />
       <Label fx:id="fraseLineaBingoMaquina" layoutX="996.0" layoutY="551.0" />
       <Button fx:id="btnVolverMenuInicio" layoutX="57.0" layoutY="66.0" mnemonicParsing="false" onAction="#VolverMenuInicio" text="VOLVER AL MENU PRINCIPAL" />
+      <Label fx:id="txtNombreJugador" layoutX="308.0" layoutY="333.0" text="Label">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

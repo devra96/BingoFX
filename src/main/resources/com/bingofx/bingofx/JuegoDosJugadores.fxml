@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: darksalmon;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.JuegoDosJugadoresController">
    <children>
-      <Pane fx:id="cartonJugador" layoutX="116.0" layoutY="362.0" prefHeight="158.0" prefWidth="434.0">
+      <Pane fx:id="cartonJugador" layoutX="116.0" layoutY="402.0" prefHeight="158.0" prefWidth="434.0">
          <children>
             <Label fx:id="c1x1" alignment="CENTER" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
                <font>
@@ -147,7 +147,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="cartonJugador2" layoutX="793.0" layoutY="362.0" prefHeight="158.0" prefWidth="434.0">
+      <Pane fx:id="cartonJugador2" layoutX="785.0" layoutY="402.0" prefHeight="158.0" prefWidth="434.0">
          <children>
             <Label fx:id="c1x11" alignment="CENTER" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
                <font>
@@ -755,5 +755,20 @@
       <Button fx:id="btnVolverMenuInicio" layoutX="67.0" layoutY="76.0" mnemonicParsing="false" onAction="#VolverMenuInicio" text="VOLVER AL MENU PRINCIPAL" />
       <Button fx:id="pausar" layoutX="389.0" layoutY="50.0" mnemonicParsing="false" onAction="#pausar" text="PAUSAR" />
       <Button fx:id="reanudar" layoutX="621.0" layoutY="63.0" mnemonicParsing="false" onAction="#reanudar" text="REANUDAR" />
+      <Label fx:id="txtNombreJugador1" layoutX="293.0" layoutY="334.0" text="Label">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtNombreJugador2" layoutX="985.0" layoutY="334.0" text="Label">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtCantarBingo" layoutX="14.0" layoutY="164.0">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

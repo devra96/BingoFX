@@ -86,6 +86,15 @@ public class JuegoDosJugadoresController implements Initializable {
     @FXML
     private Label fraseLineaBingo2;
 
+    @FXML
+    private Label txtNombreJugador1;
+
+    @FXML
+    private Label txtNombreJugador2;
+
+    @FXML
+    private Label txtCantarBingo;
+
     private Label[][] carton1;
     private Label[][] carton2;
 
@@ -173,6 +182,9 @@ public class JuegoDosJugadoresController implements Initializable {
         hizobingojugador1 = "No";
         hizobingojugador2 = "No";
 
+        txtNombreJugador1.setText(MenuDosJugadoresController.nombrejugador1);
+        txtNombreJugador2.setText(MenuDosJugadoresController.nombrejugador2);
+
         btngenerar.setDisable(true);
         reanudar.setDisable(true);
 
@@ -237,7 +249,12 @@ public class JuegoDosJugadoresController implements Initializable {
 //            });
 
             // USANDO ESTO, LA CLASE NoBingo SE QUEDA INUTIL
-            System.out.println("ALGUIEN TIENE QUE CANTAR BINGO!!!");    //LABEL
+            Platform.runLater(new Runnable(){
+                @Override
+                public void run() {
+                    txtCantarBingo.setText("¡ALGUIEN TIENE QUE CANTAR BINGO!");
+                }
+            });
             btngenerar.setDisable(true);
             pausar.setDisable(true);
             reanudar.setDisable(true);

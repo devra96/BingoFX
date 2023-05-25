@@ -80,6 +80,9 @@ public class JuegoUnJugadorController implements Initializable {
     @FXML
     private Label fraseLineaBingoMaquina;
 
+    @FXML
+    private Label txtNombreJugador;
+
     private Label[][] carton1;
     private Label[][] carton2;
 
@@ -159,6 +162,7 @@ public class JuegoUnJugadorController implements Initializable {
         hizolinea = "No";
         hizobingo = "No";
         maquinatienelinea = false;
+        txtNombreJugador.setText(MenuUnJugadorController.nombrejugador);
 
         btngenerar.setDisable(true);
         reanudar.setDisable(true);
