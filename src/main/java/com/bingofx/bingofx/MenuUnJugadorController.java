@@ -49,32 +49,6 @@ public class MenuUnJugadorController {
             a.showAndWait();
         }
         else{
-            // COMO PASO EL NOMBRE A LA CLASE "JuegoUnJugadorController??"
-//            cerrarVentana(event);
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("JuegoUnJugador.fxml"));
-//            try {
-//                Parent root = fxmlLoader.load();
-//                JuegoUnJugadorController controlador = fxmlLoader.getController();
-//
-//                Scene scene = new Scene(root);
-//                Stage stage = new Stage();
-//                stage.setScene(scene);
-//                stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-//
-//                // CODIGO QUE HACE QUE CUANDO CIERRE LA VENTANA JuegoUnJugadorController SE DETENGA EL HILO
-//                stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-//                    @Override
-//                    public void handle(WindowEvent windowEvent) {
-//                        System.exit(0);
-//                    }
-//                });
-//
-//                stage.show();
-//
-//            }
-//            catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
             nombrejugador = txtNombre.getText();
             pantalla.CerrarVentanaActual();
             pantalla.IrJuegoUnJugador();
