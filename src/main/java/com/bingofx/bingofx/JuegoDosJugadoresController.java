@@ -114,6 +114,9 @@ public class JuegoDosJugadoresController implements Initializable {
     @FXML
     private Label txtBola5;
 
+    @FXML
+    private Label txtBola6;
+
     private Label[][] carton1;
     private Label[][] carton2;
 
@@ -209,6 +212,7 @@ public class JuegoDosJugadoresController implements Initializable {
         txtBola3.setOpacity(0);
         txtBola4.setOpacity(0);
         txtBola5.setOpacity(0);
+        txtBola6.setOpacity(0);
 
         btngenerar.setDisable(true);
         reanudar.setDisable(true);
@@ -619,6 +623,20 @@ public class JuegoDosJugadoresController implements Initializable {
                     }
                 });
             break;
+            case 5:
+                txtBola6.setOpacity(1);
+                Platform.runLater(new Runnable(){
+                    @Override
+                    public void run() {
+                        txtBola1.setText(Integer.toString(numerospronunciados[indicenumerospronunciados]));
+                        txtBola2.setText(Integer.toString(numerospronunciados[indicenumerospronunciados-1]));
+                        txtBola3.setText(Integer.toString(numerospronunciados[indicenumerospronunciados-2]));
+                        txtBola4.setText(Integer.toString(numerospronunciados[indicenumerospronunciados-3]));
+                        txtBola5.setText(Integer.toString(numerospronunciados[indicenumerospronunciados-4]));
+                        txtBola6.setText(Integer.toString(numerospronunciados[indicenumerospronunciados-5]));
+                    }
+                });
+            break;
             default:
                 Platform.runLater(new Runnable(){
                     @Override
@@ -628,6 +646,7 @@ public class JuegoDosJugadoresController implements Initializable {
                         txtBola3.setText(Integer.toString(numerospronunciados[indicenumerospronunciados-2]));
                         txtBola4.setText(Integer.toString(numerospronunciados[indicenumerospronunciados-3]));
                         txtBola5.setText(Integer.toString(numerospronunciados[indicenumerospronunciados-4]));
+                        txtBola6.setText(Integer.toString(numerospronunciados[indicenumerospronunciados-5]));
                     }
                 });
             break;

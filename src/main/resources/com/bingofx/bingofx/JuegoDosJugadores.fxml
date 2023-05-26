@@ -771,7 +771,7 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <HBox fx:id="filaBolas" alignment="CENTER" layoutX="129.0" layoutY="258.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="350.0" spacing="20.0" stylesheets="@css/estilos.css">
+      <HBox fx:id="filaBolas" alignment="CENTER" layoutX="129.0" layoutY="258.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="410.0" spacing="20.0" stylesheets="@css/estilos.css">
          <children>
             <Label fx:id="txtBola1" alignment="CENTER" prefHeight="50.0" prefWidth="50.0" styleClass="bola" stylesheets="@css/estilos.css" text="0">
                <opaqueInsets>
@@ -806,6 +806,14 @@
                </font>
             </Label>
             <Label fx:id="txtBola5" alignment="CENTER" prefHeight="50.0" prefWidth="50.0" styleClass="bola" stylesheets="@css/estilos.css" text="0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtBola6" alignment="CENTER" prefHeight="50.0" prefWidth="50.0" styleClass="bola" stylesheets="@css/estilos.css" text="0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
