@@ -4,10 +4,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="370.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.MenuRecordsController">
+<AnchorPane prefHeight="340.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.MenuRecordsController">
    <children>
-      <TableView fx:id="tabla" prefHeight="278.0" prefWidth="630.0">
+      <TableView fx:id="tabla" prefHeight="278.0" prefWidth="780.0">
          <columns>
             <TableColumn fx:id="colnumpartida" prefWidth="100.0" text="PARTIDA" />
             <TableColumn fx:id="colnombrejugador" prefWidth="150.0" text="NOMBRE JUGADOR" />
@@ -15,10 +16,15 @@
             <TableColumn fx:id="coltiradaslinea" prefWidth="100.0" text="TIRADAS LINEA" />
             <TableColumn fx:id="colhizobingo" prefWidth="90.0" text="¿HIZO BINGO?" />
             <TableColumn fx:id="coltiradasbingo" prefWidth="100.0" text="TIRADAS BINGO" />
+            <TableColumn fx:id="colcomentario" prefWidth="150.0" text="COMENTARIO" />
          </columns>
       </TableView>
-      <Button fx:id="btnFiltroLinea" layoutX="197.0" layoutY="325.0" mnemonicParsing="false" onAction="#FiltroLinea" text="MEJORES JUGADORES (LINEA)" />
-      <Button fx:id="btnVerHistorial" layoutX="64.0" layoutY="325.0" mnemonicParsing="false" onAction="#FiltroHistorial" text="VER HISTORIAL" />
-      <Button fx:id="btnFiltroBingo" layoutX="403.0" layoutY="325.0" mnemonicParsing="false" onAction="#FiltroBingo" text="MEJORES JUGADORES (BINGO)" />
+      <HBox alignment="CENTER" layoutY="278.0" prefHeight="62.0" prefWidth="780.0" spacing="100.0">
+         <children>
+            <Button fx:id="btnVerHistorial" mnemonicParsing="false" onAction="#FiltroHistorial" text="VER HISTORIAL" />
+            <Button fx:id="btnFiltroBingo" mnemonicParsing="false" onAction="#FiltroBingo" text="MEJORES JUGADORES (BINGO)" />
+            <Button fx:id="btnFiltroLinea" mnemonicParsing="false" onAction="#FiltroLinea" text="MEJORES JUGADORES (LINEA)" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

@@ -52,6 +52,9 @@ public class MenuRecordsController implements Initializable {
     private TableColumn<?, ?> coltiradasbingo;
 
     @FXML
+    private TableColumn<?, ?> colcomentario;
+
+    @FXML
     private TableView<Registro> tabla;
 
     private ObservableList<Registro> registros;
@@ -93,6 +96,7 @@ public class MenuRecordsController implements Initializable {
         this.coltiradaslinea.setCellValueFactory(new PropertyValueFactory("tiradaslinea"));
         this.colhizobingo.setCellValueFactory(new PropertyValueFactory("hizobingo"));
         this.coltiradasbingo.setCellValueFactory(new PropertyValueFactory("tiradasbingo"));
+        this.colcomentario.setCellValueFactory(new PropertyValueFactory("comentario"));
 
         getTablaRecords("SELECT * FROM bingofx");
         btnVerHistorial.setDisable(true);
@@ -107,7 +111,6 @@ public class MenuRecordsController implements Initializable {
 //            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bingofx?serverTimezone=UTC","root","root");
             System.out.println("Conexion al servidor establecida correctamente.");
             Statement st = con.createStatement();
-//            String sql = "SELECT * FROM bingofx ORDER BY tiradasbingo ASC LIMIT 10";
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()){
@@ -117,7 +120,8 @@ public class MenuRecordsController implements Initializable {
                 int tiradaslinea = rs.getInt("tiradaslinea");
                 String hizobingo = rs.getString("hizobingo");
                 int tiradasbingo = rs.getInt("tiradasbingo");
-                Registro r = new Registro(numpartida,nombrejugador,hizolinea,tiradaslinea,hizobingo,tiradasbingo);
+                String comentario = rs.getString("comentario");
+                Registro r = new Registro(numpartida,nombrejugador,hizolinea,tiradaslinea,hizobingo,tiradasbingo,comentario);
                 registros.add(r);
                 tabla.setItems(registros);
             }

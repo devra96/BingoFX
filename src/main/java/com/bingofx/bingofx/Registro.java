@@ -7,6 +7,7 @@ public class Registro {
     private int tiradaslinea;
     private String hizobingo;
     private int tiradasbingo;
+    private String comentario;
 
     /**
      * CONSTRUCTOR CON TODOS LOS PARAMETROS
@@ -17,13 +18,14 @@ public class Registro {
      * @param hizobingo
      * @param tiradasbingo
      */
-    public Registro(int numpartida, String nombrejugador, String hizolinea, int tiradaslinea, String hizobingo, int tiradasbingo) {
+    public Registro(int numpartida, String nombrejugador, String hizolinea, int tiradaslinea, String hizobingo, int tiradasbingo, String comentario) {
         this.numpartida = numpartida;
         this.nombrejugador = nombrejugador;
         this.hizolinea = hizolinea;
         this.tiradaslinea = tiradaslinea;
         this.hizobingo = hizobingo;
         this.tiradasbingo = tiradasbingo;
+        this.comentario = comentario;
     }
 
     /**
@@ -34,12 +36,13 @@ public class Registro {
      * @param hizobingo
      * @param tiradasbingo
      */
-    public Registro(String nombrejugador, String hizolinea, int tiradaslinea, String hizobingo, int tiradasbingo) {
+    public Registro(String nombrejugador, String hizolinea, int tiradaslinea, String hizobingo, int tiradasbingo, String comentario) {
         this.nombrejugador = nombrejugador;
         this.hizolinea = hizolinea;
         this.tiradaslinea = tiradaslinea;
         this.hizobingo = hizobingo;
         this.tiradasbingo = tiradasbingo;
+        this.comentario = comentario;
     }
 
     public int getNumpartida() {
@@ -88,5 +91,13 @@ public class Registro {
 
     public void setTiradasbingo(int tiradasbingo) {
         this.tiradasbingo = tiradasbingo;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

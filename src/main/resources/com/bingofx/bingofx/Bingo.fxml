@@ -2,19 +2,67 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.BingoController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.BingoController">
    <children>
-      <Label layoutX="49.0" layoutY="39.0" text="¡¡¡BINGO!!!">
+      <Label fx:id="txtJugador" alignment="CENTER" layoutX="26.0" layoutY="142.0" prefHeight="30.0" prefWidth="343.0" text="GANADOR: 123">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="69.0" layoutY="108.0" text="¿Que quieres hacer?" />
-      <Button fx:id="btnJugar1" layoutX="26.0" layoutY="154.0" mnemonicParsing="false" onAction="#JugarUnJugador" text="Jugar de nuevo (Modo 1 jugador)" />
-      <Button fx:id="btnVolver" layoutX="78.0" layoutY="243.0" mnemonicParsing="false" onAction="#VolverInicio" text="Volver al inicio" />
-      <Button fx:id="btnJugar2" layoutX="23.0" layoutY="198.0" mnemonicParsing="false" onAction="#JugarDosJugadores" text="Jugar de nuevo (Modo 2 jugadores)" />
+      <ImageView fitHeight="113.0" fitWidth="364.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/bingo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="251.0" layoutY="349.0" text="¿Que quieres hacer?">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="451.0" layoutY="25.0" text="¿Quieres dejar un comentario?">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtComentario" layoutX="451.0" layoutY="71.0" prefHeight="200.0" prefWidth="285.0" promptText="Escribe aqui tu comentario... (max. 200 caracteres)" wrapText="true">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="btnGuardarComentario" layoutX="519.0" layoutY="292.0" mnemonicParsing="false" onAction="#guardarComentario" text="GUARDAR COMENTARIO" />
+      <Label fx:id="txtLinea" alignment="CENTER" layoutX="26.0" layoutY="192.0" prefHeight="30.0" prefWidth="343.0" text="No has hecho linea...">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtBingo" alignment="CENTER" layoutX="26.0" layoutY="242.0" prefHeight="30.0" prefWidth="343.0" text="No has hecho bingo...">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtRegistro" alignment="CENTER" layoutX="14.0" layoutY="290.0" prefHeight="30.0" prefWidth="395.0" text="¡Se han registrado tus resultados!" textFill="BLUE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="1.0" layoutY="396.0" prefHeight="100.0" prefWidth="800.0" spacing="100.0">
+         <children>
+            <Button fx:id="btnJugar1" mnemonicParsing="false" onAction="#JugarUnJugador" prefWidth="153.0" text="Jugar (Modo 1 jugador)" />
+            <Button fx:id="btnJugar2" mnemonicParsing="false" onAction="#JugarDosJugadores" text="Jugar (Modo 2 jugadores)" />
+            <Button fx:id="btnVolver" mnemonicParsing="false" onAction="#VolverInicio" prefWidth="153.0" text="Volver al menu de inicio" />
+         </children>
+      </HBox>
+      <Label fx:id="txtTestComentario" layoutX="694.0" layoutY="290.0" textFill="BLUE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

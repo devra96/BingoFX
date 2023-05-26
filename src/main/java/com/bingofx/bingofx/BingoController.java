@@ -9,9 +9,12 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -30,6 +33,27 @@ public class BingoController implements Initializable {
 
     @FXML
     private Button btnVolver;
+
+    @FXML
+    private Button btnGuardarComentario;
+
+    @FXML
+    private Label txtBingo;
+
+    @FXML
+    private TextArea txtComentario;
+
+    @FXML
+    private Label txtJugador;
+
+    @FXML
+    private Label txtLinea;
+
+    @FXML
+    private Label txtRegistro;
+
+    @FXML
+    private Label txtTestComentario;
 
     private String nombrejugador;
 
@@ -74,32 +98,28 @@ public class BingoController implements Initializable {
             hizobingo = JuegoUnJugadorController.hizobingo;
             tiradaslinea = JuegoUnJugadorController.contadorlinea;
             tiradasbingo = JuegoUnJugadorController.contadorbingo;
-            insertRegistro(nombrejugador,hizolinea,tiradaslinea,hizobingo,tiradasbingo);
-            RestaurarRegistros();
+            PonerTextos();
         }
         //DOS JUGADORES
         else{
+            //SI GANA EL JUGADOR 1
             if(JuegoDosJugadoresController.nombreganador.equals(MenuDosJugadoresController.nombrejugador1)){
                 nombrejugador = JuegoDosJugadoresController.nombreganador;
                 hizolinea = JuegoDosJugadoresController.hizolineajugador1;
                 tiradaslinea = JuegoDosJugadoresController.contadorlineajugador1;
                 hizobingo = JuegoDosJugadoresController.hizobingojugador1;
                 tiradasbingo = JuegoDosJugadoresController.contadorbingojugador1;
+                PonerTextos();
             }
+            //SI GANA EL JUGADOR 2
             else{
                 nombrejugador = JuegoDosJugadoresController.nombreganador;
                 hizolinea = JuegoDosJugadoresController.hizolineajugador2;
                 tiradaslinea = JuegoDosJugadoresController.contadorlineajugador2;
                 hizobingo = JuegoDosJugadoresController.hizobingojugador2;
                 tiradasbingo = JuegoDosJugadoresController.contadorbingojugador2;
+                PonerTextos();
             }
-            if(insertRegistro(nombrejugador,hizolinea,tiradaslinea,hizobingo,tiradasbingo)){
-                //setText se han guardado los datos
-            }
-            else{
-                //setText no se han podido guardar los datos
-            }
-            RestaurarRegistros();
         }
 
         System.out.println("Jugador: " + nombrejugador);
@@ -107,7 +127,7 @@ public class BingoController implements Initializable {
         System.out.println("Tiradas linea: " + tiradaslinea);
         System.out.println("¿Hizo bingo?: " + hizobingo);
         System.out.println("Tiradas bingo: " + tiradasbingo);
-
+        RestaurarRegistros();
     }
 
     public void RestaurarRegistros(){
@@ -127,6 +147,70 @@ public class BingoController implements Initializable {
         JuegoDosJugadoresController.contadorbingojugador1 = 0;
         JuegoDosJugadoresController.hizobingojugador2 = null;
         JuegoDosJugadoresController.contadorbingojugador2 = 0;
+    }
+
+    public void PonerTextos(){
+
+        //UN JUGADOR
+        if(MenuUnJugadorController.nombrejugador != null){
+            //TEXTO JUGADOR
+            if(hizobingo.equals("Si")){
+                txtJugador.setText("¡HAS GANADO!");
+            }
+            else{
+                txtJugador.setText("Has perdido...");
+            }
+            //TEXTO LINEA
+            if(hizolinea.equals("Si")){
+                txtLinea.setText("Has hecho linea en " + tiradaslinea + " tiradas.");
+            }
+            else{
+                txtLinea.setText("No has hecho linea...");
+            }
+            //TEXTO BINGO
+            if(hizobingo.equals("Si")){
+                txtBingo.setText("Has hecho bingo en " + tiradasbingo + " tiradas.");
+            }
+            else{
+                txtBingo.setText("No has hecho bingo...");
+            }
+            //TEXTO REGISTRO
+            if(insertRegistro(nombrejugador,hizolinea,tiradaslinea,hizobingo,tiradasbingo)){
+                txtRegistro.setTextFill(Color.BLUE);
+                txtRegistro.setText("¡Se han registrado tus resultados!");
+            }
+            else{
+                txtRegistro.setTextFill(Color.RED);
+                txtRegistro.setText("¡No se han podido guardar los resultados!");
+                txtComentario.setDisable(true);
+                btnGuardarComentario.setDisable(true);
+            }
+        }
+        //DOS JUGADORES
+        else{
+            //TEXTO JUGADOR
+            txtJugador.setText("Ganador: " + nombrejugador);
+            //TEXTO LINEA
+            if(hizolinea.equals("Si")){
+                txtLinea.setText("Has hecho linea en " + tiradaslinea + " tiradas.");
+            }
+            else{
+                txtLinea.setText("No has hecho linea...");
+            }
+            //TEXTO BINGO
+            txtBingo.setText("Has hecho bingo en " + tiradasbingo + " tiradas.");
+            //TEXTO REGISTRO
+            if(insertRegistro(nombrejugador,hizolinea,tiradaslinea,hizobingo,tiradasbingo)){
+                txtRegistro.setTextFill(Color.BLUE);
+                txtRegistro.setText("¡Se han registrado tus resultados!");
+            }
+            else{
+                txtRegistro.setTextFill(Color.RED);
+                txtRegistro.setText("¡No se han podido guardar los resultados!");
+                txtComentario.setDisable(true);
+                btnGuardarComentario.setDisable(true);
+            }
+        }
     }
 
     public boolean insertRegistro(String nombrejugador,String hizolinea,int tiradaslinea,String hizobingo,int tiradasbingo){
@@ -176,6 +260,73 @@ public class BingoController implements Initializable {
         catch(Exception e){
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public boolean GuardarComentario(){
+        try{
+            // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/devra1?serverTimezone=UTC","devra96","n6CKKs8GUz");
+            // PRUEBAS EN CLASE
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bingofx?serverTimezone=UTC","root","root");
+            System.out.println("Conexion al servidor establecida correctamente.");
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            String sql = "SELECT * FROM bingofx";
+            ResultSet rs = st.executeQuery(sql);
+
+            rs.last();
+            rs.updateString("comentario",txtComentario.getText());
+            rs.updateRow();
+
+            con.close();
+            return true;
+        }
+        catch(SQLException e){
+//            System.out.println("Error en la consulta: " + e.getErrorCode() + " - " + e.getMessage());
+
+            Label error = new Label("HA OCURRIDO UN ERROR CON LA BASE DE DATOS\n\nCausa del error: " + e.getErrorCode() + " - " + e.getMessage());
+            Insets pad = new Insets(20);
+            error.setPadding(pad);
+//            error.setLayoutX(37);
+//            error.setLayoutY(108);
+
+            Pane p = new Pane();
+            p.getChildren().addAll(error);
+            p.prefHeight(232.0);
+            p.prefWidth(348.0);
+            Stage stage = new Stage();
+            Scene scene = new Scene(p);
+            stage.setScene(scene);
+            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+            stage.setTitle("ERROR");
+            stage.show();
+            return false;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @FXML
+    void guardarComentario(ActionEvent event) {
+        if(txtComentario.getLength() > 200){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("ERROR");
+            a.setHeaderText("Ha ocurrido un error.");
+            a.setContentText("El comentario no debe superar los 200 caracteres.");
+            a.showAndWait();
+        }
+        else{
+            if(GuardarComentario()){
+                txtTestComentario.setText("¡OK!");
+                txtComentario.setDisable(true);
+                btnGuardarComentario.setDisable(true);
+            }
+            else{
+                txtTestComentario.setText("ERROR");
+            }
         }
     }
 }
