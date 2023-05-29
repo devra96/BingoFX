@@ -105,6 +105,9 @@ public class JuegoUnJugadorController implements Initializable {
     @FXML
     private Label txtBola6;
 
+    @FXML
+    private Label txtContadorBolas;
+
     private Label[][] carton1;
     private Label[][] carton2;
 
@@ -192,6 +195,8 @@ public class JuegoUnJugadorController implements Initializable {
         txtBola4.setOpacity(0);
         txtBola5.setOpacity(0);
         txtBola6.setOpacity(0);
+
+        txtContadorBolas.setText("Bola: " + indicenumerospronunciados + "/90");
 
         btngenerar.setDisable(true);
         reanudar.setDisable(true);
@@ -296,6 +301,7 @@ public class JuegoUnJugadorController implements Initializable {
             @Override
             public void run() {
                 fraseLineaBingo.setText("");
+                txtContadorBolas.setText("Bola: " + indicenumerospronunciados + "/90");
             }
         });
 
