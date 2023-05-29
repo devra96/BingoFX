@@ -228,7 +228,7 @@ public class JuegoDosJugadoresController implements Initializable {
                 SacarBola();
             }
         };
-        executor.scheduleAtFixedRate(tarea, 0, 3, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(tarea, 0, 5, TimeUnit.SECONDS);
     }
 
     private void pausarHilo() {
@@ -253,11 +253,6 @@ public class JuegoDosJugadoresController implements Initializable {
 
     @FXML
     void generar(ActionEvent event) {
-//        sacarNumero(pronunciados,numerospronunciados,indicenumerospronunciados);
-//        indicenumerospronunciados++;
-//
-//        fraseLineaBingo1.setText("");
-//        fraseLineaBingo2.setText("");
         SacarBola();
     }
 
@@ -336,17 +331,19 @@ public class JuegoDosJugadoresController implements Initializable {
         switch(cantarLineaJugador(carton1)){
             //NO HAY NINGUNA LINEA MARCADA
             case 0:
+                fraseLineaBingo1.setTextFill(Color.RED);
                 fraseLineaBingo1.setText("¡No tienes ninguna linea entera marcada!");
             break;
             //TODAS LAS LINEAS SON ERRONEAS
             case 1:
+                fraseLineaBingo1.setTextFill(Color.RED);
                 fraseLineaBingo1.setText("¡Linea(s) incorrecta(s)!");
             break;
             //ENCUENTRA UNA LINEA CORRECTA
             case 2:
                 hizolineajugador1 = "Si";
                 contadorlineajugador1 = indicenumerospronunciados;
-                fraseLineaBingo1.setTextFill(Color.BLUE);
+                fraseLineaBingo1.setTextFill(Color.GREEN);
                 fraseLineaBingo1.setText("¡HAS HECHO LINEA!");
                 btnLinea1.setDisable(true);
                 btnLinea2.setDisable(true);
@@ -359,17 +356,19 @@ public class JuegoDosJugadoresController implements Initializable {
         switch(cantarLineaJugador(carton2)){
             //NO HAY NINGUNA LINEA MARCADA
             case 0:
+                fraseLineaBingo2.setTextFill(Color.RED);
                 fraseLineaBingo2.setText("¡No tienes ninguna linea entera marcada!");
             break;
             //TODAS LAS LINEAS SON ERRONEAS
             case 1:
+                fraseLineaBingo2.setTextFill(Color.RED);
                 fraseLineaBingo2.setText("¡Linea(s) incorrecta(s)!");
             break;
             //ENCUENTRA UNA LINEA CORRECTA
             case 2:
                 hizolineajugador2 = "Si";
                 contadorlineajugador2 = indicenumerospronunciados;
-                fraseLineaBingo2.setTextFill(Color.BLUE);
+                fraseLineaBingo2.setTextFill(Color.GREEN);
                 fraseLineaBingo2.setText("¡HAS HECHO LINEA!");
                 btnLinea1.setDisable(true);
                 btnLinea2.setDisable(true);

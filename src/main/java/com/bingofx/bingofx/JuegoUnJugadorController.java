@@ -206,26 +206,10 @@ public class JuegoUnJugadorController implements Initializable {
         executor = Executors.newScheduledThreadPool(1);
         Runnable tarea = () -> {
             if (!pausado) {
-//                sacarNumero(carton1,carton2,pronunciados,numerospronunciados,indicenumerospronunciados);
-//                indicenumerospronunciados++;
-//
-//                fraseLineaBingo.setText("");
-//
-//                if(!maquinatienelinea){
-//                    if(comprobarLineaMaquina(carton2)){
-//                        maquinatienelinea = true;
-//                    }
-//                }
-//
-//                if(comprobarBingoMaquina(carton2)){
-//                    bingo();
-//                    System.out.println("BINGO");
-//                }
-//                System.out.println("aa");
                 SacarBola();
             }
         };
-        executor.scheduleAtFixedRate(tarea, 0, 3, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(tarea, 0, 5, TimeUnit.SECONDS);
     }
 
     private void pausarHilo() {
@@ -249,37 +233,6 @@ public class JuegoUnJugadorController implements Initializable {
 
     @FXML
     void generar(ActionEvent event) {
-//        cartongenerado = false;
-//
-//        do{
-//            quitarIdsCasillas();
-//            carton1 = new Label[][]{
-//                    {c1x1, c1x2, c1x3, c1x4, c1x5, c1x6, c1x7, c1x8, c1x9},
-//                    {c2x1, c2x2, c2x3, c2x4, c2x5, c2x6, c2x7, c2x8, c2x9},
-//                    {c3x1, c3x2, c3x3, c3x4, c3x5, c3x6, c3x7, c3x8, c3x9}
-//            };
-//            generarHuecosCarton(carton1);
-//            cartongenerado = comprobarHuecosCarton(carton1);
-//        }while(!cartongenerado);
-//        generarNumerosCarton(carton1);
-
-//        btngenerar.setDisable(true);
-
-        // JUGAR
-//        sacarNumero(carton1,carton2,pronunciados,numerospronunciados,indicenumerospronunciados);
-//        indicenumerospronunciados++;
-//
-//        fraseLineaBingo.setText("");
-//
-//        if(!maquinatienelinea){
-//            if(comprobarLineaMaquina(carton2)){
-//                maquinatienelinea = true;
-//            }
-//        }
-//
-//        if(comprobarBingoMaquina(carton2)){
-//            bingo();
-//        }
         SacarBola();
     }
 
@@ -344,15 +297,17 @@ public class JuegoUnJugadorController implements Initializable {
         switch(CantarLineaJugador(carton1)){
             //NO HAY NINGUNA LINEA MARCADA
             case 0:
+                fraseLineaBingo.setTextFill(Color.RED);
                 fraseLineaBingo.setText("¡No tienes ninguna linea entera marcada!");
             break;
             //TODAS LAS LINEAS SON ERRONEAS
             case 1:
+                fraseLineaBingo.setTextFill(Color.RED);
                 fraseLineaBingo.setText("¡Linea(s) incorrecta(s)!");
             break;
             //ENCUENTRA UNA LINEA CORRECTA
             case 2:
-                fraseLineaBingo.setTextFill(Color.BLUE);
+                fraseLineaBingo.setTextFill(Color.GREEN);
                 fraseLineaBingo.setText("¡HAS HECHO LINEA!");
                 btnLinea.setDisable(true);
                 fraseLineaBingoMaquina.setOpacity(0);
@@ -723,10 +678,12 @@ public class JuegoUnJugadorController implements Initializable {
                 BingoCorrecto();
             }
             else{
+                fraseLineaBingo.setTextFill(Color.RED);
                 fraseLineaBingo.setText("¡El bingo es incorrecto!");
             }
         }
         else{
+            fraseLineaBingo.setTextFill(Color.RED);
             fraseLineaBingo.setText("¡No tienes todos los numeros marcados!");
         }
 
@@ -816,7 +773,7 @@ public class JuegoUnJugadorController implements Initializable {
             }
             //SI HAY LINEA CORRECTA
             if(c==5){
-                fraseLineaBingoMaquina.setTextFill(Color.BLUE);
+                fraseLineaBingoMaquina.setTextFill(Color.GREEN);
                 fraseLineaBingoMaquina.setText("¡LA MAQUINA HA HECHO LINEA!");
                 btnLinea.setDisable(true);
 

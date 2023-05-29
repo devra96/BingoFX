@@ -15,15 +15,16 @@
                   <Image url="@img/a.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="314.0" fitWidth="464.0" layoutX="4.0" pickOnBounds="true">
+            <ImageView fitHeight="300.0" fitWidth="472.0" pickOnBounds="true">
                <image>
                   <Image url="@img/logo22.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnunjugador" layoutX="173.0" layoutY="239.0" mnemonicParsing="false" onAction="#JugarUnJugador" prefHeight="50.0" prefWidth="100.0" stylesheets="@css/estilos.css" text="1 jugador" />
-            <Button fx:id="btnVerRecords" layoutX="173.0" layoutY="381.0" mnemonicParsing="false" onAction="#VerRecords" prefHeight="50.0" prefWidth="100.0" text="Ver records" />
-            <Button fx:id="btnSalir" layoutX="173.0" layoutY="454.0" mnemonicParsing="false" onAction="#Salir" prefHeight="50.0" prefWidth="100.0" text="Salir" />
-            <Button fx:id="btndosjugadores" layoutX="173.0" layoutY="314.0" mnemonicParsing="false" onAction="#JugarDosJugadores" prefHeight="50.0" prefWidth="100.0" text="2 jugadores" />
+            <Button fx:id="btnunjugador" layoutX="186.0" layoutY="210.0" mnemonicParsing="false" onAction="#JugarUnJugador" prefHeight="50.0" prefWidth="100.0" stylesheets="@css/estilos.css" text="1 jugador" />
+            <Button fx:id="btnVerRecords" layoutX="186.0" layoutY="330.0" mnemonicParsing="false" onAction="#VerRecords" prefHeight="50.0" prefWidth="100.0" text="Ver records" />
+            <Button fx:id="btnSalir" layoutX="186.0" layoutY="450.0" mnemonicParsing="false" onAction="#Salir" prefHeight="50.0" prefWidth="100.0" text="Salir" />
+            <Button fx:id="btndosjugadores" layoutX="186.0" layoutY="270.0" mnemonicParsing="false" onAction="#JugarDosJugadores" prefHeight="50.0" prefWidth="100.0" text="2 jugadores" />
+            <Button fx:id="btnManual" layoutX="186.0" layoutY="390.0" mnemonicParsing="false" onAction="#VerManual" prefHeight="50.0" prefWidth="100.0" stylesheets="@css/estilos.css" text="Ver manual" />
          </children>
       </AnchorPane>
    </children>

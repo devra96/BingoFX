@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: darksalmon;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.JuegoUnJugadorController">
    <children>
-      <Pane fx:id="cartonJugador" layoutX="112.0" layoutY="410.0" prefHeight="158.0" prefWidth="434.0">
+      <Pane fx:id="cartonJugador" layoutX="116.0" layoutY="402.0" prefHeight="158.0" prefWidth="434.0">
          <children>
             <Label fx:id="c1x1" alignment="CENTER" onMouseClicked="#MarcarNumero" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
                <font>
@@ -149,7 +149,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="cartonJugador2" layoutX="757.0" layoutY="410.0" prefHeight="158.0" prefWidth="434.0">
+      <Pane fx:id="cartonJugador2" layoutX="757.0" layoutY="402.0" prefHeight="158.0" prefWidth="434.0">
          <children>
             <Label fx:id="c1x11" alignment="CENTER" prefHeight="50.0" prefWidth="50.0" styleClass="casilla" stylesheets="@css/estilos.css" text="1">
                <font>
@@ -288,31 +288,52 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="btngenerar" layoutX="600.0" layoutY="439.0" mnemonicParsing="false" onAction="#SacarBola" prefHeight="100.0" prefWidth="100.0" text="SACAR BOLA" />
-      <Button fx:id="btnLinea" layoutX="178.0" layoutY="618.0" mnemonicParsing="false" onAction="#CantarLinea" text="¡CANTAR LINEA!" />
-      <Button fx:id="btnBingo" layoutX="343.0" layoutY="618.0" mnemonicParsing="false" onAction="#CantarBingo" text="¡CANTAR BINGO!" />
-      <Label fx:id="fraseLineaBingo" layoutX="257.0" layoutY="583.0" />
-      <Label fx:id="fraseLineaBingoMaquina" layoutX="914.0" layoutY="592.0" />
-      <Label fx:id="txtNombreJugador" alignment="CENTER" layoutX="145.0" layoutY="334.0" prefHeight="47.0" prefWidth="369.0" text="Jugador">
+      <Button fx:id="btngenerar" layoutX="600.0" layoutY="439.0" mnemonicParsing="false" onAction="#SacarBola" prefHeight="100.0" prefWidth="100.0" text="SACAR BOLA" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+      <Button fx:id="btnLinea" layoutX="112.0" layoutY="631.0" mnemonicParsing="false" onAction="#CantarLinea" prefWidth="200.0" text="¡CANTAR LINEA!">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <Button fx:id="btnBingo" layoutX="346.0" layoutY="631.0" mnemonicParsing="false" onAction="#CantarBingo" prefWidth="200.0" text="¡CANTAR BINGO!">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <Label fx:id="fraseLineaBingo" alignment="CENTER" layoutX="116.0" layoutY="568.0" prefHeight="47.0" prefWidth="434.0" text="¡HAS HECHO LINEA!">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Label fx:id="fraseLineaBingoMaquina" alignment="CENTER" layoutX="757.0" layoutY="568.0" prefHeight="47.0" prefWidth="434.0" textFill="LIME">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Label fx:id="txtNombreJugador" alignment="CENTER" layoutX="145.0" layoutY="334.0" prefHeight="47.0" prefWidth="369.0" text="12345678901234567890">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Pane prefHeight="300.0" prefWidth="1300.0">
+      <Pane prefHeight="300.0" prefWidth="1300.0" style="-fx-background-color: green;">
          <children>
-            <Label fx:id="marcador" alignment="CENTER" layoutX="6.0" layoutY="70.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-radius: 100; -fx-background-radius: 100;" styleClass="casilla" stylesheets="@css/estilos.css" text="0">
+            <Label fx:id="marcador" alignment="CENTER" layoutX="156.0" layoutY="82.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-radius: 100; -fx-background-radius: 100;" styleClass="casilla" stylesheets="@css/estilos.css" text="0">
                <font>
                   <Font size="66.0" />
                </font>
             </Label>
-            <Label fx:id="txtContadorBolas" layoutX="8.0" layoutY="190.0" text="Bola: 0/90">
+            <Label fx:id="txtContadorBolas" layoutX="156.0" layoutY="198.0" styleClass="casilla" stylesheets="@css/estilos.css" text="Bola: 0/90">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="pausar" layoutX="178.0" layoutY="74.0" mnemonicParsing="false" onAction="#pausar" prefHeight="140.0" prefWidth="200.0" text="MODO MANUAL" />
-            <Button fx:id="reanudar" layoutX="388.0" layoutY="74.0" mnemonicParsing="false" onAction="#reanudar" prefHeight="140.0" prefWidth="200.0" text="MODO AUTOMATICO" />
-            <HBox fx:id="filaBolas" alignment="CENTER" layoutX="179.0" layoutY="221.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="410.0" spacing="20.0" stylesheets="@css/estilos.css">
+            <Button fx:id="pausar" layoutX="445.0" layoutY="25.0" mnemonicParsing="false" onAction="#pausar" prefHeight="140.0" prefWidth="200.0" text="MODO MANUAL" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Button>
+            <Button fx:id="reanudar" layoutX="655.0" layoutY="25.0" mnemonicParsing="false" onAction="#reanudar" prefHeight="140.0" prefWidth="200.0" text="MODO AUTOMATICO" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Button>
+            <HBox fx:id="filaBolas" alignment="CENTER" layoutX="446.0" layoutY="172.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="410.0" spacing="20.0" stylesheets="@css/estilos.css">
                <children>
                   <Label fx:id="txtBola1" alignment="CENTER" prefHeight="50.0" prefWidth="50.0" styleClass="bola" stylesheets="@css/estilos.css" text="0">
                      <opaqueInsets>
@@ -821,7 +842,10 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="btnVolverMenuInicio" mnemonicParsing="false" onAction="#VolverMenuInicio" text="VOLVER AL MENU PRINCIPAL" />
+            <Button fx:id="btnVolverMenuInicio" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#VolverMenuInicio" text="VOLVER AL MENU PRINCIPAL">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
          </children>
       </Pane>
    </children>
