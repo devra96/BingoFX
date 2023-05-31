@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -130,22 +127,28 @@ public class MenuRecordsController implements Initializable {
         catch(SQLException e){
 //            System.out.println("Error en la consulta: " + e.getErrorCode() + " - " + e.getMessage());
 
-            Label error = new Label("HA OCURRIDO UN ERROR CON LA BASE DE DATOS\n\nCausa del error: " + e.getErrorCode() + " - " + e.getMessage());
-            Insets pad = new Insets(20);
-            error.setPadding(pad);
-//            error.setLayoutX(37);
-//            error.setLayoutY(108);
+//            Label error = new Label("HA OCURRIDO UN ERROR CON LA BASE DE DATOS\n\nCausa del error: " + e.getErrorCode() + " - " + e.getMessage());
+//            Insets pad = new Insets(20);
+//            error.setPadding(pad);
+////            error.setLayoutX(37);
+////            error.setLayoutY(108);
+//
+//            Pane p = new Pane();
+//            p.getChildren().addAll(error);
+//            p.prefHeight(232.0);
+//            p.prefWidth(348.0);
+//            Stage stage = new Stage();
+//            Scene scene = new Scene(p);
+//            stage.setScene(scene);
+//            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
+//            stage.setTitle("ERROR");
+//            stage.show();
 
-            Pane p = new Pane();
-            p.getChildren().addAll(error);
-            p.prefHeight(232.0);
-            p.prefWidth(348.0);
-            Stage stage = new Stage();
-            Scene scene = new Scene(p);
-            stage.setScene(scene);
-            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-            stage.setTitle("ERROR");
-            stage.show();
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("ERROR");
+            a.setHeaderText("HA OCURRIDO UN ERROR CON LA BASE DE DATOS");
+            a.setContentText("Causa del error: " + e.getErrorCode() + " - " + e.getMessage());
+            a.showAndWait();
         }
         catch(Exception e){
             e.printStackTrace();

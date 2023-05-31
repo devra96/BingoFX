@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -120,6 +121,12 @@ public class JuegoDosJugadoresController implements Initializable {
     @FXML
     private Label txtContadorBolas;
 
+    @FXML
+    private ImageView imgOkLinea1;
+
+    @FXML
+    private ImageView imgOkLinea2;
+
     private Label[][] carton1;
     private Label[][] carton2;
 
@@ -216,6 +223,8 @@ public class JuegoDosJugadoresController implements Initializable {
         txtBola4.setOpacity(0);
         txtBola5.setOpacity(0);
         txtBola6.setOpacity(0);
+        imgOkLinea1.setOpacity(0);
+        imgOkLinea2.setOpacity(0);
 
         txtContadorBolas.setText("Bola: " + indicenumerospronunciados + "/90");
 
@@ -347,6 +356,7 @@ public class JuegoDosJugadoresController implements Initializable {
                 fraseLineaBingo1.setText("¡HAS HECHO LINEA!");
                 btnLinea1.setDisable(true);
                 btnLinea2.setDisable(true);
+                imgOkLinea1.setOpacity(1);
             break;
         }
     }
@@ -372,6 +382,7 @@ public class JuegoDosJugadoresController implements Initializable {
                 fraseLineaBingo2.setText("¡HAS HECHO LINEA!");
                 btnLinea1.setDisable(true);
                 btnLinea2.setDisable(true);
+                imgOkLinea2.setOpacity(1);
             break;
         }
     }

@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -869,5 +871,15 @@
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Label>
+      <ImageView fx:id="imgOkLinea1" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/ok.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgOkLinea2" fitHeight="20.0" fitWidth="20.0" layoutX="857.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/ok.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
