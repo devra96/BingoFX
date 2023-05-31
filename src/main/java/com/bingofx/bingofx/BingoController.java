@@ -130,7 +130,7 @@ public class BingoController implements Initializable {
         RestaurarRegistros();
     }
 
-    public void RestaurarRegistros(){
+    public static void RestaurarRegistros(){
         MenuUnJugadorController.nombrejugador = null;
         JuegoUnJugadorController.hizolinea = null;
         JuegoUnJugadorController.contadorlinea = 0;

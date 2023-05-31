@@ -773,10 +773,14 @@ public class JuegoUnJugadorController implements Initializable {
             }
             //SI HAY LINEA CORRECTA
             if(c==5){
-                fraseLineaBingoMaquina.setTextFill(Color.GREEN);
-                fraseLineaBingoMaquina.setText("¡LA MAQUINA HA HECHO LINEA!");
+                Platform.runLater(new Runnable(){
+                    @Override
+                    public void run() {
+                        fraseLineaBingoMaquina.setTextFill(Color.GREEN);
+                        fraseLineaBingoMaquina.setText("¡LA MAQUINA HA HECHO LINEA!");
+                    }
+                });
                 btnLinea.setDisable(true);
-
                 return true;
             }
         }
@@ -864,6 +868,7 @@ public class JuegoUnJugadorController implements Initializable {
 //            catch (IOException e) {
 //                throw new RuntimeException(e);
 //            }
+            BingoController.RestaurarRegistros();
             pantalla.IrMenuInicio();
         }
     }

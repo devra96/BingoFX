@@ -392,10 +392,12 @@ public class JuegoDosJugadoresController implements Initializable {
         switch(cantarBingoJugador(carton1)){
             //NO ESTAN TODOS LOS NUMEROS DEL CARTON MARCADOS
             case 0:
+                fraseLineaBingo1.setTextFill(Color.RED);
                 fraseLineaBingo1.setText("¡No tienes todos los numeros marcados!");
             break;
             //EL BINGO ES INCORRECTO
             case 1:
+                fraseLineaBingo1.setTextFill(Color.RED);
                 fraseLineaBingo1.setText("¡El bingo es incorrecto!");
             break;
             //EL BINGO ES CORRECTO
@@ -413,10 +415,12 @@ public class JuegoDosJugadoresController implements Initializable {
         switch(cantarBingoJugador(carton2)){
             //NO ESTAN TODOS LOS NUMEROS DEL CARTON MARCADOS
             case 0:
+                fraseLineaBingo2.setTextFill(Color.RED);
                 fraseLineaBingo2.setText("¡No tienes todos los numeros marcados!");
             break;
             //EL BINGO ES INCORRECTO
             case 1:
+                fraseLineaBingo2.setTextFill(Color.RED);
                 fraseLineaBingo2.setText("¡El bingo es incorrecto!");
             break;
             //EL BINGO ES CORRECTO
@@ -826,6 +830,7 @@ public class JuegoDosJugadoresController implements Initializable {
 //            catch (IOException e) {
 //                throw new RuntimeException(e);
 //            }
+            BingoController.RestaurarRegistros();
             pantalla.IrMenuInicio();
         }
     }

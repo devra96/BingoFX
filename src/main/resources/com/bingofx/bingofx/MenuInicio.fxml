@@ -5,6 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox id="pane" alignment="CENTER" prefHeight="561.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bingofx.bingofx.MenuInicioController">
    <children>
@@ -20,11 +21,26 @@
                   <Image url="@img/logo22.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnunjugador" layoutX="186.0" layoutY="210.0" mnemonicParsing="false" onAction="#JugarUnJugador" prefHeight="50.0" prefWidth="100.0" stylesheets="@css/estilos.css" text="1 jugador" />
-            <Button fx:id="btnVerRecords" layoutX="186.0" layoutY="330.0" mnemonicParsing="false" onAction="#VerRecords" prefHeight="50.0" prefWidth="100.0" text="Ver records" />
-            <Button fx:id="btnSalir" layoutX="186.0" layoutY="450.0" mnemonicParsing="false" onAction="#Salir" prefHeight="50.0" prefWidth="100.0" text="Salir" />
-            <Button fx:id="btndosjugadores" layoutX="186.0" layoutY="270.0" mnemonicParsing="false" onAction="#JugarDosJugadores" prefHeight="50.0" prefWidth="100.0" text="2 jugadores" />
-            <Button fx:id="btnManual" layoutX="186.0" layoutY="390.0" mnemonicParsing="false" onAction="#VerManual" prefHeight="50.0" prefWidth="100.0" stylesheets="@css/estilos.css" text="Ver manual" />
+            <Button fx:id="btnunjugador" alignment="CENTER" layoutX="161.0" layoutY="210.0" mnemonicParsing="false" onAction="#JugarUnJugador" prefHeight="50.0" prefWidth="150.0" stylesheets="@css/estilos.css" text="1 jugador" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button fx:id="btnVerRecords" alignment="CENTER" layoutX="161.0" layoutY="331.0" mnemonicParsing="false" onAction="#VerRecords" prefHeight="50.0" prefWidth="150.0" text="Ver records" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button fx:id="btnSalir" alignment="CENTER" layoutX="161.0" layoutY="451.0" mnemonicParsing="false" onAction="#Salir" prefHeight="50.0" prefWidth="150.0" text="Salir" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button fx:id="btndosjugadores" alignment="CENTER" layoutX="161.0" layoutY="271.0" mnemonicParsing="false" onAction="#JugarDosJugadores" prefHeight="50.0" prefWidth="150.0" text="2 jugadores" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button fx:id="btnManual" alignment="CENTER" layoutX="161.0" layoutY="391.0" mnemonicParsing="false" onAction="#VerManual" prefHeight="50.0" prefWidth="150.0" stylesheets="@css/estilos.css" text="Como jugar" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>

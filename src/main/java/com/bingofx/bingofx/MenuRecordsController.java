@@ -59,7 +59,7 @@ public class MenuRecordsController implements Initializable {
     @FXML
     void FiltroHistorial(ActionEvent event) {
         tabla.getItems().clear();
-        getTablaRecords("SELECT * FROM bingofx");
+        getTablaRecords("SELECT * FROM bingofx ORDER BY numpartida DESC");
         btnVerHistorial.setDisable(true);
         btnFiltroLinea.setDisable(false);
         btnFiltroBingo.setDisable(false);
@@ -95,7 +95,7 @@ public class MenuRecordsController implements Initializable {
         this.coltiradasbingo.setCellValueFactory(new PropertyValueFactory("tiradasbingo"));
         this.colcomentario.setCellValueFactory(new PropertyValueFactory("comentario"));
 
-        getTablaRecords("SELECT * FROM bingofx");
+        getTablaRecords("SELECT * FROM bingofx ORDER BY numpartida DESC");
         btnVerHistorial.setDisable(true);
     }
 

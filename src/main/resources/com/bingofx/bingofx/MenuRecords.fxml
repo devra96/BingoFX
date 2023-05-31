@@ -21,9 +21,9 @@
       </TableView>
       <HBox alignment="CENTER" layoutY="278.0" prefHeight="62.0" prefWidth="780.0" spacing="100.0">
          <children>
-            <Button fx:id="btnVerHistorial" mnemonicParsing="false" onAction="#FiltroHistorial" text="VER HISTORIAL" />
-            <Button fx:id="btnFiltroBingo" mnemonicParsing="false" onAction="#FiltroBingo" text="MEJORES JUGADORES (BINGO)" />
-            <Button fx:id="btnFiltroLinea" mnemonicParsing="false" onAction="#FiltroLinea" text="MEJORES JUGADORES (LINEA)" />
+            <Button fx:id="btnVerHistorial" mnemonicParsing="false" onAction="#FiltroHistorial" prefWidth="182.0" text="VER HISTORIAL" />
+            <Button fx:id="btnFiltroLinea" mnemonicParsing="false" onAction="#FiltroLinea" prefWidth="182.0" text="MEJORES JUGADORES (LINEA)" />
+            <Button fx:id="btnFiltroBingo" mnemonicParsing="false" onAction="#FiltroBingo" prefWidth="182.0" text="MEJORES JUGADORES (BINGO)" />
          </children>
       </HBox>
    </children>
