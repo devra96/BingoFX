@@ -48,7 +48,7 @@ public class MenuInicioController {
     @FXML
     void VerManual(ActionEvent event) {
         try{
-            File f = new File("src/main/resources/com/bingofx/bingofx/a.pdf");
+            File f = new File("src/main/resources/com/bingofx/bingofx/BINGOFX - MANUAL DE USUARIO.pdf");
             Desktop.getDesktop().open(f);
         }
         catch (IOException e) {
