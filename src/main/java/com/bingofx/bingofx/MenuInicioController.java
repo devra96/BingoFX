@@ -4,10 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+
+import javax.print.attribute.URISyntax;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 public class MenuInicioController {
 
@@ -47,12 +51,30 @@ public class MenuInicioController {
 
     @FXML
     void VerManual(ActionEvent event) {
-        try{
-            File f = new File("src/main/resources/com/bingofx/bingofx/BINGOFX - MANUAL DE USUARIO.pdf");
-            Desktop.getDesktop().open(f);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
+//        VER ARCHIVO MODO LOCAL
+//        try{
+//            File f = new File("src/main/resources/com/bingofx/bingofx/BINGOFX - MANUAL DE USUARIO.pdf");
+//            Desktop.getDesktop().open(f);
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+//        VER ARCHIVO MODO WEB
+        if(java.awt.Desktop.isDesktopSupported()){
+            java.awt.Desktop d = java.awt.Desktop.getDesktop();
+            if(d.isSupported(Desktop.Action.BROWSE)){
+                try{
+                    java.net.URI uri = new java.net.URI("https://educajcyl-my.sharepoint.com/:b:/g/personal/raul_sasmar_educa_jcyl_es/EQJKlvlug4xIs00K9pBZTVEBs8FMhudmNyWb6ajpyAvTgA?e=dF38pK");
+                    d.browse(uri);
+                }
+                catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

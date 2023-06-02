@@ -34,17 +34,17 @@ public class HelloApplication extends Application {
         launch();
     }
 
-    public static void reproducirMusica(String archivo){
-        try{
-            String url = "src/main/resources/com/bingofx/bingofx/music/" + archivo + ".wav";
-            AudioInputStream a = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
-            Clip c = AudioSystem.getClip();
-            c.open(a);
-            c.start();
-            c.loop(1000);
-        }
-        catch(UnsupportedAudioFileException | IOException | LineUnavailableException e){
-            System.out.println(e.getMessage());
-        }
-    }
+//    public static void reproducirMusica(String archivo){
+//        try{
+//            String url = "src/main/resources/com/bingofx/bingofx/music/" + archivo + ".wav";
+//            AudioInputStream a = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
+//            Clip c = AudioSystem.getClip();
+//            c.open(a);
+//            c.start();
+//            c.loop(1000);
+//        }
+//        catch(UnsupportedAudioFileException | IOException | LineUnavailableException e){
+//            System.out.println(e.getMessage());
+//        }
+//    }
 }
