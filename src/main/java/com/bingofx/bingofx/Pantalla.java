@@ -178,23 +178,4 @@ public class Pantalla {
             throw new RuntimeException(e);
         }
     }
-
-    public void IrNoBingo(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoBingo.fxml"));
-        try {
-            Parent root = fxmlLoader.load();
-            NoBingoController controlador = fxmlLoader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("NO HAY BINGO");
-            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-            stage.show();
-
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

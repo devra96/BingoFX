@@ -35,7 +35,7 @@ public class JuegoDosJugadoresController implements Initializable {
     private Button reanudar;
 
     @FXML
-    private Button btngenerar;
+    private Button btnsacarbola;
 
     @FXML
     private Button btnBingo1;
@@ -159,7 +159,6 @@ public class JuegoDosJugadoresController implements Initializable {
         // QUITAMOS HUECOS A TODAS LAS CASILLAS
 
         // CARTON JUGADOR CON HUECOS
-//        cartongenerado = false;
         do{
             carton1 = new Label[][]{
                     {c1x1, c1x2, c1x3, c1x4, c1x5, c1x6, c1x7, c1x8, c1x9},
@@ -174,7 +173,6 @@ public class JuegoDosJugadoresController implements Initializable {
         // -------------------------------------------------------------------------------------------------------------
 
         // CARTON MAQUINA CON HUECOS
-//        cartongenerado = false;
         do{
             carton2 = new Label[][]{
                     {c1x11, c1x21, c1x31, c1x41, c1x51, c1x61, c1x71, c1x81, c1x91},
@@ -228,7 +226,7 @@ public class JuegoDosJugadoresController implements Initializable {
 
         txtContadorBolas.setText("Bola: " + indicenumerospronunciados + "/90");
 
-        btngenerar.setDisable(true);
+        btnsacarbola.setDisable(true);
         reanudar.setDisable(true);
 
         executor = Executors.newScheduledThreadPool(1);
@@ -242,7 +240,7 @@ public class JuegoDosJugadoresController implements Initializable {
 
     private void pausarHilo() {
         pausado = true;
-        btngenerar.setDisable(false);
+        btnsacarbola.setDisable(false);
 
         pausar.setDisable(true);
         reanudar.setDisable(false);
@@ -252,7 +250,7 @@ public class JuegoDosJugadoresController implements Initializable {
 
     private void reanudarHilo() {
         pausado = false;
-        btngenerar.setDisable(true);
+        btnsacarbola.setDisable(true);
 
         pausar.setDisable(false);
         reanudar.setDisable(true);
@@ -260,10 +258,10 @@ public class JuegoDosJugadoresController implements Initializable {
         System.out.println("Hilo reanudado");
     }
 
-    @FXML
-    void generar(ActionEvent event) {
-        SacarBola();
-    }
+//    @FXML
+//    void generar(ActionEvent event) {
+//        SacarBola();
+//    }
 
     @FXML
     void pausar(ActionEvent event) {
@@ -277,23 +275,13 @@ public class JuegoDosJugadoresController implements Initializable {
 
     public void SacarBola(){
         if(indicenumerospronunciados == 89){
-
-            // HACER HILO QUE OCURRA UNA VEZ, 5 SEGUNDOS, CON UN SONIDO??
-//            Platform.runLater(new Runnable(){
-//                @Override
-//                public void run() {
-//                    noBingo();
-//                }
-//            });
-
-            // USANDO ESTO, LA CLASE NoBingo SE QUEDA INUTIL
             Platform.runLater(new Runnable(){
                 @Override
                 public void run() {
                     txtCantarBingo.setText("¡ALGUIEN TIENE QUE CANTAR BINGO!");
                 }
             });
-            btngenerar.setDisable(true);
+            btnsacarbola.setDisable(true);
             pausar.setDisable(true);
             reanudar.setDisable(true);
             executor.shutdown();
@@ -310,16 +298,6 @@ public class JuegoDosJugadoresController implements Initializable {
                 txtContadorBolas.setText("Bola: " + indicenumerospronunciados + "/90");
             }
         });
-
-        // SI NADIE HACE BINGO
-//        if(SE HAN PRONUNCIADO TODOS LOS NUMEROS){
-//            Platform.runLater(new Runnable(){
-//                @Override
-//                public void run() {
-//                    noBingo();
-//                }
-//            });
-//        }
     }
 
     @FXML
@@ -672,6 +650,7 @@ public class JuegoDosJugadoresController implements Initializable {
             break;
         }
 
+        //PRUEBAS CONSOLA
         System.out.println();
         System.out.println("LA MAQUINA SACA EL " + numeroaleatorio);
         System.out.println();
@@ -779,23 +758,9 @@ public class JuegoDosJugadoresController implements Initializable {
     }
 
     public void BingoCorrecto(){
+        //PRUEBAS CONSOLA
         System.out.println("BINGO");
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Bingo.fxml"));
-//        try {
-//            Parent root = fxmlLoader.load();
-//            BingoController controlador = fxmlLoader.getController();
-//
-//            Scene scene = new Scene(root);
-//            Stage stage = new Stage();
-//            stage.setScene(scene);
-//            stage.setTitle("¡¡¡BINGO!!!");
-//            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-//            stage.show();
-//
-//        }
-//        catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+
         pantalla.IrBingo();
         // PARAR HILO
         executor.shutdown();
@@ -814,43 +779,8 @@ public class JuegoDosJugadoresController implements Initializable {
         if(r.get() == ButtonType.OK){
             pantalla.CerrarVentanaActual();
             executor.shutdown();
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuInicio.fxml"));
-//            try {
-//                Parent root = fxmlLoader.load();
-//                MenuInicioController controlador = fxmlLoader.getController();
-//
-//                Scene scene = new Scene(root);
-//                Stage stage = new Stage();
-//                stage.setScene(scene);
-//                stage.setTitle("BINGOFX (Por Raúl Sastre)");
-//                stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-//                stage.show();
-//
-//            }
-//            catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
             BingoController.RestaurarRegistros();
             pantalla.IrMenuInicio();
         }
     }
-
-    //    public void noBingo(){
-//        pantalla.IrNoBingo();
-//        // PARAR HILO
-//        executor.shutdown();
-//
-//        // CERRAR VENTANA ACTUAL
-//        pantalla.CerrarVentanaActual();
-//    }
-
-//    private Window getWindow() {
-//        return Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
-//    }
-
-//    public static void cerrarVentana(ActionEvent event){
-//        Node source = (Node) event.getSource();     //Me devuelve el elemento al que hice click
-//        Stage stage = (Stage) source.getScene().getWindow();    //Me devuelve la ventana donde se encuentra el elemento
-//        stage.close();                          //Me cierra la ventana
-//    }
 }

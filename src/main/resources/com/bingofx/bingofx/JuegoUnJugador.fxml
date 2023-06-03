@@ -288,7 +288,7 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="btngenerar" layoutX="600.0" layoutY="439.0" mnemonicParsing="false" onAction="#SacarBola" prefHeight="100.0" prefWidth="100.0" text="SACAR BOLA" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="btnsacarbola" layoutX="600.0" layoutY="439.0" mnemonicParsing="false" onAction="#SacarBola" prefHeight="100.0" prefWidth="100.0" text="SACAR BOLA" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>

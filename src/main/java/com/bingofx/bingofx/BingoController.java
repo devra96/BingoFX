@@ -1,24 +1,13 @@
 package com.bingofx.bingofx;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-
-import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -122,6 +111,7 @@ public class BingoController implements Initializable {
             }
         }
 
+        //PRUEBAS CONSOLA
         System.out.println("Jugador: " + nombrejugador);
         System.out.println("¿Hizo linea?: " +  hizolinea);
         System.out.println("Tiradas linea: " + tiradaslinea);
@@ -237,24 +227,6 @@ public class BingoController implements Initializable {
             return true;
         }
         catch(SQLException e){
-//            System.out.println("Error en la consulta: " + e.getErrorCode() + " - " + e.getMessage());
-
-//            Label error = new Label("HA OCURRIDO UN ERROR CON LA BASE DE DATOS\n\nCausa del error: " + e.getErrorCode() + " - " + e.getMessage());
-//            Insets pad = new Insets(20);
-//            error.setPadding(pad);
-////            error.setLayoutX(37);
-////            error.setLayoutY(108);
-//
-//            Pane p = new Pane();
-//            p.getChildren().addAll(error);
-//            p.prefHeight(232.0);
-//            p.prefWidth(348.0);
-//            Stage stage = new Stage();
-//            Scene scene = new Scene(p);
-//            stage.setScene(scene);
-//            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-//            stage.setTitle("ERROR");
-//            stage.show();
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("ERROR");
             a.setHeaderText("HA OCURRIDO UN ERROR CON LA BASE DE DATOS");
@@ -288,24 +260,11 @@ public class BingoController implements Initializable {
             return true;
         }
         catch(SQLException e){
-//            System.out.println("Error en la consulta: " + e.getErrorCode() + " - " + e.getMessage());
-
-            Label error = new Label("HA OCURRIDO UN ERROR CON LA BASE DE DATOS\n\nCausa del error: " + e.getErrorCode() + " - " + e.getMessage());
-            Insets pad = new Insets(20);
-            error.setPadding(pad);
-//            error.setLayoutX(37);
-//            error.setLayoutY(108);
-
-            Pane p = new Pane();
-            p.getChildren().addAll(error);
-            p.prefHeight(232.0);
-            p.prefWidth(348.0);
-            Stage stage = new Stage();
-            Scene scene = new Scene(p);
-            stage.setScene(scene);
-            stage.setResizable(false); //IMPEDIR QUE SE PUEDA MODIFICAR LA RESOLUCION DE LA VENTANA
-            stage.setTitle("ERROR");
-            stage.show();
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("ERROR");
+            a.setHeaderText("HA OCURRIDO UN ERROR CON LA BASE DE DATOS");
+            a.setContentText("Causa del error: " + e.getErrorCode() + " - " + e.getMessage());
+            a.showAndWait();
             return false;
         }
         catch(Exception e){
@@ -330,7 +289,8 @@ public class BingoController implements Initializable {
                 btnGuardarComentario.setDisable(true);
             }
             else{
-                txtTestComentario.setText("ERROR");
+                txtTestComentario.setTextFill(Color.RED);
+                txtTestComentario.setText("¡ERROR!");
             }
         }
     }
