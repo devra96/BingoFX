@@ -61,7 +61,7 @@ public class MenuInicioController {
             java.awt.Desktop d = java.awt.Desktop.getDesktop();
             if(d.isSupported(Desktop.Action.BROWSE)){
                 try{
-                    java.net.URI uri = new java.net.URI("https://educajcyl-my.sharepoint.com/:b:/g/personal/raul_sasmar_educa_jcyl_es/EQJKlvlug4xIs00K9pBZTVEBs8FMhudmNyWb6ajpyAvTgA?e=dF38pK");
+                    java.net.URI uri = new java.net.URI("https://educajcyl-my.sharepoint.com/:b:/g/personal/raul_sasmar_educa_jcyl_es/EaKrbldO-XJIqsSLwy8E170BmaNNhD8HD-gAj_oQmEF-Hw?e=J7oGtq");
                     d.browse(uri);
                 }
                 catch (URISyntaxException e) {
