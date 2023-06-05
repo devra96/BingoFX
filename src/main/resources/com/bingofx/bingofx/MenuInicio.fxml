@@ -11,14 +11,14 @@
    <children>
       <AnchorPane prefHeight="561.0" prefWidth="472.0">
          <children>
-            <ImageView fitHeight="561.0" fitWidth="472.0" opacity="0.5" pickOnBounds="true">
+            <ImageView fitHeight="561.0" fitWidth="472.0" opacity="0.4" pickOnBounds="true">
                <image>
-                  <Image url="@img/a.jpg" />
+                  <Image url="@img/dnkjbsaschl.PNG" />
                </image>
             </ImageView>
-            <ImageView fitHeight="300.0" fitWidth="472.0" pickOnBounds="true">
+            <ImageView fitHeight="229.0" fitWidth="310.0" layoutX="92.0" pickOnBounds="true">
                <image>
-                  <Image url="@img/logo22.png" />
+                  <Image url="@img/fondoestela2comoelpucela.png" />
                </image>
             </ImageView>
             <Button fx:id="btnunjugador" alignment="CENTER" layoutX="161.0" layoutY="210.0" mnemonicParsing="false" onAction="#JugarUnJugador" prefHeight="50.0" prefWidth="150.0" stylesheets="@css/estilos.css" text="1 jugador" wrapText="true">
