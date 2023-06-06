@@ -98,9 +98,6 @@ public class JuegoDosJugadoresController implements Initializable {
     private Label txtCantarBingo;
 
     @FXML
-    private HBox filaBolas;
-
-    @FXML
     private Label txtBola1;
 
     @FXML
@@ -122,22 +119,31 @@ public class JuegoDosJugadoresController implements Initializable {
     private Label txtContadorBolas;
 
     @FXML
+    private HBox filaBolas;
+
+    @FXML
     private ImageView imgOkLinea1;
 
     @FXML
     private ImageView imgOkLinea2;
 
+    //MATRICES DONDE SE GUARDAN LOS NUMEROS DE LOS CARTONES
     private Label[][] carton1;
     private Label[][] carton2;
 
+    //ARRAY QUE GUARDA LOS LABELS DEL RECUADRO DE NUMEROS PRONUNCIADOS
     private Label[] pronunciados;
 
+    //TRUE O FALSE SEGUN SI SE HA GENERADO UN CARTON CORRECTAMENTE
     private boolean cartongenerado;
 
+    //ARRAY QUE GUARDA LOS NUMEROS PRONUNCIADOS EN LA PARTIDA
     private int[] numerospronunciados;
 
+    //INDICE QUE INDICA CUANTOS NUMEROS SE HAN PRONUNCIADO
     private int indicenumerospronunciados;
 
+    //VARIABLES ESTATICAS QUE GUARDAN LOS REGISTROS DE LOS JUGADORES
     static String nombreganador;
     static int contadorlineajugador1;
     static int contadorlineajugador2;
@@ -148,16 +154,24 @@ public class JuegoDosJugadoresController implements Initializable {
     static String hizobingojugador1;
     static String hizobingojugador2;
 
+    //PARA PAUSAR O REANUDAR EL HILO (MODO MANUAL/AUTOMATICO)
     private volatile boolean pausado = false;
 
+    //OBJETO QUE EJECUTA EL HILO
     private ScheduledExecutorService executor;
 
+    //OBJETO PARA LLAMAR A METODOS PARA CAMBIAR DE PANTALLA
     private Pantalla pantalla = new Pantalla();
 
+    /**
+     * Generamos cartones, se comprueba que estan bien hechos y se
+     * inicializan algunas variables y el hilo
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // QUITAMOS HUECOS A TODAS LAS CASILLAS
-
         // CARTON JUGADOR CON HUECOS
         do{
             carton1 = new Label[][]{
@@ -168,7 +182,6 @@ public class JuegoDosJugadoresController implements Initializable {
             quitarIdsCasillas(carton1);
             generarHuecosCarton(carton1);
             cartongenerado = comprobarHuecosCarton(carton1);
-            System.out.println("BUCLE INFINITO JUGADOR???");
         }while(!cartongenerado);
         // -------------------------------------------------------------------------------------------------------------
 
@@ -182,13 +195,13 @@ public class JuegoDosJugadoresController implements Initializable {
             quitarIdsCasillas(carton2);
             generarHuecosCarton(carton2);
             cartongenerado = comprobarHuecosCarton(carton2);
-            System.out.println("BUCLE INFINITO MAQUINA???");
         }while(!cartongenerado);
         // -------------------------------------------------------------------------------------------------------------
 
         // GENERAMOS NUMEROS PARA AMBOS CARTONES
         generarNumerosCarton(carton1);
         generarNumerosCarton(carton2);
+
 
         numerospronunciados = new int[90];
         indicenumerospronunciados = 0;
@@ -203,6 +216,8 @@ public class JuegoDosJugadoresController implements Initializable {
                 p71,p72,p73,p74,p75,p76,p77,p78,p79,p80,
                 p81,p82,p83,p84,p85,p86,p87,p88,p89,p90
         };
+
+        //INICIALIZAMOS VARIABLES ESTATICAS
         contadorlineajugador1 = 0;
         contadorlineajugador2 = 0;
         contadorbingojugador1 = 0;
@@ -211,10 +226,10 @@ public class JuegoDosJugadoresController implements Initializable {
         hizolineajugador2 = "No";
         hizobingojugador1 = "No";
         hizobingojugador2 = "No";
-
         txtNombreJugador1.setText(MenuDosJugadoresController.nombrejugador1);
         txtNombreJugador2.setText(MenuDosJugadoresController.nombrejugador2);
 
+        //OCULTAMOS LAS BOLAS PRONUNCIADAS (FILA DE BOLAS)
         txtBola1.setOpacity(0);
         txtBola2.setOpacity(0);
         txtBola3.setOpacity(0);
@@ -224,11 +239,14 @@ public class JuegoDosJugadoresController implements Initializable {
         imgOkLinea1.setOpacity(0);
         imgOkLinea2.setOpacity(0);
 
+        //INICIALIZAMOS EL TEXTO DEL CONTADOR DE BOLAS
         txtContadorBolas.setText("Bola: " + indicenumerospronunciados + "/90");
 
+        // BOTON SACAR BOLA Y MODO AUTOMATICO DESACTIVADOS
         btnsacarbola.setDisable(true);
         reanudar.setDisable(true);
 
+        //INICIALIZAMOS HILO QUE SACARA UN NUMERO CADA 5 SEGUNDOS (MODO AUTOMATICO)
         executor = Executors.newScheduledThreadPool(1);
         Runnable tarea = () -> {
             if (!pausado) {
@@ -238,6 +256,9 @@ public class JuegoDosJugadoresController implements Initializable {
         executor.scheduleAtFixedRate(tarea, 0, 5, TimeUnit.SECONDS);
     }
 
+    /**
+     * Pausa el hilo (activa el modo manual)
+     */
     private void pausarHilo() {
         pausado = true;
         btnsacarbola.setDisable(false);
@@ -248,6 +269,9 @@ public class JuegoDosJugadoresController implements Initializable {
         System.out.println("Hilo pausado");
     }
 
+    /**
+     * Reanuda el hilo (activa el modo automatico)
+     */
     private void reanudarHilo() {
         pausado = false;
         btnsacarbola.setDisable(true);
@@ -258,21 +282,28 @@ public class JuegoDosJugadoresController implements Initializable {
         System.out.println("Hilo reanudado");
     }
 
-//    @FXML
-//    void generar(ActionEvent event) {
-//        SacarBola();
-//    }
-
+    /**
+     * Boton modo manual
+     * @param event
+     */
     @FXML
     void pausar(ActionEvent event) {
         pausarHilo();
     }
 
+    /**
+     * Boton modo automatico
+     * @param event
+     */
     @FXML
     void reanudar(ActionEvent event) {
         reanudarHilo();
     }
 
+    /**
+     * Comprueba si han salido todos los numeros, saca un numero
+     * aleatorio, cuenta uno mas al contador,
+     */
     public void SacarBola(){
         if(indicenumerospronunciados == 89){
             Platform.runLater(new Runnable(){
@@ -300,6 +331,10 @@ public class JuegoDosJugadoresController implements Initializable {
         });
     }
 
+    /**
+     * Al pulsar los numeros del carton se marcan
+     * @param event
+     */
     @FXML
     void MarcarNumero(MouseEvent event) {
         Node source = (Node) event.getSource();
@@ -313,6 +348,11 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Boton de cantar linea del jugador 1 que segun si la linea
+     * es correcta o no, muestra un mensaje u otro.
+     * @param event
+     */
     @FXML
     void CantarLinea1(ActionEvent event) {
         switch(cantarLineaJugador(carton1)){
@@ -339,6 +379,11 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Boton de cantar linea del jugador 2 que segun si la linea
+     * es correcta o no, muestra un mensaje u otro.
+     * @param event
+     */
     @FXML
     void CantarLinea2(ActionEvent event) {
         switch(cantarLineaJugador(carton2)){
@@ -365,6 +410,12 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Boton de cantar bingo del jugador 1 que segun si el bingo
+     * es correcto o no, se muestra un mensaje o se va a la pantalla
+     * de bingo
+     * @param event
+     */
     @FXML
     void CantarBingo1(ActionEvent event) {
         switch(cantarBingoJugador(carton1)){
@@ -388,6 +439,12 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Boton de cantar bingo del jugador 2 que segun si el bingo
+     * es correcto o no, se muestra un mensaje o se va a la pantalla
+     * de bingo
+     * @param event
+     */
     @FXML
     void CantarBingo2(ActionEvent event) {
         switch(cantarBingoJugador(carton2)){
@@ -411,6 +468,10 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Metodo que genera los 4 huecos en las 3 filas del carton
+     * @param carton
+     */
     public void generarHuecosCarton(Label[][] carton){
         int[] huecos;
         int hueco;
@@ -449,6 +510,12 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Metodo que comprueba si los huecos generados para el carton
+     * se repiten o no
+     * @param carton
+     * @return true si se repiten, false si no se repiten
+     */
     public boolean comprobarHuecosCarton(Label[][] carton){
         int cn;     // CONTADOR NUMEROS
         int ch;     // CONTADOR HUECOS
@@ -473,6 +540,11 @@ public class JuegoDosJugadoresController implements Initializable {
         return true;
     }
 
+    /**
+     * Metodo que genera los 15 numeros del carton de forma aleatoria
+     * y los coloca en sus posiciones
+     * @param carton
+     */
     public static void generarNumerosCarton(Label[][] carton){
         int ini = 1;
         int fin = 10;
@@ -533,6 +605,13 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Metodo que saca un numero aleatorio del 1 al 90 que aun no haya
+     * salido
+     * @param pronunciados Array de los labels del cartel de numeros pronunciados en la partida
+     * @param numerospronunciados Array de los numeros pronunciados en la partida
+     * @param indicenumerospronunciados Contador de la cantidad de numeros pronunciados en la partida
+     */
     public void sacarNumero(Label[] pronunciados, int[] numerospronunciados, int indicenumerospronunciados){
         int numeroaleatorio;
         boolean repe;
@@ -569,7 +648,7 @@ public class JuegoDosJugadoresController implements Initializable {
             }
         }
 
-        //BOLAS
+        // FILA BOLAS > IR MOSTRANDO LAS BOLAS AL PRINCIPIO SEGUN SE SACAN LOS PRIMEROS NUMEROS
         switch(indicenumerospronunciados){
             case 0:
                 txtBola1.setOpacity(1);
@@ -656,6 +735,11 @@ public class JuegoDosJugadoresController implements Initializable {
         System.out.println();
     }
 
+    /**
+     * Metodo que sirve para, cuando se genera un "carton incorrecto", quite
+     * todos los huecos del carton
+     * @param carton
+     */
     public void quitarIdsCasillas(Label[][] carton){
         for(int i=0;i<carton.length;i++){
             for(int j=0;j<carton[i].length;j++){
@@ -664,6 +748,11 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Metodo que comprueba la linea cantada del jugador
+     * @param carton
+     * @return 0 (no estan todos los numeros marcados), 1 (linea(s) incorrecta(s)), 2 (linea correcta)
+     */
     public int cantarLineaJugador(Label[][] carton){
         int c;
         String[] numerosmarcados;
@@ -716,6 +805,11 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Metodo que comprueba el bingo cantado del jugador
+     * @param carton
+     * @return 0 (no estan todos los numeros marcados), 1 (bingo incorrecto), 2 (bingo correcto)
+     */
     public int cantarBingoJugador(Label[][] carton){
         int c=0;
         String[] numerosmarcados = new String[15];
@@ -757,6 +851,10 @@ public class JuegoDosJugadoresController implements Initializable {
         }
     }
 
+    /**
+     * Cuando el bingo es correcto, se para el hilo, cierra la ventana actual y lleva a la pantalla
+     * de resultados
+     */
     public void BingoCorrecto(){
         //PRUEBAS CONSOLA
         System.out.println("BINGO");
@@ -769,6 +867,10 @@ public class JuegoDosJugadoresController implements Initializable {
         pantalla.CerrarVentanaActual();
     }
 
+    /**
+     * Boton para volver al menu de inicio
+     * @param event
+     */
     @FXML
     void VolverMenuInicio(ActionEvent event) {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);

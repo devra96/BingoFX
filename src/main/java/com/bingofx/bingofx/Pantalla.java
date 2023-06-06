@@ -13,10 +13,19 @@ import javafx.stage.WindowEvent;
 import java.io.IOException;
 
 public class Pantalla {
+
+    /**
+     * Cierra la ventana actual
+     * @return
+     */
     private Window getWindow() {
         return Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
     }
 
+    /**
+     * Cierra la pantalla actual
+     * @return
+     */
     public void CerrarVentanaActual(){
         Stage ventanaActual = (Stage) getWindow();
         ventanaActual.close();

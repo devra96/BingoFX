@@ -26,25 +26,42 @@ public class MenuInicioController {
     @FXML
     private Button btnManual;
 
+    //OBJETO PARA LLAMAR A METODOS PARA CAMBIAR DE PANTALLA
     private Pantalla pantalla = new Pantalla();
 
+    /**
+     * Boton jugar modo 1 jugador
+     * @param event
+     */
     @FXML
     void JugarUnJugador(ActionEvent event) {
         pantalla.CerrarVentanaActual();
         pantalla.IrMenuUnJugador();
     }
 
+    /**
+     * Boton jugar modo 2 jugadores
+     * @param event
+     */
     @FXML
     void JugarDosJugadores(ActionEvent event) {
         pantalla.CerrarVentanaActual();
         pantalla.IrMenuDosJugadores();
     }
 
+    /**
+     * Boton ver records
+     * @param event
+     */
     @FXML
     void VerRecords(ActionEvent event) {
         pantalla.IrMenuRecords();
     }
 
+    /**
+     * Boton ver manual de usuario. Abre un enlace web al manual.
+     * @param event
+     */
     @FXML
     void VerManual(ActionEvent event) {
 //        VER ARCHIVO MODO LOCAL
@@ -74,6 +91,10 @@ public class MenuInicioController {
         }
     }
 
+    /**
+     * Salir del juego
+     * @param event
+     */
     @FXML
     void Salir(ActionEvent event) {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);

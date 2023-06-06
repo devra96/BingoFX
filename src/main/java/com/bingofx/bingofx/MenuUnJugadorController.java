@@ -17,10 +17,17 @@ public class MenuUnJugadorController {
     @FXML
     private TextField txtNombre;
 
+    //VARIABLE ESTATICA QUE GUARDA EL NOMBRE DEL JUGADOR
     static String nombrejugador;
 
+    //OBJETO PARA LLAMAR A METODOS PARA CAMBIAR DE PANTALLA
     private Pantalla pantalla = new Pantalla();
 
+    /**
+     * Comprueba si se ha escrito el nombre correctamente y lleva
+     * a la pantalla de juego
+     * @param event
+     */
     @FXML
     void JugarPartida(ActionEvent event) {
         if(txtNombre.getText().equals("")){
@@ -44,6 +51,10 @@ public class MenuUnJugadorController {
         }
     }
 
+    /**
+     * Cancelar y volver al menu principal
+     * @param event
+     */
     @FXML
     void Cancelar(ActionEvent event) {
         pantalla.CerrarVentanaActual();
@@ -51,4 +62,3 @@ public class MenuUnJugadorController {
     }
 
 }
-

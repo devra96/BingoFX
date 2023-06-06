@@ -29,6 +29,10 @@ public class HelloApplication extends Application {
         launch();
     }
 
+//    /**
+//     * Metodo para reproducir musica de fondo en la aplicacion
+//     * @param archivo
+//     */
 //    public static void reproducirMusica(String archivo){
 //        try{
 //            String url = "src/main/resources/com/bingofx/bingofx/music/" + archivo + ".wav";

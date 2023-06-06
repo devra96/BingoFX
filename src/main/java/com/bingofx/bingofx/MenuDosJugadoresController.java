@@ -20,11 +20,18 @@ public class MenuDosJugadoresController {
     @FXML
     private TextField txtNombreDos;
 
+    //VARIABLES ESTATICAS QUE GUARDAN LOS NOMBRES DEL JUGADOR
     static String nombrejugador1;
     static String nombrejugador2;
 
+    //OBJETO PARA LLAMAR A METODOS PARA CAMBIAR DE PANTALLA
     private Pantalla pantalla = new Pantalla();
 
+    /**
+     * Comprueba si se han escrito los nombres correctamente y lleva
+     * a la pantalla de juego
+     * @param event
+     */
     @FXML
     void JugarPartida(ActionEvent event) {
         if(txtNombreUno.getText().equals("") || txtNombreDos.getText().equals("")){
@@ -49,6 +56,10 @@ public class MenuDosJugadoresController {
         }
     }
 
+    /**
+     * Cancelar y volver al menu principal
+     * @param event
+     */
     @FXML
     void Cancelar(ActionEvent event) {
         pantalla.CerrarVentanaActual();
@@ -56,4 +67,3 @@ public class MenuDosJugadoresController {
     }
 
 }
-

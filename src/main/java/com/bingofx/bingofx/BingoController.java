@@ -30,9 +30,6 @@ public class BingoController implements Initializable {
     private Label txtBingo;
 
     @FXML
-    private TextArea txtComentario;
-
-    @FXML
     private Label txtJugador;
 
     @FXML
@@ -44,40 +41,57 @@ public class BingoController implements Initializable {
     @FXML
     private Label txtTestComentario;
 
+    @FXML
+    private TextArea txtComentario;
+
+    //VARIABLES QUE GUARDAN LOS REGISTROS DEL JUGADOR QUE LUEGO SE USARAN
+    //PARA INSERTARLOS EN LA BBDD
     private String nombrejugador;
-
     private String hizolinea;
-
     private String hizobingo;
-
     private int tiradaslinea;
-
     private int tiradasbingo;
 
-    private boolean lineanull;
-
-    private boolean bingonull;
-
+    //OBJETO PARA LLAMAR A METODOS PARA CAMBIAR DE PANTALLA
     private Pantalla pantalla = new Pantalla();
 
+    /**
+     * Ir a la pantalla de escribir nombre para el modo 1 jugador
+     * @param event
+     */
     @FXML
     void JugarUnJugador(ActionEvent event) {
         pantalla.CerrarVentanaActual();
         pantalla.IrMenuUnJugador();
     }
 
+    /**
+     * Ir a la pantalla de escribir nombres para el modo 2 jugadores
+     * @param event
+     */
     @FXML
     void JugarDosJugadores(ActionEvent event) {
         pantalla.CerrarVentanaActual();
         pantalla.IrMenuDosJugadores();
     }
 
+    /**
+     * Volver a la pantalla de inicio
+     * @param event
+     */
     @FXML
     void VolverInicio(ActionEvent event) {
         pantalla.CerrarVentanaActual();
         pantalla.IrMenuInicio();
     }
 
+    /**
+     * Dependiendo de que modo de juego se realizo y quien canto bingo,
+     * se guardan los registros de la partida, se muestran los textos
+     * y se ponen las variables estaticas de las otras clases a null
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //UN JUGADOR
@@ -120,6 +134,9 @@ public class BingoController implements Initializable {
         RestaurarRegistros();
     }
 
+    /**
+     * Pone todas las variables estaticas de las otras clases a null
+     */
     public static void RestaurarRegistros(){
         MenuUnJugadorController.nombrejugador = null;
         JuegoUnJugadorController.hizolinea = null;
@@ -139,6 +156,10 @@ public class BingoController implements Initializable {
         JuegoDosJugadoresController.contadorbingojugador2 = 0;
     }
 
+    /**
+     * Muestra X textos en la pantalla de Bingo segun quien haya cantado
+     * bingo
+     */
     public void PonerTextos(){
 
         //UN JUGADOR
@@ -203,6 +224,16 @@ public class BingoController implements Initializable {
         }
     }
 
+    /**
+     * Si la conexion a la base de datos tiene exito, inserta un registro
+     * de los resultados de la partida
+     * @param nombrejugador Nombre del jugador
+     * @param hizolinea Si hizo linea o no
+     * @param tiradaslinea Numero de tiradas hasta que ha hecho linea
+     * @param hizobingo Si hizo bingo o no
+     * @param tiradasbingo Numero de tiradas hasta que ha hecho bingo
+     * @return true o false dependiendo de si hay algun problema o no con la BBDD
+     */
     public boolean insertRegistro(String nombrejugador,String hizolinea,int tiradaslinea,String hizobingo,int tiradasbingo){
         try{
             // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
@@ -240,6 +271,11 @@ public class BingoController implements Initializable {
         }
     }
 
+    /**
+     * Guarda un comentario escrito en el ultimo registro insertado, en la columna
+     * "comentario"
+     * @return true o false dependiendo de si hay algun problema o no con la BBDD
+     */
     public boolean GuardarComentario(){
         try{
             // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
@@ -273,6 +309,10 @@ public class BingoController implements Initializable {
         }
     }
 
+    /**
+     * Boton para enviar el comentario a la BBDD
+     * @param event
+     */
     @FXML
     void guardarComentario(ActionEvent event) {
         if(txtComentario.getLength() > 200){

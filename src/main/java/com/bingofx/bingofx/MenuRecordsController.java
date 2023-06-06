@@ -83,6 +83,12 @@ public class MenuRecordsController implements Initializable {
         btnFiltroBingo.setDisable(true);
     }
 
+    /**
+     * Inicializa la tabla de los registros, llama al metodo para recuperar
+     * los registros de la BBDD y desactiva el boton de filtrar por historial
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         registros = FXCollections.observableArrayList();
@@ -99,6 +105,10 @@ public class MenuRecordsController implements Initializable {
         btnVerHistorial.setDisable(true);
     }
 
+    /**
+     * Recupera los registros de la BBDD
+     * @param sql Query que se hace a la BBDD
+     */
     public void getTablaRecords(String sql){
         try{
             // CONEXION A LA BASE DE DATOS. SI HAY ALGUN ERROR, LO CAPTARA LA EXCEPCION
